@@ -82,7 +82,6 @@ public class TemaEntity implements Serializable {
 		TemaEntity other = (TemaEntity) obj;
 		return getId().intValue() == other.getId().intValue();
 	}
-
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
