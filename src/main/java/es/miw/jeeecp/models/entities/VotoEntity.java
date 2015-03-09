@@ -14,7 +14,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "VOTO", uniqueConstraints= @UniqueConstraint(columnNames = { "IP" }))
 //@IdClass(VotoPK.class)
-public class Voto {
+public class VotoEntity {
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -27,19 +27,19 @@ public class Voto {
     
     @ManyToOne
     @JoinColumn
-    private Tema tema;
+    private TemaEntity tema;
     
  
-    public Voto(String ip, Integer nota,String estudios) {
+    public VotoEntity(String ip, Integer nota,String estudios) {
          this.ip = ip;
         this.nota = nota;
         this.estudios = estudios;
     }
-    public Voto(String ip, Integer nota,String estudios,Tema tema) {
+    public VotoEntity(String ip, Integer nota,String estudios,TemaEntity tema) {
           this(ip,nota,estudios);
           this.tema = tema;
       }
-    public Voto() {
+    public VotoEntity() {
         super();
     }
 	public Integer getId() {
@@ -66,15 +66,12 @@ public class Voto {
 	public void setEstudios(String estudios) {
 		this.estudios = estudios;
 	}
-
-
 	
-	
-	public Tema getTema() {
+	public TemaEntity getTema() {
 		return tema;
 	}
 
-	public void setTema(Tema tema) {
+	public void setTema(TemaEntity tema) {
 		this.tema = tema;
 	}
 
@@ -82,5 +79,16 @@ public class Voto {
     public String toString() {
         return "User[" + ip + ":" + nota + ":"+estudios+":"+tema +"]";
     }
+	public boolean equals(Object obj) {
+		VotoEntity other = (VotoEntity) obj;
+		return getId().intValue() == other.getId().intValue();
+	}
+
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + getId().intValue();
+		return result;
+	}
 
 }

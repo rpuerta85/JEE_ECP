@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 
 import org.apache.logging.log4j.LogManager;
 
-import es.art83.ticTacToe.models.daos.GenericDao;
+import es.miw.jeeecp.models.daos.GenericDao;
 
 public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
     private Class<T> persistentClass;

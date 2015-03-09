@@ -2,21 +2,16 @@ package es.miw.jeeecp.models.daos.jpa;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import org.apache.logging.log4j.LogManager;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
-
-import es.art83.ticTacToe.models.daos.PieceDao;
-import es.art83.ticTacToe.models.daos.SessionDao;
-import es.art83.ticTacToe.models.daos.DaoFactory;
-import es.art83.ticTacToe.models.daos.GameDao;
-import es.art83.ticTacToe.models.daos.PlayerDao;
+import es.miw.jeeecp.models.daos.DaoFactory;
+import es.miw.jeeecp.models.daos.TemaDao;
+import es.miw.jeeecp.models.daos.VotoDao;
 
 public class DaoJpaFactory extends DaoFactory {
-    private static final String PERSISTENCE_UNIT = "tictactoe";
+    private static final String PERSISTENCE_UNIT = "BBDD";
 
     private static EntityManagerFactory entityManagerFactory; 
 
@@ -39,24 +34,16 @@ public class DaoJpaFactory extends DaoFactory {
         LogManager.getLogger(DaoJpaFactory.class).debug("create Entity Manager Factory");
     }
 
-    @Override
-    public PlayerDao getPlayerDao() {
-        return new PlayerDaoJpa();
-    }
+	@Override
+	public VotoDao getVotoDao() {
+		return new VotoDaoJpa();
+	}
 
-    @Override
-    public GameDao getGameDao() {
-        return new GameDaoJpa();
-    }
+	@Override
+	public TemaDao getTemaDao() {
+		return new TemaDaoJpa();
+	}
 
-    @Override
-    public SessionDao getSessionDao() {
-        return new SessionDaoJpa();
-    }
-
-    @Override
-    public PieceDao getPieceDao() {
-        return new PieceDaoJpa();
-    }
+ 
 
 }
