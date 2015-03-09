@@ -1,4 +1,4 @@
-package es.art83.persistence.models.entities;
+package es.miw.jeeecp.models.entities;
 
 import java.io.Serializable;
 import java.lang.String;
