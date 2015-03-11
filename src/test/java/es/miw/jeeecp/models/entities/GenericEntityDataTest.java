@@ -22,10 +22,10 @@ public abstract class GenericEntityDataTest {
 	protected String pathExcelFile;
 	public GenericEntityDataTest(String pathExcelFile){
 		this.pathExcelFile = pathExcelFile;
-		rellenarWorkbook();
+		
 	}
 	
-	private void rellenarWorkbook(){
+	protected void rellenarWorkbook(){
 		try {
 		    //workbook = abrirExcel("src/test/resources/TemaEntityTestData.xlsx");
 		    workbook = abrirExcel(this.pathExcelFile);

@@ -13,12 +13,12 @@ public class TemaEntityDataTest extends GenericEntityDataTest{
 	private static final String PATH_EXCEL_FILE = "src/test/resources/TemaEntityTestData.xlsx";
 	private  List<String> listaTemaEntrada = new ArrayList<String>();
 	private  List<String> listaPreguntaEntrada = new ArrayList<String>();
-	//public static final List<String> TUPLA_SALIDA = new ArrayList<String>();
 	
 	public  List<TemaEntity> listaTemaSalida = new ArrayList<TemaEntity>();
 
 	public TemaEntityDataTest(){
 		super(PATH_EXCEL_FILE);
+		rellenarWorkbook();
 	}
 	
 	protected void procesarColumna(Cell columna,int numFila,int numColumna,Sheet sheet,Workbook workbook){

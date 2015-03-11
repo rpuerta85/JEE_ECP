@@ -9,12 +9,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+
 public class TemaEntityTest {
 
-    private TemaEntityDataTest temaEntityDataTest;
+    private static  TemaEntityDataTest temaEntityDataTest;
+   // private static final ClosedInterval[] CLOSED_INTERVALS = new ClosedInterval[ENDPOINTS.length];
     
     @BeforeClass
-    static public void initialized() {
+     static public void initialized() {
     	temaEntityDataTest = new TemaEntityDataTest();
     }
     
@@ -32,21 +34,12 @@ public class TemaEntityTest {
 
     @Test
     public void testTema() {
-        final int[][] VALUES = { {-5, 0, 3, 5}, {0, 7, 10}, {0}, {3, 4, 44, 96, 97}};
-        assert ENDPOINTS.length == VALUES.length;
-        for (int i = 0; i < CLOSED_INTERVALS.length; i++) {
-            for (int j = 0; j < VALUES[i].length; j++) {
-                assertTrue(CLOSED_INTERVALS[i].include(VALUES[i][j]));
-            }
-        }
+    	  for (int i = 0;i<temaEntityDataTest.getListaTemaEntrada().size();i++) {
+          	String tema = temaEntityDataTest.getListaTemaEntrada().get(i);
+              TemaEntity temaEntity = new TemaEntity(tema, null);
+              assertEquals(temaEntity.getTema(), 
+              		temaEntityDataTest.getListaTemaSalida().get(i).getTema());
+          }
     }
-
-//    @Test
-//    public void testGetVotos() {
-//    	 fail("Not yet implemented");
-//    }
-    
-    
-  	   
 
 }
