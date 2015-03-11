@@ -17,6 +17,7 @@ public class TemaEntityTest {
     static public void initialized() {
     	temaEntityDataTest = new TemaEntityDataTest();
     }
+    
     @Test
     public void testPregunta() {
         for (int i = 0;i<temaEntityDataTest.getListaPreguntaEntrada().size();i++) {
