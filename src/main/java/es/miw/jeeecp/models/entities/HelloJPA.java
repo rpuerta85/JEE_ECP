@@ -24,7 +24,7 @@ public class HelloJPA {
         EntityManager em = Persistence.createEntityManagerFactory("BBDD", properties)
                 .createEntityManager();
         
-       
+        
      /* EntityManager em = Persistence.createEntityManagerFactory("BBDD")
            .createEntityManager();*/
         

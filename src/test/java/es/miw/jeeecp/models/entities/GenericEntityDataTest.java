@@ -24,7 +24,10 @@ public abstract class GenericEntityDataTest {
 		this.pathExcelFile = pathExcelFile;
 		
 	}
-	
+	public GenericEntityDataTest(){
+		super();
+		
+	}
 	protected void rellenarWorkbook(){
 		try {
 		    //workbook = abrirExcel("src/test/resources/TemaEntityTestData.xlsx");
