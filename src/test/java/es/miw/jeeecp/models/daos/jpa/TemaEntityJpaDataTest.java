@@ -16,8 +16,6 @@ import es.miw.jeeecp.models.entities.VotoEntityDataTest;
 
 public class TemaEntityJpaDataTest{
 
-	//private static final String PATH_EXCEL_VOTOS_ASOCIADOS_CON_1TEMA = "src/test/resources/TemaEntityJpaTestData1.xlsx";
-
 	private   List<TemaEntity> listaTemasSoloEntrada;
 	private   List<VotoEntity> listaVotosConTemaEntrada; 
 	 

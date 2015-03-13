@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
 import org.eclipse.persistence.config.PersistenceUnitProperties;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -18,14 +19,20 @@ import org.junit.Test;
 
 import es.miw.jeeecp.models.daos.TemaDao;
 import es.miw.jeeecp.models.entities.TemaEntity;
+import es.miw.jeeecp.models.entities.VotoEntity;
+import es.miw.jeeecp.models.entities.VotoEntityDataTest;
 
 public class TemaEntityJpaTest {
 
 	    private TemaDao dao = DaoJpaFactory.getFactory().getTemaDao();
 
 	    private static TemaEntityJpaDataTest temaEntityJpaDataTest;
-	    static List<TemaEntity> listaTemas;
+	    private static List<TemaEntity> listaTemas;
 	    private List<TemaEntity > temasAux;
+	    
+	    private static List<VotoEntity> listaVotos;
+	    
+	    
 	    @BeforeClass
 	    public static void inti() {
 	        //Se borrar y se crean las tablas
@@ -37,30 +44,42 @@ public class TemaEntityJpaTest {
 	    	
 	    	temaEntityJpaDataTest = new TemaEntityJpaDataTest();
 	    	listaTemas = temaEntityJpaDataTest.getListaTemasSoloEntrada();
+	    	
+	    	//listaVotos = new VotoEntity();
 	    }
 	 
-	    @Before 
-	    public void intiBefore() {
-	        List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
-	        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
-	           dao.deleteById(temaBBDD.getId() );
-	        }
+//	    @Before 
+//	    public void intiBefore() {
+//	        List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
+//	        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
+//	           dao.deleteById(temaBBDD.getId() );
+//	        }
+//	    }
+	    @After
+	    public void borrarRegistros() {
+	    	 //Se borrar los datos insertados en los tests
+	    	TemaDao dao = DaoJpaFactory.getFactory().getTemaDao();
+	    	List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
+		        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
+		           dao.deleteById(temaBBDD.getId() );
+		           System.out.println("!!!borrando tema : " + temaBBDD.getId().toString());
+		        }
 	    }
+	    
 //	    @AfterClass
 //	    public static void restoreBBDD(){
-//	       //Se borrar y se crean las tablas
-//	         Map<String, String> properties = new HashMap<>();
-//	         properties. put(PersistenceUnitProperties.DDL_GENERATION,
-//	                 PersistenceUnitProperties.DROP_AND_CREATE);
-//	         EntityManager em = Persistence.createEntityManagerFactory("BBDD", properties).createEntityManager();
-//	         
+//	       //Se borrar los datos insertados en los tests
+//	    	TemaDao dao = DaoJpaFactory.getFactory().getTemaDao();
+//	    	List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
+//		        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
+//		           dao.deleteById(temaBBDD.getId() );
+//		           System.out.println("!!!borrando tema : " + temaBBDD.getId().toString());
+//		        }
 //	    }
 	    
 	    
 	    @Test
 	    public void testCreate() {
-	        
-	    	
 	    	temasAux = new ArrayList<TemaEntity>();
 	        for(int i=0;i<listaTemas.size();i++){
 	            TemaEntity tema = listaTemas.get(i);
@@ -81,19 +100,13 @@ public class TemaEntityJpaTest {
 	    
 	    @Test
 	    public void testUpdate() {
-	    	 
-	       //  dao.deleteByID(data.getPiece().getId());
-	       //dao.read(data.getPiece().getId());
-	       //  dao.update(data.getPiece());
-	         
-	        // List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
-	         
+	    	insertamosRegistros();
 	         temasAux = new ArrayList<TemaEntity>();
 		        for(int i=0;i<listaTemas.size();i++){
 		            TemaEntity tema = listaTemas.get(i);
 		            tema.setPregunta("pregunta actualizada");
 		        	if (tema != null) {
-		                System.out.println("!!!tema : " + tema.toString());
+		                System.out.println("!!!tema actualizado : " + tema.toString());
 		                dao.update(tema);
 		                temasAux.add(tema);
 		            }
@@ -105,30 +118,86 @@ public class TemaEntityJpaTest {
 		        }
 		        assertTrue(temasRecuperadosDeBaseDeDatos.size() == temasAux.size());
 	    }
-//
-//	    @Test
-//	    public void testDelete() {
-//
-//	    }
-//
-//	    @Test
-//	    public void testDeleteByID() {
-//
-//	    }
-//
-//	    @Test
-//	    public void testDeleteByCoordinate() {
-//
-//	    }
-//
-//	    @Test
-//	    public void testRead() {
-//
-//	    }
-//
-//	    @Test
-//	    public void testFindAll() {
-//
-//	    }
+
+	   
+	    
+	    @Test
+	    public void testDeleteByID() {
+	    	insertamosRegistros();
+	         temasAux = new ArrayList<TemaEntity>();
+		        for(int i=0;i<listaTemas.size();i++){
+		            TemaEntity tema = listaTemas.get(i);
+		        	if (tema != null) {
+		                System.out.println("!!!tema borrado : " + tema.toString());
+		                dao.deleteById(tema.getId()); 
+		                temasAux.add(tema);
+		            }
+		        }
+		        List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
+		        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
+		            assertFalse(temasRecuperadosDeBaseDeDatos.contains(temaBBDD));
+		        }
+		        assertTrue(temasRecuperadosDeBaseDeDatos.size() == 0);
+		        assertTrue(temasRecuperadosDeBaseDeDatos.size() != temasAux.size());
+	    }
+
+	    @Test
+	    public void testRead() {
+	    	insertamosRegistros();
+	   temasAux = new ArrayList<TemaEntity>();
+		        for(int i=0;i<listaTemas.size();i++){
+		            TemaEntity tema = listaTemas.get(i);
+		        	if (tema != null) {
+		                System.out.println("!!!tema leido : " + tema.toString());
+		                dao.read(tema.getId()); 
+		                temasAux.add(tema);
+		            }
+		        }
+		        
+		        List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
+		        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
+		            assertTrue(temasRecuperadosDeBaseDeDatos.contains(temaBBDD));
+		        }
+		     
+		        assertTrue(temasRecuperadosDeBaseDeDatos.size() == temasAux.size());
+	    	
+	    }
+
+	    @Test
+	    public void testCreateConVoto() {
+	    	temasAux = new ArrayList<TemaEntity>();
+	        for(int i=0;i<listaTemas.size();i++){
+	            TemaEntity tema = listaTemas.get(i);
+	        	if (tema != null) {
+	                System.out.println("!!!tema : " + tema.toString());
+	                dao.create(tema);
+	                temasAux.add(tema);
+	            }
+	        }
+	        
+	        List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
+	        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
+	            assertTrue(temasRecuperadosDeBaseDeDatos.contains(temaBBDD));
+	        }
+	        assertTrue(temasRecuperadosDeBaseDeDatos.size() == temasAux.size());
+	    }
+	    
+	    
+	    
+	    
+	    
+	    
+	private void insertamosRegistros(){
+		temasAux = new ArrayList<TemaEntity>();
+        for(int i=0;i<listaTemas.size();i++){
+            TemaEntity tema = listaTemas.get(i);
+        	if (tema != null) {
+                System.out.println("!!!tema : " + tema.toString());
+                dao.create(tema);
+                
+            }
+        }
+		
+	}
 
 	}
