@@ -28,8 +28,9 @@ public class TemaEntity implements Serializable {
 	@Column(name = "PREGUNTA")
 	private String pregunta;
 
-	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "tema")
+	//@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "tema")
 	// @OneToMany(cascade = {CascadeType.ALL})
+	@OneToMany(cascade = { CascadeType.ALL })
 	private List<VotoEntity> votos = new ArrayList<VotoEntity>();
 
 	public TemaEntity(String tema, String pregunta) {

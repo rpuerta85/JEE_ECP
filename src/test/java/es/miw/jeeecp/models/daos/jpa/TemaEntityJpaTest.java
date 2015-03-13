@@ -25,23 +25,49 @@ public class TemaEntityJpaTest {
 
 	    private static TemaEntityJpaDataTest temaEntityJpaDataTest;
 	    static List<TemaEntity> listaTemas;
-	    private List<TemaEntity > temasInsertados;
+	    private List<TemaEntity > temasAux;
 	    @BeforeClass
 	    public static void inti() {
+	        //Se borrar y se crean las tablas
+	         Map<String, String> properties = new HashMap<>();
+	         properties. put(PersistenceUnitProperties.DDL_GENERATION,
+	                 PersistenceUnitProperties.DROP_AND_CREATE);
+	         EntityManager em = Persistence.createEntityManagerFactory("BBDD", properties)
+	                 .createEntityManager();
+	    	
 	    	temaEntityJpaDataTest = new TemaEntityJpaDataTest();
 	    	listaTemas = temaEntityJpaDataTest.getListaTemasSoloEntrada();
 	    }
 	 
+	    @Before 
+	    public void intiBefore() {
+	        List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
+	        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
+	           dao.deleteById(temaBBDD.getId() );
+	        }
+	    }
+//	    @AfterClass
+//	    public static void restoreBBDD(){
+//	       //Se borrar y se crean las tablas
+//	         Map<String, String> properties = new HashMap<>();
+//	         properties. put(PersistenceUnitProperties.DDL_GENERATION,
+//	                 PersistenceUnitProperties.DROP_AND_CREATE);
+//	         EntityManager em = Persistence.createEntityManagerFactory("BBDD", properties).createEntityManager();
+//	         
+//	    }
+	    
 	    
 	    @Test
 	    public void testCreate() {
-	         temasInsertados = new ArrayList<TemaEntity>();
+	        
+	    	
+	    	temasAux = new ArrayList<TemaEntity>();
 	        for(int i=0;i<listaTemas.size();i++){
 	            TemaEntity tema = listaTemas.get(i);
 	        	if (tema != null) {
 	                System.out.println("!!!tema : " + tema.toString());
 	                dao.create(tema);
-	                temasInsertados.add(tema);
+	                temasAux.add(tema);
 	            }
 	        }
 	        
@@ -49,29 +75,36 @@ public class TemaEntityJpaTest {
 	        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
 	            assertTrue(temasRecuperadosDeBaseDeDatos.contains(temaBBDD));
 	        }
-	        assertTrue(temasRecuperadosDeBaseDeDatos.size() == temasInsertados.size());
+	        assertTrue(temasRecuperadosDeBaseDeDatos.size() == temasAux.size());
 	    }
 
-	    @AfterClass
-	    public static void restoreBBDD(){
-	    	/*for (TemaEntity temaInsertado: temasInsertados){
-	    		dao.
-	    	}*/
-	    	Map<String, String> properties = new HashMap<>();
-	         properties. put(PersistenceUnitProperties.DDL_GENERATION,
-	                 PersistenceUnitProperties.DROP_ONLY);
-	         EntityManager em = Persistence.createEntityManagerFactory("BBDD", properties)
-	                 .createEntityManager();
-	         
-	    }
 	    
-//	    @Test
-//	    public void testUpdate() {
-//
-//	        // dao.deleteByID(data.getPiece().getId());
-//	        // dao.read(data.getPiece().getId());
-//	        // dao.update(data.getPiece());
-//	    }
+	    @Test
+	    public void testUpdate() {
+	    	 
+	       //  dao.deleteByID(data.getPiece().getId());
+	       //dao.read(data.getPiece().getId());
+	       //  dao.update(data.getPiece());
+	         
+	        // List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
+	         
+	         temasAux = new ArrayList<TemaEntity>();
+		        for(int i=0;i<listaTemas.size();i++){
+		            TemaEntity tema = listaTemas.get(i);
+		            tema.setPregunta("pregunta actualizada");
+		        	if (tema != null) {
+		                System.out.println("!!!tema : " + tema.toString());
+		                dao.update(tema);
+		                temasAux.add(tema);
+		            }
+		        }
+		        
+		        List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
+		        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
+		            assertTrue(temasRecuperadosDeBaseDeDatos.contains(temaBBDD));
+		        }
+		        assertTrue(temasRecuperadosDeBaseDeDatos.size() == temasAux.size());
+	    }
 //
 //	    @Test
 //	    public void testDelete() {

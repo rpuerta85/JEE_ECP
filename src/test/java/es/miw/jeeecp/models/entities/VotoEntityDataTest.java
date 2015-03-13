@@ -41,19 +41,19 @@ public class VotoEntityDataTest extends GenericEntityDataTest{
 			String valor = obtenerValorColumnaSegunTipoDatoColumna(columna);
 			this.listaEstudiosEntrada.add(valor);
 		}
-		else if(cellReference.formatAsString().contains("E")) {
+		/*else if(cellReference.formatAsString().contains("E")) {
 			String valor = obtenerValorColumnaSegunTipoDatoColumna(columna);
 			this.listaPreguntaEntrada.add(valor);
 		}
 		else if(cellReference.formatAsString().contains("F")) {
 			String valor = obtenerValorColumnaSegunTipoDatoColumna(columna);
 			this.listaTemaEntrada.add(valor);
-		}
+		}*/
 		else if(cellReference.formatAsString().contains("G")) {
 			String valor = obtenerValorColumnaSegunTipoDatoColumna(columna);
 		    valor = valor.substring(1, valor.length()-1);
 			String[] tokens = valor.split(",",NUM_CAMPOS_ENTRADA_EXCEL);
-			this.listaVotoSalida.add(new VotoEntity(tokens[0], Integer.parseInt(tokens[1]), tokens[2], new TemaEntity(tokens[4], tokens[3]) ));
+			this.listaVotoSalida.add(new VotoEntity(tokens[0], Integer.parseInt(tokens[1]), tokens[2] ));
 		}
 			
 	}

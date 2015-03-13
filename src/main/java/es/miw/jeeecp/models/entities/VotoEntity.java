@@ -25,9 +25,9 @@ public class VotoEntity {
     
     private String estudios;
     
-    @ManyToOne
-    @JoinColumn
-    private TemaEntity tema;
+    //@ManyToOne
+    //@JoinColumn
+   // private TemaEntity tema;
     
  
     public VotoEntity(String ip, Integer nota,String estudios) {
@@ -35,10 +35,10 @@ public class VotoEntity {
         this.nota = nota;
         this.estudios = estudios;
     }
-    public VotoEntity(String ip, Integer nota,String estudios,TemaEntity tema) {
-          this(ip,nota,estudios);
-          this.tema = tema;
-      }
+//    public VotoEntity(String ip, Integer nota,String estudios,TemaEntity tema) {
+//          this(ip,nota,estudios);
+//          this.tema = tema;
+//      }
     public VotoEntity() {
         super();
     }
@@ -67,18 +67,22 @@ public class VotoEntity {
 		this.estudios = estudios;
 	}
 	
-	public TemaEntity getTema() {
-		return tema;
-	}
+//	public TemaEntity getTema() {
+//		return tema;
+//	}
+//
+//	public void setTema(TemaEntity tema) {
+//		this.tema = tema;
+//	}
 
-	public void setTema(TemaEntity tema) {
-		this.tema = tema;
-	}
-
-	@Override
-    public String toString() {
-        return "User[" + ip + ":" + nota + ":"+estudios+":"+tema +"]";
-    }
+//	@Override
+//    public String toString() {
+//        return "User[" + ip + ":" + nota + ":"+estudios+":"+tema +"]";
+//    }
+@Override
+  public String toString() {
+     return "User[" + ip + ":" + nota + ":"+estudios+"]";
+  }
 	public boolean equals(Object obj) {
 		VotoEntity other = (VotoEntity) obj;
 		return getId().intValue() == other.getId().intValue();

@@ -21,7 +21,8 @@ public class VotoEntityTest {
     
     @Test
     public void testIp() {
-        for (int i = 0;i<votoEntityDataTest.getListaIpEntrada().size();i++) {
+       
+    	for (int i = 0;i<votoEntityDataTest.getListaIpEntrada().size();i++) {
         	String ip = votoEntityDataTest.getListaIpEntrada().get(i);
             VotoEntity votoEntity = new VotoEntity(ip, null, null);
             assertEquals(votoEntity.getIp(), 
@@ -50,7 +51,7 @@ public class VotoEntityTest {
             		  votoEntityDataTest.getListaVotoSalida() .get(i).getEstudios());
           }
     }
-    @Test
+  /*  @Test
     public void testTema() {
     	  for (int i = 0;i<votoEntityDataTest.getListaTemaEntrada().size();i++) {
           	String tema = votoEntityDataTest.getListaTemaEntrada().get(i);
@@ -61,7 +62,7 @@ public class VotoEntityTest {
              assertEquals(temaEntity.getTema(), 
           			aux.getTema());
           }
-    }
+    }*/
 
 
     
