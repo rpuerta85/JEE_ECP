@@ -46,15 +46,20 @@ public class TemaEntityJpaTest {
 	           dao.deleteById(temaBBDD.getId() );
 	        }
 	    }
-//	    @AfterClass
-//	    public static void restoreBBDD(){
-//	       //Se borrar y se crean las tablas
+	    @AfterClass
+	    public static void restoreBBDD(){
+	       //Se borrar y se crean las tablas
 //	         Map<String, String> properties = new HashMap<>();
 //	         properties. put(PersistenceUnitProperties.DDL_GENERATION,
 //	                 PersistenceUnitProperties.DROP_AND_CREATE);
 //	         EntityManager em = Persistence.createEntityManagerFactory("BBDD", properties).createEntityManager();
-//	         
-//	    }
+	    	TemaDao dao = DaoJpaFactory.getFactory().getTemaDao();
+	    	List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
+		        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
+		           dao.deleteById(temaBBDD.getId() );
+		           System.out.println("!!!borrando tema : " + temaBBDD.getId().toString());
+		        }
+	    }
 	    
 	    
 	    @Test
