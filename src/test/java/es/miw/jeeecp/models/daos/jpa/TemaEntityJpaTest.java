@@ -65,6 +65,7 @@ public class TemaEntityJpaTest {
 		           System.out.println("!!!borrando tema : " + temaBBDD.getId().toString());
 		        }
 	    }
+//<<<<<<< HEAD
 	    
 //	    @AfterClass
 //	    public static void restoreBBDD(){
@@ -76,6 +77,22 @@ public class TemaEntityJpaTest {
 //		           System.out.println("!!!borrando tema : " + temaBBDD.getId().toString());
 //		        }
 //	    }
+//=======
+//	    @AfterClass
+//	    public static void restoreBBDD(){
+//	       //Se borrar y se crean las tablas
+////	         Map<String, String> properties = new HashMap<>();
+////	         properties. put(PersistenceUnitProperties.DDL_GENERATION,
+////	                 PersistenceUnitProperties.DROP_AND_CREATE);
+////	         EntityManager em = Persistence.createEntityManagerFactory("BBDD", properties).createEntityManager();
+//	    	TemaDao dao = DaoJpaFactory.getFactory().getTemaDao();
+//	    	List<TemaEntity> temasRecuperadosDeBaseDeDatos = dao.findAll();
+//		        for (TemaEntity temaBBDD : temasRecuperadosDeBaseDeDatos) {
+//		           dao.deleteById(temaBBDD.getId() );
+//		           System.out.println("!!!borrando tema : " + temaBBDD.getId().toString());
+//		        }
+//	    }
+//>>>>>>> branch 'master' of https://github.com/rpuerta85/JEE_ECP.git
 	    
 	    
 	    @Test
