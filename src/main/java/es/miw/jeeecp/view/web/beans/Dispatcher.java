@@ -10,18 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet(name = "DispatcherJSP", urlPatterns = { "/jsp/*" })
-
 public class Dispatcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private static String PATH_ROOT_VIEW = "/personaViewsV1/";
+    private static String PATH_ROOT_VIEW = "/jspPages/";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String action = request.getPathInfo().substring(1);
-
+    	//String action = request.getPathInfo();
+    	//if(action==null) action = "home";
         String view="home";
         switch (action) {
         case "votar":
@@ -44,7 +44,7 @@ public class Dispatcher extends HttpServlet {
         default:
             view = "home";
         }
-
+System.out.println(PATH_ROOT_VIEW + view + ".jsp");
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
                 .forward(request, response);
 
