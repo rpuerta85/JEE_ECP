@@ -11,7 +11,9 @@
 	<h2>
 		Vista de <b>Votar</b>
 	</h2>
-	<c:set var="pView" scope="request" value="${votar}" />
+	
+	
+		
 	<!-- <c:set var="pView" scope="request" value="${persona}" /> -->
 	<!-- <div>${pView.update()}</div> -->
 	<form action="/votar/v1/persona" method="post">
@@ -22,18 +24,21 @@
 			Nombre: <input name="nombre" type="text"
 				value="${pView.persona.nombre}" />${pView.errorMsg}</p>
 		<p> -->
-			Temas: <select name="tema">
+			
+			<c:set var="pView" scope="request" value="${votar}" />
+			Seleccione Tema: <select name="temas">
+				<option value="0">Seleccione</option>
 				<c:forEach var="tema" items="${pView.listaTemas}">
 					<option value="${tema.id}">${tema.tema}</option>
 				</c:forEach>
 			</select>
-		</p>
+		AQUI UN TEXT AREA EN EL QUE SE MUESTRA LA PREGUNTA EN FUNCION DE LA OPCION ESCOGIDA. Esto hacerlo por jquery
 		<p>
 			<input type="submit" value="Enviar" />
 		</p>
 	</form>
 	<p>
-		<a href="/Web/v1/home">Volver a Home</a>
+		<a href="${pageContext.request.contextPath}/jsp/home">Volver al Home</a>
 	</p>
 </body>
 </html>
