@@ -6,12 +6,14 @@ import javax.faces.bean.ManagedBean;
 
 import org.apache.logging.log4j.LogManager;
 
+import es.miw.jeeecp.controllers.ControllerFactory;
+import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;
 import es.miw.jeeecp.models.daos.jpa.DaoJpaFactory;
 import es.miw.jeeecp.models.daos.jpa.GenericDaoJpa;
 import es.miw.jeeecp.models.entities.TemaEntity;
 
 @ManagedBean
-public class VotarView {
+public class VotarView extends ViewBean {
     private String errorMsg;
 
    private List<TemaEntity> listaTemas;
@@ -21,10 +23,11 @@ public class VotarView {
 
 
     public void update() {
-       this.listaTemas = DaoJpaFactory.getFactory().getTemaDao().findAll();
     	LogManager.getLogger(VotarView.class).debug(
                 "Se accede a la capa de negocio para recuperar los temas");
-        //this.roles = new String[] {"uno", "dos", "tres"};
+        this.listaTemas =this.getControllerFactory().getVotarController().mostrarTemas();
+
+    	
     }
 
     public String process() {
@@ -38,5 +41,25 @@ public class VotarView {
 //        }
   return "";
     }
+
+
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+
+
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
+
+
+	public List<TemaEntity> getListaTemas() {
+		return listaTemas;
+	}
+
+
+	public void setListaTemas(List<TemaEntity> listaTemas) {
+		this.listaTemas = listaTemas;
+	}
 
 }

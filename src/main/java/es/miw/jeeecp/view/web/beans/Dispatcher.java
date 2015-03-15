@@ -1,13 +1,11 @@
 package es.miw.jeeecp.view.web.beans;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 @WebServlet(name = "DispatcherJSP", urlPatterns = { "/jsp/*" })
 public class Dispatcher extends HttpServlet {
@@ -25,7 +23,9 @@ public class Dispatcher extends HttpServlet {
         String view="home";
         switch (action) {
         case "votar":
-            /*PersonaView personaView = new PersonaView();
+            VotarView votarView = new VotarView();
+            votarView.setControllerFactory(controllerFactory);
+        	/*PersonaView personaView = new PersonaView();
             personaView.setPersona(new Persona());
             request.setAttribute(action, personaView);
             view = action;*/
