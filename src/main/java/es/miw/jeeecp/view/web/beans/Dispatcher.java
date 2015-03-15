@@ -1,4 +1,4 @@
-package es.miw.jeeecp.view.beans;
+package es.miw.jeeecp.view.web.beans;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.art83.web.design.models.entities.persona.v1.Persona;
 
-@WebServlet("/v1/*")
+@WebServlet(name = "DispatcherJSP", urlPatterns = { "/jsp/*" })
+
 public class Dispatcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -22,18 +22,24 @@ public class Dispatcher extends HttpServlet {
 
         String action = request.getPathInfo().substring(1);
 
-        String view;
+        String view="home";
         switch (action) {
-        case "persona":
-            PersonaView personaView = new PersonaView();
+        case "votar":
+            /*PersonaView personaView = new PersonaView();
             personaView.setPersona(new Persona());
             request.setAttribute(action, personaView);
-            view = action;
+            view = action;*/
+            break;
+        case "persona":
+            /*PersonaView personaView = new PersonaView();
+            personaView.setPersona(new Persona());
+            request.setAttribute(action, personaView);
+            view = action;*/
             break;
         case "rol":
-            RolView rolView = new RolView();
+            /*RolView rolView = new RolView();
             request.setAttribute(action, rolView);
-            view = action;
+            view = action;*/
             break;
         default:
             view = "home";
@@ -51,20 +57,20 @@ public class Dispatcher extends HttpServlet {
         String view = "home";
         switch (action) {
         case "persona":
-            Persona persona = new Persona();
+           /* Persona persona = new Persona();
             persona.setId(Integer.valueOf(request.getParameter("id")));
             persona.setNombre(request.getParameter("nombre"));
             persona.setRol(request.getParameter("rol"));
             PersonaView personaView = new PersonaView();
             personaView.setPersona(persona);
             request.setAttribute(action, personaView);
-            view = personaView.process();
+            view = personaView.process();*/
             break;
         case "rol":
-            RolView rolView = new RolView();
+            /*RolView rolView = new RolView();
             rolView.setRol(request.getParameter("rol"));
             request.setAttribute(action, rolView);
-            view = rolView.process();
+            view = rolView.process();*/
             break;
         }
 

@@ -4,15 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Home Persona</title>
+<title>Indice de selección de tecnología</title>
 </head>
 <body>
-	<h1>Home Persona: V1</h1>
+	<h1>Selecciona una tecnología</h1>
 	<p>
-		<a href="/Web/v1/persona">Vista de Persona</a>
+		<a href="/jsp/votar">Dispatcher utilizando JSP</a>
 	</p>
 	<p>
-		<a href="/Web/v1/rol">Vista de Rol</a>
+		<a href="/jsf/votar">Dispatcher utilizando JSF</a>
 	</p>
 </body>
 </html>
