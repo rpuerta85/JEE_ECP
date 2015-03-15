@@ -1,21 +1,29 @@
 package es.miw.jeeecp.view.web.beans;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 
 import org.apache.logging.log4j.LogManager;
+
+import es.miw.jeeecp.models.daos.jpa.DaoJpaFactory;
+import es.miw.jeeecp.models.daos.jpa.GenericDaoJpa;
+import es.miw.jeeecp.models.entities.TemaEntity;
 
 @ManagedBean
 public class VotarView {
     private String errorMsg;
 
+   private List<TemaEntity> listaTemas;
+    
     public VotarView() {
     }
 
-   
 
     public void update() {
-        LogManager.getLogger(VotarView.class).debug(
-                "Se accede a la capa de negocio para recuperar roles");
+       this.listaTemas = DaoJpaFactory.getFactory().getTemaDao().findAll();
+    	LogManager.getLogger(VotarView.class).debug(
+                "Se accede a la capa de negocio para recuperar los temas");
         //this.roles = new String[] {"uno", "dos", "tres"};
     }
 
