@@ -24,8 +24,9 @@ public class Dispatcher extends HttpServlet {
         switch (action) {
         case "votar":
             VotarView votarView = new VotarView();
-            request.setAttribute(action, votarView);
             votarView.update();
+            request.setAttribute(action, votarView);
+            
         	/*PersonaView personaView = new PersonaView();
             personaView.setPersona(new Persona());
             request.setAttribute(action, personaView);

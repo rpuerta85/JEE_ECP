@@ -12,8 +12,9 @@ public class ControllerEjbFactory extends ControllerFactory {
 
    // private Session jeeEcpSession;
 
-    private VotarController votarController;
-
+    private  VotarController votarController;
+    private static ControllerEjbFactory singleton;
+    
 //    private LogoutController logoutController;
 //
 //    private CreateGameController createGameController;
@@ -29,9 +30,20 @@ public class ControllerEjbFactory extends ControllerFactory {
 //    public ControllerEjbFactory() {
 //    	jeeEcpSession = new Session();
 //    }
+  private ControllerEjbFactory() {
+	  this.singleton = new ControllerEjbFactory();
+}
+//singleton hasta que utilicemos JSF, el cual lo haremos por anotaciones
+    public static ControllerEjbFactory getSingleton() {
+    	if(singleton==null)
+    		singleton = new ControllerEjbFactory();
+    	return singleton;
+}
 
-    @Override
-    public VotarController getVotarController() {
+
+
+	@Override
+    public  VotarController getVotarController() {
         if (votarController == null) {
         	votarController = new VotarControllerEjb();
         }
