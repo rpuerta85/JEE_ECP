@@ -25,20 +25,12 @@ public class VotoEntity {
     
     private String estudios;
     
-    //@ManyToOne
-    //@JoinColumn
-   // private TemaEntity tema;
-    
- 
     public VotoEntity(String ip, Integer nota,String estudios) {
          this.ip = ip;
         this.nota = nota;
         this.estudios = estudios;
     }
-//    public VotoEntity(String ip, Integer nota,String estudios,TemaEntity tema) {
-//          this(ip,nota,estudios);
-//          this.tema = tema;
-//      }
+
     public VotoEntity() {
         super();
     }
@@ -66,19 +58,6 @@ public class VotoEntity {
 	public void setEstudios(String estudios) {
 		this.estudios = estudios;
 	}
-	
-//	public TemaEntity getTema() {
-//		return tema;
-//	}
-//
-//	public void setTema(TemaEntity tema) {
-//		this.tema = tema;
-//	}
-
-//	@Override
-//    public String toString() {
-//        return "User[" + ip + ":" + nota + ":"+estudios+":"+tema +"]";
-//    }
 @Override
   public String toString() {
      return "User[" + ip + ":" + nota + ":"+estudios+"]";
