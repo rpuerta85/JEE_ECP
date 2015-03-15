@@ -5,25 +5,26 @@
 <!DOCTYPE>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>PersonaView</title>
+<title>VotarView</title>
 </head>
 <body>
 	<h2>
-		Vista de <b>Persona</b>
+		Vista de <b>Votar</b>
 	</h2>
-	<c:set var="pView" scope="request" value="${persona}" />
-	<div>${pView.update()}</div>
-	<form action="/Web/v1/persona" method="post">
-		<p>
+	<c:set var="pView" scope="request" value="${votar}" />
+	<!-- <c:set var="pView" scope="request" value="${persona}" /> -->
+	<!-- <div>${pView.update()}</div> -->
+	<form action="/votar/v1/persona" method="post">
+		<!-- <p>
 			Id: <input name="id" type="text" value="${pView.persona.id}" />
 		</p>
 		<p>
 			Nombre: <input name="nombre" type="text"
 				value="${pView.persona.nombre}" />${pView.errorMsg}</p>
-		<p>
-			Roles: <select name="rol">
-				<c:forEach var="rol" items="${pView.roles}">
-					<option value="${rol}">${rol}</option>
+		<p> -->
+			Temas: <select name="tema">
+				<c:forEach var="tema" items="${pView.listaTemas}">
+					<option value="${tema.id}">${tema.tema}</option>
 				</c:forEach>
 			</select>
 		</p>

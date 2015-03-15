@@ -24,7 +24,8 @@ public class Dispatcher extends HttpServlet {
         switch (action) {
         case "votar":
             VotarView votarView = new VotarView();
-            votarView.setControllerFactory(controllerFactory);
+            request.setAttribute(action, votarView);
+            votarView.update();
         	/*PersonaView personaView = new PersonaView();
             personaView.setPersona(new Persona());
             request.setAttribute(action, personaView);
@@ -56,7 +57,7 @@ public class Dispatcher extends HttpServlet {
         String action = request.getPathInfo().substring(1);
         String view = "home";
         switch (action) {
-        case "persona":
+        case "votar":
            /* Persona persona = new Persona();
             persona.setId(Integer.valueOf(request.getParameter("id")));
             persona.setNombre(request.getParameter("nombre"));

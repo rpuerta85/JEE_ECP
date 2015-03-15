@@ -5,11 +5,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import org.apache.logging.log4j.LogManager;
-
-import es.miw.jeeecp.controllers.ControllerFactory;
-import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;
-import es.miw.jeeecp.models.daos.jpa.DaoJpaFactory;
-import es.miw.jeeecp.models.daos.jpa.GenericDaoJpa;
 import es.miw.jeeecp.models.entities.TemaEntity;
 
 @ManagedBean
