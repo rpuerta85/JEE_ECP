@@ -31,10 +31,10 @@ public class ControllerEjbFactory extends ControllerFactory {
 //    	jeeEcpSession = new Session();
 //    }
   private ControllerEjbFactory() {
-	  this.singleton = new ControllerEjbFactory();
+	 // this.singleton = new ControllerEjbFactory();
 }
 //singleton hasta que utilicemos JSF, el cual lo haremos por anotaciones
-    public static ControllerEjbFactory getSingleton() {
+    public static ControllerEjbFactory getInstance() {
     	if(singleton==null)
     		singleton = new ControllerEjbFactory();
     	return singleton;

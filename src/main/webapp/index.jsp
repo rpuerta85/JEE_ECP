@@ -9,7 +9,7 @@
 <body>
 	<h1>Selecciona una tecnología</h1>
 	<p>
-		<a href="jsp/votar">Dispatcher utilizando JSP</a>
+		<a href="jsp/home">Dispatcher utilizando JSP</a>
 	</p>
 	<p>
 		<a href="EE_ECP/jsf/votar">Dispatcher utilizando JSF</a>

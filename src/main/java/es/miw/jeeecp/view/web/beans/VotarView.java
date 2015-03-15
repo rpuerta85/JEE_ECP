@@ -5,6 +5,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import org.apache.logging.log4j.LogManager;
+
+import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;
 import es.miw.jeeecp.models.entities.TemaEntity;
 
 @ManagedBean
@@ -14,14 +16,16 @@ public class VotarView extends ViewBean {
    private List<TemaEntity> listaTemas;
     
     public VotarView() {
+    	//super(ControllerEjbFactory.getInstance());
+    	//this.
     }
 
 
     public void update() {
     	LogManager.getLogger(VotarView.class).debug(
                 "Se accede a la capa de negocio para recuperar los temas");
-        this.listaTemas =this.getControllerFactory().getVotarController().mostrarTemas();
-        ControllerEjbFactory c = 
+        this.listaTemas =ControllerEjbFactory.getInstance().getVotarController().mostrarTemas();
+        
     	
     }
 
