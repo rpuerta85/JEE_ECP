@@ -17,6 +17,7 @@ public class VotarView extends ViewBean {
    private List<TemaEntity> listaTemas;
    
    private List<String> listaNivelEstudios;
+   private List<String> listaNotas;
     
     public VotarView() {
     	//super(ControllerEjbFactory.getInstance());
@@ -86,5 +87,13 @@ public class VotarView extends ViewBean {
  
        
 	}
-
+private void inicializarListaNotas(){
+	listaNotas = new ArrayList<String>();
+	for(int i = 0;i<11;i++){
+		listaNotas.add(e);
+	}
+}
+	
+	
+	
 }

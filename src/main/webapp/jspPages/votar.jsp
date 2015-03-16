@@ -9,6 +9,8 @@
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/eventos.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/funciones.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/funciones.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/estilos.css">
 <title>VotarView</title>
 <script type="text/javascript">
 $(function() {
@@ -22,40 +24,63 @@ $(function() {
 	<h2>
 		Vista de <b>Votar</b>
 	</h2>
-	
-		
-	<!-- <c:set var="pView" scope="request" value="${persona}" /> -->
-	<!-- <div>${pView.update()}</div> -->
+ <div style="width: 50%;padding-left: 20%;">
 	<form action="/votar/v1/persona" method="post">
-		<!-- <p>
-			Id: <input name="id" type="text" value="${pView.persona.id}" />
-		</p>
-		<p>
-			Nombre: <input name="nombre" type="text"
-				value="${pView.persona.nombre}" />${pView.errorMsg}</p>
-		<p> -->
-			
-			<c:set var="pView" scope="request" value="${votar}" />
-			Seleccione Tema: <select name="temas">
-				<option value="0">Seleccione</option>
-				<c:forEach var="tema" items="${pView.listaTemas}">
-					<option value="${tema.id}">${tema.tema}</option>
-				</c:forEach>
-			</select>
-			
-			
-			Seleccione Nivel de Estudios: <select name="estudios">
-				<option value="0">Seleccione</option>
-				<c:forEach var="estudio" items="${pView.listaNivelEstudios}">
-					<option value="${estudio}">${estudio}</option>
-				</c:forEach>
-			</select>
-			
-		AQUI UN TEXT AREA EN EL QUE SE MUESTRA LA PREGUNTA EN FUNCION DE LA OPCION ESCOGIDA. Esto hacerlo por jquery
+			<table class="fac_contenidoTabla">
+					<thead>
+							<tr>
+								<td class="filaSeccion" colspan="4" rowspan="1">VOTAR</td>
+							</tr>
+					</thead>
+					<tbody id="cntLineasDetalles">		
+						
+					</tbody>
+							<tr>
+							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Tema </td>
+							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
+							   			<c:set var="pView" scope="request" value="${votar}" />
+											 <select name="temas" class="InputForm">
+												<option value="0">Seleccione</option>
+												<c:forEach var="tema" items="${pView.listaTemas}">
+													<option value="${tema.id}">${tema.tema}</option>
+												</c:forEach>
+											</select>
+								</td>
+						</tr>
+						<tr>
+							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Nivel de Estudios:</td>
+							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
+							   			<select name="estudios" class="InputForm">
+																	<option value="0">Seleccione</option>
+																	<c:forEach var="estudio" items="${pView.listaNivelEstudios}">
+																		<option value="${estudio}">${estudio}</option>
+																	</c:forEach>
+																</select>
+							   		
+							   		
+							   </td>
+						</tr>
+						<tr>
+							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Asigne puntuación </td>
+							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
+							   			<c:set var="pView" scope="request" value="${votar}" />
+											 <select name="temas" class="InputForm">
+												<option value="0">Seleccione</option>
+												<c:forEach var="tema" items="${pView.listaTemas}">
+													<option value="${tema.id}">${tema.tema}</option>
+												</c:forEach>
+											</select>
+							   		
+							   		
+							   </td>
+						</tr>
+						
+		</table>
 		<p>
 			<input type="submit" value="Seleccionar" />
 		</p>
 	</form>
+</div>
 	<p>
 		<a href="${pageContext.request.contextPath}/jsp/home">Volver al Home</a>
 	</p>
