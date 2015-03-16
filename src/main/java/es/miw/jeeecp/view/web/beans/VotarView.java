@@ -18,6 +18,11 @@ public class VotarView extends ViewBean {
    
    private List<String> listaNivelEstudios;
    private List<String> listaNotas;
+   
+   private String pregunta;
+   
+   
+  
     
     public VotarView() {
     	//super(ControllerEjbFactory.getInstance());
@@ -30,7 +35,8 @@ public class VotarView extends ViewBean {
                 "Se accede a la capa de negocio para recuperar los temas");
         this.listaTemas =ControllerEjbFactory.getInstance().getVotarController().mostrarTemas();
         inicializarListaEstudios();        	
-
+        inicializarListaNotas();
+        
     }
 
     public String process() {
@@ -75,6 +81,16 @@ public class VotarView extends ViewBean {
 	}
 
 
+	public List<String> getListaNotas() {
+		return listaNotas;
+	}
+
+
+	public void setListaNotas(List<String> listaNotas) {
+		this.listaNotas = listaNotas;
+	}
+
+
 	private void inicializarListaEstudios(){
 		listaNivelEstudios = new ArrayList<String>();
         listaNivelEstudios.add("E.S.O");
@@ -90,10 +106,13 @@ public class VotarView extends ViewBean {
 private void inicializarListaNotas(){
 	listaNotas = new ArrayList<String>();
 	for(int i = 0;i<11;i++){
-		listaNotas.add(e);
+		listaNotas.add(i+"");
 	}
 }
 	
-	
+	private void actualizarPregunta(String id){
+		System.out.println(id);
+		
+	}
 	
 }

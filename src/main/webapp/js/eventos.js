@@ -1,3 +1,51 @@
+function cargarEventoMostrarFilaEstudios(){
+	$("#temas").on("change", function(){
+		var value = $(this).val();
+		switch (value) {
+			case '0': {				
+				ocultarSelect($("#filaNivelEstudios"));
+				ocultarSelect($("#puntuacion"));
+				
+				break;
+			}
+			default : {
+				peticion ajax
+				mostrarSelect($("#filaNivelEstudios"));
+				break;
+			}
+		}
+		
+		
+	});
+}
+function cargarEventoMostrarFilaNotas(){
+	$("#estudios").on("change", function(){
+		var value = $(this).val();
+		switch (value) {
+			case '0': {				
+				ocultarSelect($("#puntuacion"));
+				break;
+			}
+			default : {
+				mostrarSelect($("#puntuacion"));
+				
+				break;
+			}
+		}
+		
+		
+	});
+}
+
+
+
+
+
+
+
+
+
+
 
 function cargarEventoRadioModoMarcacion(){
 	$('input:radio[name="radioModoRecepcionCarne"]').on("change", function(){

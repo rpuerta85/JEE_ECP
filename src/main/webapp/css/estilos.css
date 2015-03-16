@@ -1,0 +1,89 @@
+.celdaInformativoFormFacturacion{
+	text-align: right; 
+	background: none repeat scroll 0% 0% rgb(241, 241, 241); 
+	width: 20%;
+	padding: 0 3px 0 5px;
+	border:solid 1px #bfbfbf;
+}
+.fuente3 {
+	font-size: 9pt;
+	
+	
+}
+.celdaInteractuableFormFacturacion{
+	text-align: left; 
+	width: 30%;
+	/*padding: 0 3px 0 5px;
+	border:solid 1px #bfbfbf;*/
+}
+.inputForm{
+	width: 98%
+}
+
+.fac_contenidoTabla{
+	width: 100%;
+	border: 0;
+	border-spacing: 2px;
+    border-collapse: separate;
+    margin:auto;
+}
+.fac_contenidoTabla td{
+	padding: 2px;
+	width: 12%;
+	
+}
+.calendario{
+	/*width: 100%;*/
+	  margin-left: 8px;
+}
+.calendarioNoVisible{
+	display: none;
+}
+.calendarioVisible{
+	display: inline-block;
+}
+.Input {
+	border: #d3d3d3 1px solid;
+	/*BORDER-RIGHT: #d3d3d3 thin solid;
+	BORDER-TOP: #d3d3d3 thin solid;
+	BORDER-LEFT: #d3d3d3 thin solid;
+	BORDER-BOTTOM: #d3d3d3 thin solid;*/
+}
+
+.InputSin {
+	border: #000000 1px none;
+	/* BORDER-RIGHT: #000000 1px none;
+	BORDER-TOP: #000000 thin none;
+	BORDER-LEFT: #000000 thin none;
+	BORDER-BOTTOM: #000000 thin none; */
+}
+
+.InputSinAcceso {
+	BORDER: #d3d3d3 1px solid;
+	background-color: ghostwhite;
+}
+.filaSeccion{
+  	background-color: slategrey;
+    color: snow;
+    text-align: center;
+}
+.displayNone{
+	display: none;	
+}
+.barraBotones{
+  background: none repeat scroll 0 0 #BFBFBF;
+  border: 1px solid #DDDDDD;
+  padding: 5px 0;
+  width: 100%;
+  margin-top: 22px;
+}
+.alignCenter{
+	text-align: center;
+}
+.cntFactura{
+	margin: 43px 43px 43px 43px;
+}
+.piechart{
+	width: 900px; 
+	height: 500px;
+}

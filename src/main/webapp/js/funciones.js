@@ -1,10 +1,10 @@
-function mostrarSelectNivelDeEstudios(){
-	
-	
+function mostrarSelect($select){
+	$select.show();
 }
-function ocultarSelectNivelDeEstudios(){
-	
+function ocultarSelect($select){
+	$select.hide();
 }
+
 
 function crearContenidoCapaCorreoOrdinario(){
 	var html =
@@ -231,9 +231,13 @@ function cargarClasesInputText(){
 }
 
 function onLoad2(){
+	cargarEventoMostrarFilaEstudios();
+	cargarEventoMostrarFilaNotas();
+	ocultarSelect($("#filaNivelEstudios"));
+	ocultarSelect($("#puntuacion"));
 	cargarClases();
-	inicializarCalendario();
-	inicializarSortable();
+	//inicializarCalendario();
+	//inicializarSortable();
 	activarEventos();
 }
 

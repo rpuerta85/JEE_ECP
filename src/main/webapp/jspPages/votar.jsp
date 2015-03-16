@@ -39,7 +39,7 @@ $(function() {
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Tema </td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
 							   			<c:set var="pView" scope="request" value="${votar}" />
-											 <select name="temas" class="InputForm">
+											 <select id="temas" name="temas" class="InputForm">
 												<option value="0">Seleccione</option>
 												<c:forEach var="tema" items="${pView.listaTemas}">
 													<option value="${tema.id}">${tema.tema}</option>
@@ -47,10 +47,10 @@ $(function() {
 											</select>
 								</td>
 						</tr>
-						<tr>
+						<tr id="filaNivelEstudios">
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Nivel de Estudios:</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			<select name="estudios" class="InputForm">
+							   			<select id="estudios" name="estudios" class="InputForm">
 																	<option value="0">Seleccione</option>
 																	<c:forEach var="estudio" items="${pView.listaNivelEstudios}">
 																		<option value="${estudio}">${estudio}</option>
@@ -60,25 +60,25 @@ $(function() {
 							   		
 							   </td>
 						</tr>
-						<tr>
+						<tr id="puntuacion">
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Asigne puntuación </td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			<c:set var="pView" scope="request" value="${votar}" />
-											 <select name="temas" class="InputForm">
+							   			
+											 <select id="notas" name="notas" class="InputForm">
 												<option value="0">Seleccione</option>
-												<c:forEach var="tema" items="${pView.listaTemas}">
-													<option value="${tema.id}">${tema.tema}</option>
+												<c:forEach var="nota" items="${pView.listaNotas}">
+													<option value="${nota}">${nota}</option>
 												</c:forEach>
 											</select>
-							   		
+							   	<p>
+									<input type="submit" value="Enviar Voto" />
+								</p>
 							   		
 							   </td>
 						</tr>
 						
 		</table>
-		<p>
-			<input type="submit" value="Seleccionar" />
-		</p>
+		
 	</form>
 </div>
 	<p>
