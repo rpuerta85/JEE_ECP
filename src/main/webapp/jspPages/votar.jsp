@@ -5,7 +5,18 @@
 <!DOCTYPE>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/eventos.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/funciones.js"></script>
 <title>VotarView</title>
+<script type="text/javascript">
+$(function() {
+	onLoad2();
+	
+});//ready jquery
+
+</script>
 </head>
 <body>
 	<h2>
@@ -31,6 +42,15 @@
 					<option value="${tema.id}">${tema.tema}</option>
 				</c:forEach>
 			</select>
+			
+			
+			Seleccione Nivel de Estudios: <select name="estudios">
+				<option value="0">Seleccione</option>
+				<c:forEach var="estudio" items="${pView.listaNivelEstudios}">
+					<option value="${estudio}">${estudio}</option>
+				</c:forEach>
+			</select>
+			
 		AQUI UN TEXT AREA EN EL QUE SE MUESTRA LA PREGUNTA EN FUNCION DE LA OPCION ESCOGIDA. Esto hacerlo por jquery
 		<p>
 			<input type="submit" value="Seleccionar" />
