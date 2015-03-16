@@ -12,7 +12,6 @@
 		Vista de <b>Votar</b>
 	</h2>
 	
-	
 		
 	<!-- <c:set var="pView" scope="request" value="${persona}" /> -->
 	<!-- <div>${pView.update()}</div> -->
@@ -34,7 +33,7 @@
 			</select>
 		AQUI UN TEXT AREA EN EL QUE SE MUESTRA LA PREGUNTA EN FUNCION DE LA OPCION ESCOGIDA. Esto hacerlo por jquery
 		<p>
-			<input type="submit" value="Enviar" />
+			<input type="submit" value="Seleccionar" />
 		</p>
 	</form>
 	<p>
