@@ -7,6 +7,8 @@ import javax.faces.bean.ManagedBean;
 
 import org.apache.logging.log4j.LogManager;
 
+import com.google.gson.Gson;
+
 import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;
 import es.miw.jeeecp.models.entities.TemaEntity;
 
@@ -110,9 +112,11 @@ private void inicializarListaNotas(){
 	}
 }
 	
-	private void actualizarPregunta(String id){
+	public void actualizarPregunta(String id){
 		System.out.println(id);
-		
+		//pregunta = lista
 	}
-	
+	public String toJsonString(){
+		return new Gson().toJson(this);
+	}
 }

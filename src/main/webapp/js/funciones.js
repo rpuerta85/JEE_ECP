@@ -235,6 +235,7 @@ function onLoad2(){
 	cargarEventoMostrarFilaNotas();
 	ocultarSelect($("#filaNivelEstudios"));
 	ocultarSelect($("#puntuacion"));
+	ocultarSelect($("#filaPregunta"));
 	cargarClases();
 	//inicializarCalendario();
 	//inicializarSortable();

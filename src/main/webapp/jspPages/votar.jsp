@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"  ?>
+<%@page import="com.google.gson.Gson"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,7 +16,51 @@
 <script type="text/javascript">
 $(function() {
 	onLoad2();
+	$("#temas").on("change", function(){
+		var json = ${votar.toJsonString()};
+		var obj = JSON.parse(JSON.stringify(json));
+	    var arrayPreguntas = obj.listaTemas;
+		var value = $(this).val();
+		switch (value) {
+			case '0': {				
+				ocultarSelect($("#filaNivelEstudios"));
+				ocultarSelect($("#puntuacion"));
+				ocultarSelect($("#filaPregunta"));
+				break;
+			}
+			default : {
+				mostrarSelect($("#filaNivelEstudios"));
+				actualizarLabelPregunta(value-1,arrayPreguntas);
+				break;
+			}
+		}
+		
+		
+	});
 	
+	///var json = '<//%=new Gson().toJson(request.getAttribute("votar")) %//>';
+	//alert(json);
+ // alert(${votar.toJsonString()});
+	
+    
+	//data=[{"idcliente":"5","tipo_documento":"1","distrito":" 2","nombre":"wilson","sexo":"M"}]
+	//alert(arrayPreguntas.length);
+	/*for(i=0;i<arrayPreguntas.length;i++){
+	  document.write(arrayPreguntas[i]['pregunta']);
+	}*/
+	
+//	var arr = new Array();
+   // <c:forEach  items="${votar.listaTemas}" var="item">
+   // <c:out value="\${item.pregunta}"/>
+   /* arr.push(${item.pregunta});*/
+  //  </c:forEach>  
+   // alert(JSON.stringify(arr));
+ /* var myMap = {
+    <c:forEach items="${votar.listaTemas}" var="item" varStatus="loop">
+     ${item.tema}:  '${item.pregunta}' ${not loop.last ? ',' : ''} 
+    </c:forEach>
+  };*/
+
 });//ready jquery
 
 </script>
@@ -58,6 +103,12 @@ $(function() {
 																</select>
 							   		
 							   		
+							   </td>
+						</tr>
+						<tr id="filaPregunta">
+							  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Nivel de Estudios:</td>
+							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
+							   	    <LABEL id="labelPregunta">pppp</LABEL>			   								   		
 							   </td>
 						</tr>
 						<tr id="puntuacion">
