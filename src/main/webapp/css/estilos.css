@@ -148,6 +148,13 @@ border: 0px solid #000000;
 	font-size: 11pt;
 	font-weight: bold;
 }
+.trError{
+	background-color: antiquewhite;
+    border-style: solid;
+    color: red;
+    /*display: none;*/
+    width: 100%;
+}
 .inputFondoError{
 	background-color: #FFCCCC;
 }
