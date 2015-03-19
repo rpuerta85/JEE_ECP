@@ -4,13 +4,19 @@ import java.io.IOException;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import es.miw.jeeecp.models.daos.DaoFactory;
 import es.miw.jeeecp.models.daos.jpa.DaoJpaFactory;
+import es.miw.jeeecp.models.entities.TemaEntity;
+import es.miw.jeeecp.models.entities.VotoEntity;
 
 @WebServlet(name = "DispatcherJSP", urlPatterns = { "/jsp/*" })
 public class Dispatcher extends HttpServlet {
@@ -42,7 +48,7 @@ public class Dispatcher extends HttpServlet {
     	//if(action==null) action = "home";
         String view="home";
         switch (action) {
-        case "votar":
+        case "votar": {
             VotarView votarView = new VotarView();
             votarView.update();
             request.setAttribute(action, votarView);
@@ -51,7 +57,10 @@ public class Dispatcher extends HttpServlet {
             personaView.setPersona(new Persona());
             request.setAttribute(action, personaView);
             view = action;*/
+        	}
             break;
+       
+            
         case "persona":
             /*PersonaView personaView = new PersonaView();
             personaView.setPersona(new Persona());
@@ -79,7 +88,8 @@ public class Dispatcher extends HttpServlet {
         String view = "home";
         switch (action) {
         case "votar":
-           /* Persona persona = new Persona();
+        	
+        	/* Persona persona = new Persona();
             persona.setId(Integer.valueOf(request.getParameter("id")));
             persona.setNombre(request.getParameter("nombre"));
             persona.setRol(request.getParameter("rol"));
@@ -88,6 +98,30 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, personaView);
             view = personaView.process();*/
             break;
+        case "votar/add": { //esta peticion es lanzada por ajax de forma asincrona
+	       	 String ip = request.getRemoteAddr();
+        	 VotarView votarView = new VotarView();
+	       	 String  jsonTema = request.getParameter("tema");
+	       	 String  jsonVoto = request.getParameter("voto");
+	       	 TemaEntity tema = votarView.jsonStringToObject(TemaEntity.class,jsonTema);
+	       	 VotoEntity voto = votarView.jsonStringToObject(VotoEntity.class,jsonVoto);
+	       	 voto.setIp(ip);
+	       	 votarView.setTemaRecibidoFormulario(tema);
+	       	 votarView.setVotoRecibidoFormulario(voto);
+	       	 votarView.process();
+	       	
+			 ServletOutputStream out =response.getOutputStream();
+		     JsonObject jsonObjet = new JsonObject();
+		     jsonObjet.addProperty("msg", votarView.getMsg());
+		     jsonObjet.addProperty("exito", votarView.getVotoInsertado());
+			 out.print(jsonObjet.toString());
+		     out.flush();
+			 out.close();
+	       
+       	
+       	break;
+       	
+       }
         case "rol":
             /*RolView rolView = new RolView();
             rolView.setRol(request.getParameter("rol"));
@@ -96,8 +130,12 @@ public class Dispatcher extends HttpServlet {
             break;
         }
 
-        this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
-                .forward(request, response);
+       /* this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
+                .forward(request, response);*/
     }
+
+
+
+
 
 }

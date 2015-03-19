@@ -28,7 +28,7 @@ public class VotarView extends ViewBean {
    private VotoEntity votoRecibidoFormulario; 
    
    
-  
+  boolean votoInsertado;
     
     public VotarView() {
     	//super(ControllerEjbFactory.getInstance());
@@ -48,10 +48,11 @@ public class VotarView extends ViewBean {
     public String process() {
     	String ret = "";
     	VotarController votarController = ControllerEjbFactory.getInstance().getVotarController(); 
-    	boolean votoInsertadoCorrectamente = votarController.votar(this.temaRecibidoFormulario ,this.votoRecibidoFormulario);
-    	if(votoInsertadoCorrectamente)  ret = "Voto insertado correctamente";
+    	this.votoInsertado = votarController.votar(this.temaRecibidoFormulario ,this.votoRecibidoFormulario);
+    	if(votoInsertado)  ret = "Voto insertado correctamente";
     	else ret = "El voto no se ha insertado- Usted ya ha votado ha este tema con anterioridad.";
     	this.msg = ret;
+    	
 //        if (this.persona.getId() == 666 && !this.persona.getNombre().equals("Demonio")) {
 //            this.errorMsg = "Sólo se acepta el nombre 'Demonio'";
 //            return "persona";
@@ -65,6 +66,16 @@ public class VotarView extends ViewBean {
 
 
 	
+
+
+	public boolean getVotoInsertado() {
+		return votoInsertado;
+	}
+
+
+	public void setVotoInsertado(boolean votoInsertado) {
+		this.votoInsertado = votoInsertado;
+	}
 
 
 	public String getMsg() {

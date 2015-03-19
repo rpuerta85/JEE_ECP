@@ -2,6 +2,8 @@ package es.miw.jeeecp.view.web.beans;
 
 import javax.faces.bean.ManagedProperty;
 
+import com.google.gson.Gson;
+
 import es.miw.jeeecp.controllers.ControllerFactory;
 import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;
 
@@ -24,5 +26,9 @@ public abstract class ViewBean {
     protected ControllerFactory getControllerFactory() {
         return controllerFactory;
     }
+    
+
+
+
 
 }
