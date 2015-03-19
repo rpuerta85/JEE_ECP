@@ -37,29 +37,7 @@ $(function() {
 		
 		
 	});
-	
-	///var json = '<//%=new Gson().toJson(request.getAttribute("votar")) %//>';
-	//alert(json);
- // alert(${votar.toJsonString()});
-	
-    
-	//data=[{"idcliente":"5","tipo_documento":"1","distrito":" 2","nombre":"wilson","sexo":"M"}]
-	//alert(arrayPreguntas.length);
-	/*for(i=0;i<arrayPreguntas.length;i++){
-	  document.write(arrayPreguntas[i]['pregunta']);
-	}*/
-	
-//	var arr = new Array();
-   // <c:forEach  items="${votar.listaTemas}" var="item">
-   // <c:out value="\${item.pregunta}"/>
-   /* arr.push(${item.pregunta});*/
-  //  </c:forEach>  
-   // alert(JSON.stringify(arr));
- /* var myMap = {
-    <c:forEach items="${votar.listaTemas}" var="item" varStatus="loop">
-     ${item.tema}:  '${item.pregunta}' ${not loop.last ? ',' : ''} 
-    </c:forEach>
-  };*/
+
 
 });//ready jquery
 
