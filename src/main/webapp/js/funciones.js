@@ -53,6 +53,65 @@ function votoEntity(id,ip,nota,estudios) {
 	this.estudios = estudios;
 }
 
+function enviarVotoAjax(){
+	var tema = new temaEntity($("#temas option:selected").val(), $("#temas option:selected").html(), $("#labelPregunta").text());
+	var voto = new votoEntity(null, null, $("#notas option:selected").html(), $("#estudios option:selected").html());	
+
+	var ajaxParam = {
+	 		url: '/EE_ECP/jsp/votar/add',
+	 		global: false,
+	 		type: "POST",
+	 		//dataType:'json',//tipo de dato devuelto
+	 		data: "tema="+JSON.stringify(tema)+"&"+"voto="+JSON.stringify(voto),
+	 		scriptCharset: "UTF-8",
+	 		async: false,
+			contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+	 		//contentType:'application/json',
+	 	    //contentType : 'application/x-www-form-urlencoded; charset=UTF-8'
+	 		//mineType:'application/json'
+			beforeSend:function(xhr) {
+				mostrarPantallaDeCarga($("#trCargando"),"Cargando...");
+	    	},
+			complete:function() {
+				ocultarPantallaDeCarga($("#trCargando"));
+			}    
+
+	        };
+
+		$.ajax(ajaxParam)
+		.success(function(data) { 
+			alert(data);
+			location.href ="/EE_ECP/jsp/home";
+			//var json = JSON.parse(data);
+			//$('#PersonTableContainer').jtable('load');
+			//if(json.msgError!=null)  { //si se ha producido un error, lo mostramos por pantalla
+				//procesarError($("#trError2"),json.error);
+			   		//procesarError($("#trError2"),json.msgError);
+			   	 //   mostrarError(json.msgError, $("#telefono_cntCuerpo"));
+			//	}else if (json.resultado != "") { //si hemos devuelto algo
+					//alert(msgPrevio+" "+json.respuesta); 
+					//alert("RRRRR:"+JSON.stringify(json.respuesta)); 
+					// sessionStorage.setItem("msgRespuestaMail", json.respuesta);
+				//alert(JSON.stringify(json));
+				//var jsonAux = JSON.parse(json.respuesta);
+				//alert(jsonAux.esEstadoPendienteValidacion);
+				//esEstadoPendienteValidacion = jsonAux.esEstadoPendienteValidacion;
+				
+				//alert(esEstadoPendienteValidacion);
+				
+				//}
+			
+		})
+		
+		    
+		.fail(function(){
+		    alert("fail");
+		});
+
+
+
+	}
+
 function validarAccionEnviarVoto(){
 var valido = false;
 var cadena = "Los siguientes campos no tienen el formato correcto: ";

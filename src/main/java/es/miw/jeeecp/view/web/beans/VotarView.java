@@ -50,7 +50,7 @@ public class VotarView extends ViewBean {
     	VotarController votarController = ControllerEjbFactory.getInstance().getVotarController(); 
     	boolean votoInsertadoCorrectamente = votarController.votar(this.temaRecibidoFormulario ,this.votoRecibidoFormulario);
     	if(votoInsertadoCorrectamente)  ret = "Voto insertado correctamente";
-    	else ret = "Se ha producido un error en la insercción.Voto No insertado.";
+    	else ret = "El voto no se ha insertado- Usted ya ha votado ha este tema con anterioridad.";
     	this.msg = ret;
 //        if (this.persona.getId() == 666 && !this.persona.getNombre().equals("Demonio")) {
 //            this.errorMsg = "SÃ³lo se acepta el nombre 'Demonio'";

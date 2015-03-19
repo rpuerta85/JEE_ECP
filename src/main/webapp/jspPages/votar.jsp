@@ -47,6 +47,11 @@ $(function() {
 	<h2>
 		Vista de <b>Votar</b>
 	</h2>
+	 <div id="trCargando" class="divCarga2" align="center">
+          <span  id="mensajeCarga" class="fuente1" style="margin-top: 10%;display: block;">
+	      </span>
+   </div>  
+	
  <div style="width: 50%;padding-left: 20%;">
 	<form action="/votar/v1/persona" method="post">
 			<table class="fac_contenidoTabla">
@@ -100,10 +105,14 @@ $(function() {
 												</c:forEach>
 											</select>
 							   	<p>
-									<input type="submit" value="Enviar Voto" />
+									<input type="submit" value="E" />
+									<input id="btnEnviarVoto"  type="button" value="Enviar voto">
 								</p>
 							   		
 							   </td>
+						</tr>
+						<tr id="trError" class="trError">
+						
 						</tr>
 						
 		</table>

@@ -3,6 +3,7 @@ package es.miw.jeeecp.controllers;
 import java.util.List;
 
 import es.miw.jeeecp.models.entities.TemaEntity;
+import es.miw.jeeecp.models.entities.VotoEntity;
 
 public interface VotarController {
 
@@ -10,6 +11,6 @@ public interface VotarController {
 
     void mostrarPregunta();
     
-    boolean votar();
+    boolean votar(TemaEntity tema,VotoEntity voto);
 
 }
