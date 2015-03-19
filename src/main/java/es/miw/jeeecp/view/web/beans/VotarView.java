@@ -9,19 +9,23 @@ import org.apache.logging.log4j.LogManager;
 
 import com.google.gson.Gson;
 
+import es.miw.jeeecp.controllers.VotarController;
 import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;
 import es.miw.jeeecp.models.entities.TemaEntity;
+import es.miw.jeeecp.models.entities.VotoEntity;
 
 @ManagedBean
 public class VotarView extends ViewBean {
-    private String errorMsg;
+    private String msg;
 
    private List<TemaEntity> listaTemas;
-   
    private List<String> listaNivelEstudios;
    private List<String> listaNotas;
    
    private String pregunta;
+   
+   private TemaEntity temaRecibidoFormulario;
+   private VotoEntity votoRecibidoFormulario; 
    
    
   
@@ -42,6 +46,12 @@ public class VotarView extends ViewBean {
     }
 
     public String process() {
+    	String ret = "";
+    	VotarController votarController = ControllerEjbFactory.getInstance().getVotarController(); 
+    	boolean votoInsertadoCorrectamente = votarController.votar(this.temaRecibidoFormulario ,this.votoRecibidoFormulario);
+    	if(votoInsertadoCorrectamente)  ret = "Voto insertado correctamente";
+    	else ret = "Se ha producido un error en la insercción.Voto No insertado.";
+    	this.msg = ret;
 //        if (this.persona.getId() == 666 && !this.persona.getNombre().equals("Demonio")) {
 //            this.errorMsg = "SÃ³lo se acepta el nombre 'Demonio'";
 //            return "persona";
@@ -54,13 +64,16 @@ public class VotarView extends ViewBean {
     }
 
 
-	public String getErrorMsg() {
-		return errorMsg;
+	
+
+
+	public String getMsg() {
+		return msg;
 	}
 
 
-	public void setErrorMsg(String errorMsg) {
-		this.errorMsg = errorMsg;
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 
@@ -93,6 +106,26 @@ public class VotarView extends ViewBean {
 	}
 
 
+	public TemaEntity getTemaRecibidoFormulario() {
+		return temaRecibidoFormulario;
+	}
+
+
+	public void setTemaRecibidoFormulario(TemaEntity temaRecibidoFormulario) {
+		this.temaRecibidoFormulario = temaRecibidoFormulario;
+	}
+
+
+	public VotoEntity getVotoRecibidoFormulario() {
+		return votoRecibidoFormulario;
+	}
+
+
+	public void setVotoRecibidoFormulario(VotoEntity votoRecibidoFormulario) {
+		this.votoRecibidoFormulario = votoRecibidoFormulario;
+	}
+
+
 	private void inicializarListaEstudios(){
 		listaNivelEstudios = new ArrayList<String>();
         listaNivelEstudios.add("E.S.O");
@@ -111,12 +144,12 @@ private void inicializarListaNotas(){
 		listaNotas.add(i+"");
 	}
 }
+public String toJsonString(){
+	return new Gson().toJson(this);
+}
+public <T> T jsonStringToObject(Class<T> clase,String json){
+	T tipo = new Gson().fromJson(json, clase);
+	return tipo;
+}
 	
-	public void actualizarPregunta(String id){
-		System.out.println(id);
-		//pregunta = lista
-	}
-	public String toJsonString(){
-		return new Gson().toJson(this);
-	}
 }
