@@ -27,7 +27,13 @@ public abstract class ViewBean {
         return controllerFactory;
     }
     
-
+    protected String toJsonString2(){
+    	return new Gson().toJson(this);
+    }
+    protected <T> T jsonStringToObject2(Class<T> clase,String json){
+    	T tipo = new Gson().fromJson(json, clase);
+    	return tipo;
+    }
 
 
 

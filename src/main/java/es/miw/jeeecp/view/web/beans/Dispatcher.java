@@ -9,8 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import es.miw.jeeecp.models.daos.DaoFactory;
@@ -33,19 +31,12 @@ public class Dispatcher extends HttpServlet {
 			throw new ServletException( "init" );
 		}
 	}
-   
-	// Se cierra la conexi�n con la base de datos
-//	public void destroy() {
-//		factory.
-//	}
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String action = request.getPathInfo().substring(1);
-    	//String action = request.getPathInfo();
-    	//if(action==null) action = "home";
         String view="home";
         switch (action) {
         case "votar": {
@@ -53,13 +44,15 @@ public class Dispatcher extends HttpServlet {
             votarView.update();
             request.setAttribute(action, votarView);
             view = action;
-        	/*PersonaView personaView = new PersonaView();
-            personaView.setPersona(new Persona());
-            request.setAttribute(action, personaView);
-            view = action;*/
         	}
             break;
-       
+        case "votar/verVotaciones": {
+            VerVotosView verVotosView = new  VerVotosView();
+            verVotosView.update();
+            request.setAttribute(action, verVotosView);
+            view = action.split("/")[1];
+        	}
+            break; 
             
         case "persona":
             /*PersonaView personaView = new PersonaView();
@@ -75,7 +68,6 @@ public class Dispatcher extends HttpServlet {
         default:
             view = "home";
         }
-//System.out.println(PATH_ROOT_VIEW + view + ".jsp");
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
                 .forward(request, response);
 
@@ -110,16 +102,11 @@ public class Dispatcher extends HttpServlet {
 	       	 votarView.setVotoRecibidoFormulario(voto);
 	       	 votarView.process();
 	       	
-			 //ServletOutputStream out =response.getOutputStream();
 		     JsonObject jsonObjet = new JsonObject();
 		     jsonObjet.addProperty("msg", votarView.getMsg());
 		     jsonObjet.addProperty("exito", votarView.getVotoInsertado());
 		     mandarRespuestaJSON(response, jsonObjet.toString());
-		    /* out.print(jsonObjet.toString());
-		     out.flush();
-			 out.close();*/
 	       
-       	
        	break;
        	
        }

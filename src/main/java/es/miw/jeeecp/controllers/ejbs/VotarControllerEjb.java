@@ -15,7 +15,7 @@ public class VotarControllerEjb extends ControllerEjb implements VotarController
 //	VotarControllerEjb(Session session) {
 //        super(session);
 //    }
-	VotarControllerEjb() {
+	public VotarControllerEjb() {
         super();
     }
 
@@ -26,15 +26,7 @@ public class VotarControllerEjb extends ControllerEjb implements VotarController
 	}
 
 	@Override
-	public void mostrarPregunta() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public boolean votar(TemaEntity tema,VotoEntity voto) {
-		//DaoJpaFactory.getFactory().getVotoDao().read(voto.getIp())
-		//findByIp
 		 boolean exito = false;
 		TemaDao temaDao =  DaoJpaFactory.getFactory().getTemaDao();
 		List<VotoEntity> listaVotosConIp =  temaDao.findByIp(voto.getIp());
@@ -43,9 +35,7 @@ public class VotarControllerEjb extends ControllerEjb implements VotarController
 			temaDao.update(tema);
 			exito = true;
 		}
-		
 		return exito;
-
 	}
 
 	

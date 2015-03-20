@@ -30,9 +30,9 @@ public class VotarView extends ViewBean {
    
   boolean votoInsertado;
     
-    public VotarView() {
+   public VotarView() {
     	//super(ControllerEjbFactory.getInstance());
-    	//this.
+    	
     }
 
 
@@ -140,10 +140,10 @@ public class VotarView extends ViewBean {
 	private void inicializarListaEstudios(){
 		listaNivelEstudios = new ArrayList<String>();
         listaNivelEstudios.add("E.S.O");
-        listaNivelEstudios.add("Formación Profesional Grado Medio");
+        listaNivelEstudios.add("Formaciï¿½n Profesional Grado Medio");
         listaNivelEstudios.add("Bachillerato");
-        listaNivelEstudios.add("Formación Profesional Grado Superior");
-        listaNivelEstudios.add("Ingeniería técnica");
+        listaNivelEstudios.add("Formaciï¿½n Profesional Grado Superior");
+        listaNivelEstudios.add("Ingenierï¿½a tï¿½cnica");
         listaNivelEstudios.add("Master");
         listaNivelEstudios.add("Otros");
  
