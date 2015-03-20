@@ -9,6 +9,8 @@ import org.apache.logging.log4j.LogManager;
 @ManagedBean
 public class VerVotosView extends ViewBean {
     private String msg;
+    
+    
 
     
     public VerVotosView() {

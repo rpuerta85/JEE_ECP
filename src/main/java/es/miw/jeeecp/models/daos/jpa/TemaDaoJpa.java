@@ -1,5 +1,6 @@
 package es.miw.jeeecp.models.daos.jpa;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -16,7 +17,13 @@ import es.miw.jeeecp.models.entities.VotoEntity;
 
 public class TemaDaoJpa extends GenericDaoJpa<TemaEntity, Integer> implements TemaDao {
 	 private static final String BUSCAR_VOTO_POR_IP = "SELECT t FROM TemaEntity t JOIN t.votos v where v.ip = :ip ";
-    public TemaDaoJpa() {
+	
+	// private static final String BUSCAR_TEMAS_GROUPBY_TEMA_NIVELESTUDIOS = "SELECT t.id,v.estudios, SUM(v.nota) FROM TemaEntity t JOIN t.votos v GROUP BY t.id,v.estudios ";	 
+    
+	
+	 
+	 
+	 public TemaDaoJpa() {
         super(TemaEntity.class);
     }
     public List<VotoEntity> findByIp(String ip) {
@@ -26,27 +33,7 @@ public class TemaDaoJpa extends GenericDaoJpa<TemaEntity, Integer> implements Te
         List<VotoEntity> listaResultado =(List<VotoEntity>) query.getResultList();
         entityManager.close();
         return listaResultado;
-    	
-//    	 EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
-//    	 // Se crea un criterio de consulta
-//        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-//        CriteriaQuery<TemaEntity> query = builder.createQuery(TemaEntity.class);
-//        // Se establece la clausula FROM
-//        Root<TemaEntity> root = query.from(TemaEntity.class);
-//        // Se establece la clausula SELECT
-//        query.select(root);
-//        // Se configura el predicado
-//        Predicate predicate = builder.equal(root.get("ip").as(VotoEntity.class),
-//        		ip);
-//        // Se establece el WHERE
-//        query.where(predicate);
-//        // Se crea el resultado
-//        TypedQuery<PieceEntity> typedQuery = entityManager.createQuery(query);
-//        PieceEntity pieceEntity = typedQuery.getSingleResult();
-//        entityManager.close();
-//        if (pieceEntity != null) {
-//            this.deleteById(pieceEntity.getId());
-//        }
     }
-    
+  
+
 }

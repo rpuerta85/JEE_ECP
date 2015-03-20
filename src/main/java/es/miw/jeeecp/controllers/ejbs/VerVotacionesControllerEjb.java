@@ -1,5 +1,6 @@
 package es.miw.jeeecp.controllers.ejbs;
 
+import java.util.HashMap;
 import java.util.List;
 
 import es.miw.jeeecp.controllers.VerVotacionesController;
@@ -19,8 +20,15 @@ public class VerVotacionesControllerEjb extends ControllerEjb implements VerVota
 
 	@Override
 	public List<TemaEntity> obtenerVotosPorTema() {
+		
+		
 		return null;
 	}
-
+	//hacer mapa de listas
+	  private HashMap<String, Float> votacionMediaSegunNivelEstudios(){
+			
+		  List<Float> votacionMedia
+		  
+	  }
 	
 }
