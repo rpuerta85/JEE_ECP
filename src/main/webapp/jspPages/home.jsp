@@ -10,12 +10,9 @@
 	<h1>Seleccione acción</h1>
 	<p>
 		<a href="${pageContext.request.contextPath}/jsp/votar">Votar</a>
-		<!--  <form action="${pageContext.request.contextPath}/jsp/votar" method="get"> 
-				<input type="submit"></input>
-		</form>-->
 	</p>
 	<p>
-		<a href="/jsf/votar/verVotaciones">Ver votaciones</a>
+		<a href="${pageContext.request.contextPath}/jsp/votar/verVotaciones">Ver votaciones</a>
 	</p>
 	<p>
 		<a href="/jsf/tema/aniadir">Añadir tema</a>

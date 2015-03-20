@@ -59,7 +59,13 @@ public class Dispatcher extends HttpServlet {
             view = action;*/
         	}
             break;
-       
+        case "votar/verVotaciones": {
+            VerVotosView verVotosView = new  VerVotosView();
+            verVotosView.update();
+            request.setAttribute(action, verVotosView);
+            view = action;
+        	}
+            break; 
             
         case "persona":
             /*PersonaView personaView = new PersonaView();
