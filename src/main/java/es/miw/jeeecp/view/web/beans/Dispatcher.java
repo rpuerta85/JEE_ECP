@@ -34,7 +34,7 @@ public class Dispatcher extends HttpServlet {
 		}
 	}
    
-	// Se cierra la conexión con la base de datos
+	// Se cierra la conexiï¿½n con la base de datos
 //	public void destroy() {
 //		factory.
 //	}
@@ -110,13 +110,15 @@ public class Dispatcher extends HttpServlet {
 	       	 votarView.setVotoRecibidoFormulario(voto);
 	       	 votarView.process();
 	       	
-			 ServletOutputStream out =response.getOutputStream();
+			 //ServletOutputStream out =response.getOutputStream();
 		     JsonObject jsonObjet = new JsonObject();
 		     jsonObjet.addProperty("msg", votarView.getMsg());
 		     jsonObjet.addProperty("exito", votarView.getVotoInsertado());
-			 out.print(jsonObjet.toString());
+		     mandarRespuestaJSON(response, jsonObjet.toString());
+		     
+		    /* out.print(jsonObjet.toString());
 		     out.flush();
-			 out.close();
+			 out.close();*/
 	       
        	
        	break;
@@ -135,7 +137,12 @@ public class Dispatcher extends HttpServlet {
     }
 
 
-
+   private void mandarRespuestaJSON(HttpServletResponse response,String json) throws IOException{
+	     ServletOutputStream out =response.getOutputStream();
+		 out.print(json);
+	     out.flush();
+		 out.close();
+   }
 
 
 }
