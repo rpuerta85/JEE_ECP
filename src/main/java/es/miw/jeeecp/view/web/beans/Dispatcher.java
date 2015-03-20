@@ -115,7 +115,6 @@ public class Dispatcher extends HttpServlet {
 		     jsonObjet.addProperty("msg", votarView.getMsg());
 		     jsonObjet.addProperty("exito", votarView.getVotoInsertado());
 		     mandarRespuestaJSON(response, jsonObjet.toString());
-		     
 		    /* out.print(jsonObjet.toString());
 		     out.flush();
 			 out.close();*/
