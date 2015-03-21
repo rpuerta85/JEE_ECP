@@ -15,7 +15,6 @@ public class VotacionMediaPorEstudios {
 	public VotacionMediaPorEstudios() {
 		// TODO Auto-generated constructor stub
 	}
-
 	public void setMapaEstudios(List<TemaEntity> listaTemas) {
 		
 		for(TemaEntity tema :listaTemas ) { //recorremos todos los temas
