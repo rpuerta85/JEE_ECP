@@ -1,12 +1,14 @@
 package es.miw.jeeecp.view.web.beans;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
 import org.apache.logging.log4j.LogManager;
 
 import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;
+import es.miw.jeeecp.models.entities.TemaEntity;
 import es.miw.jeeecp.models.utils.ListaVotosAsociadosAUnEstudio;
 
 
@@ -15,7 +17,7 @@ import es.miw.jeeecp.models.utils.ListaVotosAsociadosAUnEstudio;
 public class VerVotosView extends ViewBean {
     private String msg;
     private  HashMap<String, ListaVotosAsociadosAUnEstudio> mapVotacionMediaSegunNivelEstudios;
-
+    private List<TemaEntity> listaTemas;
 
     
     public VerVotosView() {
@@ -28,7 +30,7 @@ public class VerVotosView extends ViewBean {
                 "Se accede a la capa de negocio para recuperar la votacion por cada estudio");
     	 mapVotacionMediaSegunNivelEstudios =
     			 ControllerEjbFactory.getInstance().getVerVotacionesController().votacionMediaSegunNivelEstudios();
-
+    	 this.listaTemas = ControllerEjbFactory.getInstance().getVotarController().mostrarTemas();
     }
 
     public String process() {
@@ -55,6 +57,16 @@ public class VerVotosView extends ViewBean {
 	public void setMapVotacionMediaSegunNivelEstudios(
 			HashMap<String, ListaVotosAsociadosAUnEstudio> mapVotacionMediaSegunNivelEstudios) {
 		this.mapVotacionMediaSegunNivelEstudios = mapVotacionMediaSegunNivelEstudios;
+	}
+
+
+	public List<TemaEntity> getListaTemas() {
+		return listaTemas;
+	}
+
+
+	public void setListaTemas(List<TemaEntity> listaTemas) {
+		this.listaTemas = listaTemas;
 	}
 
 

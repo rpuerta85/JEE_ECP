@@ -22,6 +22,7 @@ public class DaoJpaFactory extends DaoFactory {
         if (entityManagerFactory == null) {
             entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
             LogManager.getLogger(DaoJpaFactory.class).debug("create Entity Manager Factory");
+        
         }
         return entityManagerFactory;
     }

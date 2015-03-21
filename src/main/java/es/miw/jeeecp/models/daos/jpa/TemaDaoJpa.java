@@ -18,11 +18,6 @@ import es.miw.jeeecp.models.entities.VotoEntity;
 public class TemaDaoJpa extends GenericDaoJpa<TemaEntity, Integer> implements TemaDao {
 	 private static final String BUSCAR_VOTO_POR_IP = "SELECT t FROM TemaEntity t JOIN t.votos v where v.ip = :ip and t.id = :idTema";
 	
-	// private static final String BUSCAR_TEMAS_GROUPBY_TEMA_NIVELESTUDIOS = "SELECT t.id,v.estudios, SUM(v.nota) FROM TemaEntity t JOIN t.votos v GROUP BY t.id,v.estudios ";	 
-    
-	
-	 
-	 
 	 public TemaDaoJpa() {
         super(TemaEntity.class);
     }
