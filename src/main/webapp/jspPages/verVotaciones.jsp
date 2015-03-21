@@ -39,24 +39,49 @@ $(function() {
 					<tr>
 						<td class="filaSeccion" colspan="4" rowspan="1">VOTACIÓN MEDIA POR NIVEL DE ESTUDIOS</td>
 					</tr>
+				    <tr>
+						<td class="filaSeccion" colspan="2" >Nivel de Estudios</td>
+						<td class="filaSeccion" colspan="2" >Puntuación Media</td>
+				   </tr>
+					
 			</thead>
 			<!-- Recorremos el mapa de estudios, cada estudio tiene un objeto ListaVotosAsociados a un estudio conlos valores calculados -->
 			<tbody>
-				
-				
 				<c:set var="pView" scope="request" value="${verVotaciones}" />
 				<c:forEach var="mapVotosPorEstudio" items="${pView.mapVotacionMediaSegunNivelEstudios}">
 	   				 <tr>
 						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> ${mapVotosPorEstudio.key}</td>
-						  <td colspan="2" class="celdaInteractuableFormFacturacion" >
+						  <td colspan="2" class="celdaInteractuableFormFacturacion" style="text-align: center;">
 							   	    <LABEL> ${mapVotosPorEstudio.value.votacionMediaActual} </LABEL>			   								   		
 						  </td>
 					</tr>
-	   				 <!-- Country: ${country.key}  - Capital: ${country.value} -->
-				</c:forEach>
+				</c:forEach>			
 		  </tbody>
 		</table>
-		
+		<br>
+		<br>
+		<br>
+		<table class="fac_contenidoTabla">
+			<thead>
+					<tr>
+						<td class="filaSeccion" colspan="4" rowspan="1">NÚMERO DE VOTOS POR TEMA</td>
+					</tr>
+				    <tr>
+						<td class="filaSeccion" colspan="2" >Tema</td>
+						<td class="filaSeccion" colspan="2" >Número de Votos</td>
+				   </tr>
+			</thead>
+			<tbody>
+				<c:forEach var="listaTemas" items="${pView.listaTemas}">
+	   				 <tr>
+						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> ${listaTemas.tema}</td>
+						  <td colspan="2" class="celdaInteractuableFormFacturacion" style="text-align: center;">
+							   	    <LABEL>${listaTemas.votos.size()} </LABEL>			   								   		
+						  </td>
+					</tr>
+				</c:forEach>			
+		  </tbody>
+		</table>		
 	
 </div>
 	<p>
