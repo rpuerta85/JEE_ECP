@@ -25,8 +25,7 @@ public class VotarView extends ViewBean {
    private String pregunta;
    
    private TemaEntity temaRecibidoFormulario;
-   private VotoEntity votoRecibidoFormulario; 
-   
+   private VotoEntity votoRecibidoFormulario;   
    
   boolean votoInsertado;
     

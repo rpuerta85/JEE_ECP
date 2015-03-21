@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"  ?>
+<%@page import="es.miw.jeeecp.view.web.beans.VotarView"%>
 <%@page import="com.google.gson.Gson"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -17,10 +18,11 @@
 $(function() {
 	onLoad2();
 	$("#temas").on("change", function(){
-		var json = ${votar.toJsonString()};
+		var json = ${votar.toJsonString()}; 
 		var obj = JSON.parse(JSON.stringify(json));
 	    var arrayPreguntas = obj.listaTemas;
-		var value = $(this).val();
+	   
+	    var value = $(this).val();
 		switch (value) {
 			case '0': {				
 				ocultarSelect($("#filaNivelEstudios"));
@@ -30,7 +32,8 @@ $(function() {
 			}
 			default : {
 				mostrarSelect($("#filaNivelEstudios"));
-				actualizarLabelPregunta(value-1,arrayPreguntas);
+				var index =  buscarIndiceTemaPorId(value,arrayPreguntas);
+				actualizarLabelPregunta(index,arrayPreguntas);
 				break;
 			}
 		}

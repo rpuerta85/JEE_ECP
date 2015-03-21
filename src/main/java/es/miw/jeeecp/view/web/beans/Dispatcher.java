@@ -39,11 +39,12 @@ public class Dispatcher extends HttpServlet {
         String action = request.getPathInfo().substring(1);
         String view="home";
         switch (action) {
-        case "votar": {
+        case "votar/add": {
             VotarView votarView = new VotarView();
             votarView.update();
-            request.setAttribute(action, votarView);
-            view = action;
+            view = action.split("/")[0];
+            request.setAttribute(view, votarView);
+            
         	}
             break;
         case "votar/verVotaciones": {
@@ -55,16 +56,7 @@ public class Dispatcher extends HttpServlet {
             break; 
             
         case "tema/aniadirTema":
-            /*PersonaView personaView = new PersonaView();
-            personaView.setPersona(new Persona());
-            request.setAttribute(action, personaView);
-            view = action;*/
         	view = action.split("/")[1];
-            break;
-        case "rol":
-            /*RolView rolView = new RolView();
-            request.setAttribute(action, rolView);
-            view = action;*/
             break;
         default:
             view = "home";
@@ -80,17 +72,6 @@ public class Dispatcher extends HttpServlet {
         String action = request.getPathInfo().substring(1);
         String view = "home";
         switch (action) {
-        case "votar":
-        	
-        	/* Persona persona = new Persona();
-            persona.setId(Integer.valueOf(request.getParameter("id")));
-            persona.setNombre(request.getParameter("nombre"));
-            persona.setRol(request.getParameter("rol"));
-            PersonaView personaView = new PersonaView();
-            personaView.setPersona(persona);
-            request.setAttribute(action, personaView);
-            view = personaView.process();*/
-            break;
         case "votar/add": { //esta peticion es lanzada por ajax de forma asincrona
 	       	 String ip = request.getRemoteAddr();
         	 VotarView votarView = new VotarView();
@@ -111,12 +92,22 @@ public class Dispatcher extends HttpServlet {
        	break;
        	
        }
-        case "rol":
-            /*RolView rolView = new RolView();
-            rolView.setRol(request.getParameter("rol"));
-            request.setAttribute(action, rolView);
-            view = rolView.process();*/
-            break;
+       case "tema/aniadirTema": { //esta peticion es lanzada por ajax de forma asincrona
+    	     AniadirTemaView aniadirTemaView = new AniadirTemaView();	 
+    	     String  jsonTema = request.getParameter("tema");
+	       	 TemaEntity tema = aniadirTemaView.jsonStringToObject(TemaEntity.class,jsonTema);
+	       	 aniadirTemaView.setTemaRecibidoFormulario(tema);
+	       	 aniadirTemaView.process();
+	       	
+		     JsonObject jsonObjet = new JsonObject();
+		     jsonObjet.addProperty("msg", aniadirTemaView.getMsg());
+		     jsonObjet.addProperty("exito", aniadirTemaView.isExitoInserccionTema());
+		      mandarRespuestaJSON(response, jsonObjet.toString());
+	       
+      	break;
+      	
+      }
+        
         }
 
        /* this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")

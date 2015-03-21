@@ -15,9 +15,9 @@ public abstract class ViewBean {
 
     
     
-//    public ViewBean(ControllerFactory controllerFactor) {
+    public ViewBean(/*ControllerFactory controllerFactor*/) {
 //		this.controllerFactory = controllerFactor;
-//	}
+	}
 
 	public void setControllerFactory(ControllerFactory controllerFactory) {
         this.controllerFactory = controllerFactory;

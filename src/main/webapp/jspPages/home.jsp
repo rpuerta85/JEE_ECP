@@ -9,7 +9,7 @@
 <body>
 	<h1>Seleccione acción</h1>
 	<p>
-		<a href="${pageContext.request.contextPath}/jsp/votar">Votar</a>
+		<a href="${pageContext.request.contextPath}/jsp/votar/add">Votar</a>
 	</p>
 	<p>
 		<a href="${pageContext.request.contextPath}/jsp/votar/verVotaciones">Ver votaciones</a>
