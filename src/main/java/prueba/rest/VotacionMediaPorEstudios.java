@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import es.miw.jeeecp.models.entities.TemaEntity;
+import es.miw.jeeecp.models.entities.VotoEntity;
 
 public class VotacionMediaPorEstudios {
 
@@ -16,7 +17,15 @@ public class VotacionMediaPorEstudios {
 	}
 
 	public void setMapaEstudios(List<TemaEntity> listaTemas) {
-		for(TemaEntity tema )
+		
+		for(TemaEntity tema :listaTemas ) { //recorremos todos los temas
+			//ListaVotosAsociadosAUnEstudio listaVotosAsociadosAUnEstudio = new ListaVotosAsociadosAUnEstudio();
+			//mapaEstudios.put(tema.getTema(), listaVotosAsociadosAUnEstudio);
+			for(  VotoEntity voto : tema.getVotos()) { // recorremos por cada tema, los votos
+				//listaVotosAsociadosAUnEstudio = mapaEstudios.get(tema.getTema());
+				//listaVotosAsociadosAUnEstudio.addVoto(voto);
+			}
+		}
 		
 	}
 

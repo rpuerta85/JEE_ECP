@@ -13,12 +13,23 @@ public class ListaVotosAsociadosAUnEstudio {
 	
 	private int numElementos;
 	private Double votacionMediaActual;
+	private Double sumaVotacionActual;
 	
 	
 	public ListaVotosAsociadosAUnEstudio() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
+	public void addVoto(VotoEntity voto){
+		listaVotos.add(voto);//añadimos voto
+		actualizarContadores(voto);
+		
+	}
+	private void  actualizarContadores(VotoEntity voto){
+		numElementos++;
+		sumaVotacionActual += voto.getNota().intValue();
+		sumaVotacionActual += (sumaVotacionActual / numElementos);
+	}
 	public List<VotoEntity> getListaVotos() {
 		return listaVotos;
 	}
@@ -31,16 +42,12 @@ public class ListaVotosAsociadosAUnEstudio {
 		return numElementos;
 	}
 
-	public void setNumElementos(int numElementos) {
-		this.numElementos = numElementos;
-	}
-
 	public Double getVotacionMediaActual() {
 		return votacionMediaActual;
 	}
 
-	public void setVotacionMediaActual(Double votacionMediaActual) {
-		this.votacionMediaActual = votacionMediaActual;
+	public Double getSumaVotacionActual() {
+		return sumaVotacionActual;
 	}
 	
   
