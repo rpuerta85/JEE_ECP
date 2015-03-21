@@ -62,6 +62,7 @@ public class VotarView extends ViewBean {
 //            return "home";
 //        }
   return "";
+//no devolvemos nada ya que es peticion ASINCRONA CON AJAX y no redireccionamos al DISPATCHE A ningun lugar
     }
 
 

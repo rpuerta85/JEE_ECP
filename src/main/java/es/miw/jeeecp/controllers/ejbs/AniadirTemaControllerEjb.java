@@ -17,8 +17,8 @@ public class AniadirTemaControllerEjb extends ControllerEjb implements AniadirTe
 	public boolean aniadirTema(TemaEntity tema) {
 		boolean exito = false;
 		TemaDao temaDao =  DaoJpaFactory.getFactory().getTemaDao();
-		List<TemaEntity> listaVotosConIp =  temaDao.findByName(tema.getTema());
-		if(listaVotosConIp.size()==0) {
+		List<TemaEntity> listaTemas =  temaDao.findByName(tema.getTema());
+		if(listaTemas.size()==0) {
 			temaDao.create(tema);
 			exito = true;
 		

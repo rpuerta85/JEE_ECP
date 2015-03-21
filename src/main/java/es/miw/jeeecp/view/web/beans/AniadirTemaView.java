@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 
 import com.google.gson.Gson;
 
+import es.miw.jeeecp.controllers.AniadirTemaController;
 import es.miw.jeeecp.controllers.VotarController;
 import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;
 import es.miw.jeeecp.models.entities.TemaEntity;
@@ -33,22 +34,12 @@ public class AniadirTemaView extends ViewBean {
 
     public String process() {
     	String ret = "";
-    	T
-    	VotarController votarController = ControllerEjbFactory.getInstance().getVotarController(); 
-    	this.votoInsertado = votarController.votar(this.temaRecibidoFormulario ,this.votoRecibidoFormulario);
-    	if(votoInsertado)  ret = "Voto insertado correctamente";
-    	else ret = "El voto no se ha insertado- Usted ya ha votado ha este tema con anterioridad.";
+    	AniadirTemaController aniadirTemaController = ControllerEjbFactory.getInstance().getAniadirTemaController();
+    	this.exitoInserccionTema = aniadirTemaController.aniadirTema(temaRecibidoFormulario);
+    	if(exitoInserccionTema)  ret = "Voto insertado correctamente";
+    	else ret = "Ya existe un tema en base de datos con ese mismo nombre. El tema no se ha insertado";
     	this.msg = ret;
-    	
-//        if (this.persona.getId() == 666 && !this.persona.getNombre().equals("Demonio")) {
-//            this.errorMsg = "Sólo se acepta el nombre 'Demonio'";
-//            return "persona";
-//        } else {
-//            LogManager.getLogger(VotarView.class).debug(
-//                    "Se accede a la capa de negocio para registrar persona: " + persona);
-//            return "home";
-//        }
-  return "";
+        return ""; // no devolvemos nada ya que es peticion ASINCRONA CON AJAX y no redireccionamos al DISPATCHE A ningun lugar
     }
 
 
