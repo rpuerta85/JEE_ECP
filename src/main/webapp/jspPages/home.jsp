@@ -15,10 +15,10 @@
 		<a href="${pageContext.request.contextPath}/jsp/votar/verVotaciones">Ver votaciones</a>
 	</p>
 	<p>
-		<a href="/jsf/tema/aniadir">Añadir tema</a>
+		<a href="${pageContext.request.contextPath}/jsp/tema/aniadirTema">Añadir tema</a>
 	</p>
 	<p>
-		<a href="/jsf/tema/eliminar">Eliminar tema</a>
+		<a href="${pageContext.request.contextPath}/jsp/tema/delete">Eliminar tema</a>
 	</p>
 </body>
 </html>

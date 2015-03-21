@@ -54,11 +54,12 @@ public class Dispatcher extends HttpServlet {
         	}
             break; 
             
-        case "persona":
+        case "tema/aniadirTema":
             /*PersonaView personaView = new PersonaView();
             personaView.setPersona(new Persona());
             request.setAttribute(action, personaView);
             view = action;*/
+        	view = action.split("/")[1];
             break;
         case "rol":
             /*RolView rolView = new RolView();

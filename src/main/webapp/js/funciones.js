@@ -412,3 +412,6 @@ function onLoad2(){
 	activarEventos();
 }
 
+function onLoadAniadirTema(){
+	
+}
