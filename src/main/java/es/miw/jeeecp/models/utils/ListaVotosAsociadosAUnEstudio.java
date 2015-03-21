@@ -1,4 +1,4 @@
-package prueba.rest;
+package es.miw.jeeecp.models.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +12,16 @@ public class ListaVotosAsociadosAUnEstudio {
 	private List<VotoEntity> listaVotos = new ArrayList<VotoEntity>();
 	
 	private int numElementos;
-	private Double votacionMediaActual;
-	private Double sumaVotacionActual;
+	private double votacionMediaActual;
+	private double sumaVotacionActual;
 	
 	
 	public ListaVotosAsociadosAUnEstudio() {
 		super();
+		numElementos = 0;
+		votacionMediaActual = 0d;
+		sumaVotacionActual = 0d;
+		
 	}
 
 	public void addVoto(VotoEntity voto){
@@ -28,7 +32,7 @@ public class ListaVotosAsociadosAUnEstudio {
 	private void  actualizarContadores(VotoEntity voto){
 		numElementos++;
 		sumaVotacionActual += voto.getNota().intValue();
-		sumaVotacionActual += (sumaVotacionActual / numElementos);
+		votacionMediaActual = (sumaVotacionActual / numElementos);
 	}
 	public List<VotoEntity> getListaVotos() {
 		return listaVotos;
@@ -48,6 +52,18 @@ public class ListaVotosAsociadosAUnEstudio {
 
 	public Double getSumaVotacionActual() {
 		return sumaVotacionActual;
+	}
+
+	public void setNumElementos(int numElementos) {
+		this.numElementos = numElementos;
+	}
+
+	public void setVotacionMediaActual(Double votacionMediaActual) {
+		this.votacionMediaActual = votacionMediaActual;
+	}
+
+	public void setSumaVotacionActual(Double sumaVotacionActual) {
+		this.sumaVotacionActual = sumaVotacionActual;
 	}
 	
   
