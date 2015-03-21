@@ -31,7 +31,7 @@ public class VotarView extends ViewBean {
   boolean votoInsertado;
     
    public VotarView() {
-    	//super(ControllerEjbFactory.getInstance());
+	   super();
     	
     }
 
@@ -154,13 +154,6 @@ private void inicializarListaNotas(){
 	for(int i = 0;i<11;i++){
 		listaNotas.add(i+"");
 	}
-}
-public String toJsonString(){
-	return new Gson().toJson(this);
-}
-public <T> T jsonStringToObject(Class<T> clase,String json){
-	T tipo = new Gson().fromJson(json, clase);
-	return tipo;
 }
 	
 }

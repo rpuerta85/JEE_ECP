@@ -79,7 +79,7 @@ $(function() {
 							   </td>
 						</tr>
 						<tr>
-							<td>
+							<td colspan="4" style="text-align: center;">
 							     <input id="btnAniadirTema"  type="button" value="Enviar voto">
 							</td>
 						</tr>

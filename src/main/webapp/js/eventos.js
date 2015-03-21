@@ -31,6 +31,16 @@ function carcarEventoEnviarVoto(){
 	});
 	
 }
+function cargarEventoAniadirTema(){
+	$("#btnAniadirTema").on("click", function(){
+		if(	validarAccionAniadirTemaVoto()) {
+			aniadirTemaAjax();
+		}
+		
+	});
+	
+}
+
 function actualizarLabelPregunta(indexPregunta,arrayPreguntas){
 	//alert(JSON.stringify(arrayPreguntas[indexPregunta]));
 	$("#labelPregunta").text(arrayPreguntas[indexPregunta].pregunta);
