@@ -3,6 +3,8 @@ package es.miw.jeeecp.controllers.ejbs;
 import java.util.HashMap;
 import java.util.List;
 
+import prueba.rest.ListaVotosAsociadosAUnEstudio;
+import prueba.rest.VotacionMediaPorEstudios;
 import es.miw.jeeecp.controllers.VerVotacionesController;
 import es.miw.jeeecp.controllers.VotarController;
 import es.miw.jeeecp.models.daos.TemaDao;
@@ -24,10 +26,13 @@ public class VerVotacionesControllerEjb extends ControllerEjb implements VerVota
 		
 		return null;
 	}
-	//hacer mapa de listas
+	//hacer mapa de listas <nivelEstudio1,MediaActual>
 	  private HashMap<String, Float> votacionMediaSegunNivelEstudios(){
 			
-		  List<Float> votacionMedia
+		  VotacionMediaPorEstudios  mediaPorEstudios = new VotacionMediaPorEstudios();
+		  ListaVotosAsociadosAUnEstudio listaVotosAsociadosAUnEstudio =  mediaPorEstudios.getMapaEstudios();
+		
+	
 		  
 	  }
 	

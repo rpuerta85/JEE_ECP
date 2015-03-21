@@ -1,6 +1,9 @@
 package prueba.rest;
 
 import java.util.HashMap;
+import java.util.List;
+
+import es.miw.jeeecp.models.entities.TemaEntity;
 
 public class VotacionMediaPorEstudios {
 
@@ -12,6 +15,13 @@ public class VotacionMediaPorEstudios {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	public void setMapaEstudios(List<TemaEntity> listaTemas) {
+		for(TemaEntity tema )
+		
+	}
+
+	public HashMap<String, ListaVotosAsociadosAUnEstudio> getMapaEstudios() {
+		return mapaEstudios;
+	}
 	
 }
