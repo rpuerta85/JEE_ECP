@@ -29,7 +29,7 @@ public class VotarControllerEjb extends ControllerEjb implements VotarController
 	public boolean votar(TemaEntity tema,VotoEntity voto) {
 		 boolean exito = false;
 		TemaDao temaDao =  DaoJpaFactory.getFactory().getTemaDao();
-		List<VotoEntity> listaVotosConIp =  temaDao.findByIp(voto.getIp());
+		List<VotoEntity> listaVotosConIp =  temaDao.findByIp(voto.getIp(),tema.getId());
 		if(listaVotosConIp.size()==0) {
 			tema.getVotos().add(voto);
 			temaDao.update(tema);

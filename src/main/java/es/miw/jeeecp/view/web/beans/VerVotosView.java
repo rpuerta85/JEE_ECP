@@ -1,16 +1,21 @@
 package es.miw.jeeecp.view.web.beans;
 
+import java.util.HashMap;
+
 import javax.faces.bean.ManagedBean;
 
 import org.apache.logging.log4j.LogManager;
+
+import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;
+import es.miw.jeeecp.models.utils.ListaVotosAsociadosAUnEstudio;
 
 
 
 @ManagedBean
 public class VerVotosView extends ViewBean {
     private String msg;
-    
-    
+    private  HashMap<String, ListaVotosAsociadosAUnEstudio> mapVotacionMediaSegunNivelEstudios;
+
 
     
     public VerVotosView() {
@@ -20,8 +25,10 @@ public class VerVotosView extends ViewBean {
 
     public void update() {
     	LogManager.getLogger(VerVotosView.class).debug(
-                "Se accede a la capa de negocio para recuperar los votos de cada tema");
-       
+                "Se accede a la capa de negocio para recuperar la votacion por cada estudio");
+    	 mapVotacionMediaSegunNivelEstudios =
+    			 ControllerEjbFactory.getInstance().getVerVotacionesController().votacionMediaSegunNivelEstudios();
+
     }
 
     public String process() {
@@ -37,6 +44,17 @@ public class VerVotosView extends ViewBean {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+
+	public HashMap<String, ListaVotosAsociadosAUnEstudio> getMapVotacionMediaSegunNivelEstudios() {
+		return mapVotacionMediaSegunNivelEstudios;
+	}
+
+
+	public void setMapVotacionMediaSegunNivelEstudios(
+			HashMap<String, ListaVotosAsociadosAUnEstudio> mapVotacionMediaSegunNivelEstudios) {
+		this.mapVotacionMediaSegunNivelEstudios = mapVotacionMediaSegunNivelEstudios;
 	}
 
 

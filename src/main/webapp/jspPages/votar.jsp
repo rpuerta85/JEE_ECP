@@ -105,7 +105,7 @@ $(function() {
 												</c:forEach>
 											</select>
 							   	<p>
-									<input type="submit" value="E" />
+									<!-- <input type="submit" value="E" /> -->
 									<input id="btnEnviarVoto"  type="button" value="Enviar voto">
 								</p>
 							   		

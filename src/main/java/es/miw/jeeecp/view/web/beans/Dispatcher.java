@@ -49,7 +49,7 @@ public class Dispatcher extends HttpServlet {
         case "votar/verVotaciones": {
             VerVotosView verVotosView = new  VerVotosView();
             verVotosView.update();
-            request.setAttribute(action, verVotosView);
+            request.setAttribute("verVotaciones", verVotosView);
             view = action.split("/")[1];
         	}
             break; 

@@ -80,26 +80,12 @@ function enviarVotoAjax(){
 
 		$.ajax(ajaxParam)
 		.success(function(data) { 
-			alert(data);
-			location.href ="/EE_ECP/jsp/home";
-			//var json = JSON.parse(data);
-			//$('#PersonTableContainer').jtable('load');
-			//if(json.msgError!=null)  { //si se ha producido un error, lo mostramos por pantalla
-				//procesarError($("#trError2"),json.error);
-			   		//procesarError($("#trError2"),json.msgError);
-			   	 //   mostrarError(json.msgError, $("#telefono_cntCuerpo"));
-			//	}else if (json.resultado != "") { //si hemos devuelto algo
-					//alert(msgPrevio+" "+json.respuesta); 
-					//alert("RRRRR:"+JSON.stringify(json.respuesta)); 
-					// sessionStorage.setItem("msgRespuestaMail", json.respuesta);
-				//alert(JSON.stringify(json));
-				//var jsonAux = JSON.parse(json.respuesta);
-				//alert(jsonAux.esEstadoPendienteValidacion);
-				//esEstadoPendienteValidacion = jsonAux.esEstadoPendienteValidacion;
-				
-				//alert(esEstadoPendienteValidacion);
-				
-				//}
+			var json = JSON.parse(data);
+			alert(json.msg);
+			if(json.exito==true) {
+				location.href ="/EE_ECP/jsp/home";
+			} 
+			
 			
 		})
 		

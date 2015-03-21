@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -34,8 +35,26 @@ $(function() {
  <div style="width: 50%;padding-left: 20%;">
 	
 		<table class="fac_contenidoTabla">
-					
-						
+			<thead>
+					<tr>
+						<td class="filaSeccion" colspan="4" rowspan="1">VOTACIÓN MEDIA POR NIVEL DE ESTUDIOS</td>
+					</tr>
+			</thead>
+			<!-- Recorremos el mapa de estudios, cada estudio tiene un objeto ListaVotosAsociados a un estudio conlos valores calculados -->
+			<tbody>
+				
+				
+				<c:set var="pView" scope="request" value="${verVotaciones}" />
+				<c:forEach var="mapVotosPorEstudio" items="${pView.mapVotacionMediaSegunNivelEstudios}">
+	   				 <tr>
+						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> ${mapVotosPorEstudio.key}</td>
+						  <td colspan="2" class="celdaInteractuableFormFacturacion" >
+							   	    <LABEL> ${mapVotosPorEstudio.value.votacionMediaActual} </LABEL>			   								   		
+						  </td>
+					</tr>
+	   				 <!-- Country: ${country.key}  - Capital: ${country.value} -->
+				</c:forEach>
+		  </tbody>
 		</table>
 		
 	
