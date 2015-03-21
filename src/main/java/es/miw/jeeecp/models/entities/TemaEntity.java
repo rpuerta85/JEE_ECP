@@ -11,12 +11,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(uniqueConstraints= @UniqueConstraint(columnNames = { "NAME" }))
 public class TemaEntity implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3632602244844491316L;
 
 	@Id

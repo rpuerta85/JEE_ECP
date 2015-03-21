@@ -3,6 +3,7 @@ package es.miw.jeeecp.controllers.ejbs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import es.miw.jeeecp.controllers.AniadirTemaController;
 import es.miw.jeeecp.controllers.ControllerFactory;
 import es.miw.jeeecp.controllers.VerVotacionesController;
 import es.miw.jeeecp.controllers.VotarController;
@@ -14,6 +15,7 @@ public class ControllerEjbFactory extends ControllerFactory {
 
     private  VotarController votarController;
     private  VerVotacionesController verVotacionesController;
+    private  AniadirTemaController aniadirTemaController;
     private static ControllerEjbFactory singleton;
 
   private ControllerEjbFactory() {
@@ -44,6 +46,14 @@ public class ControllerEjbFactory extends ControllerFactory {
 	        return verVotacionesController;
 	}
 
-   
+	@Override
+	public AniadirTemaController getAniadirTemaController() {
+		 if (aniadirTemaController == null) {
+			 aniadirTemaController = new AniadirTemaControllerEjb();
+	        }
+	        return aniadirTemaController;
+	}
+
+	
 
 }
