@@ -18,7 +18,7 @@
 		<a href="${pageContext.request.contextPath}/jsp/tema/aniadirTema">Añadir tema</a>
 	</p>
 	<p>
-		<a href="${pageContext.request.contextPath}/jsp/tema/delete">Eliminar tema</a>
+		<a href="${pageContext.request.contextPath}/jsp/tema/autorizacion">Eliminar tema</a>
 	</p>
 </body>
 </html>

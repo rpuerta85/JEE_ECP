@@ -15,14 +15,14 @@
 <title>VotarView</title>
 <script type="text/javascript">
 $(function() {
-	onLoadAniadirTema();
+	
 });//ready jquery
 
 </script>
 </head>
 <body>
 	<h2>
-		Vista de <b>Añadir Tema</b>
+		Vista de <b>Eliminar Tema</b>
 	</h2>
 	 <div id="trCargando" class="divCarga2" align="center">
           <span  id="mensajeCarga" class="fuente1" style="margin-top: 10%;display: block;">
@@ -30,38 +30,37 @@ $(function() {
    </div>  
 	
  <div style="width: 50%;padding-left: 20%;">
-	<form  method="post">
+	<form  action = "${pageContext.request.contextPath}/jsp/tema/autorizacion"  method="post">
 			<table class="fac_contenidoTabla">
 					<thead>
 							<tr>
-								<td class="filaSeccion" colspan="4" rowspan="1">AÑADIR TEMA</td>
+								<td class="filaSeccion" colspan="4" rowspan="1">AUTORIZACIÓN PARA ELIMINAR TEMA</td>
 							</tr>
 					</thead>
 					<tfoot>
-						<tr id="trError" class="trError">
-							
+						<tr>
+							<td colspan="4" style="text-align: center;">
+							     <input type="submit" value="Enviar" />
+							</td>	
 						</tr>
+						<tr id="trError" class="trError" style="background-color: transparent;">
+							<td>${autorizacion.msg}</td>
+						</tr>
+						
 					</tfoot>
 					<tbody id="cntLineasDetalles">		
 						<tr>
-							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Nombre del Tema: </td>
+							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Identificador de autorización: </td>
 							  <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   		<input id="nombreTema"  class="inputForm Input" type="text" name="nombreTema" required="required" placeholder="nombre del tema">
+							   		<input id="codAutorizacion"  class="inputForm Input" type="text" name="codAutorizacion" required="required" placeholder="introduzca código de autorización">
+							   
 							  </td>
+							 
 						</tr>
-						<tr>
-							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Pregunta:</td>
-							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   		<input id="pregunta"  class="inputForm Input" type="text" name="pregunta" required="required" placeholder="pregunta">
-							   </td>
-						</tr>
-						<tr>
-							<td colspan="4" style="text-align: center;">
-							     <input id="btnAniadirTema"  type="button" value="Enviar voto">
-							</td>
-						</tr>
-					</tbody>
 						
+						
+					</tbody>
+					 	
 		</table>
 		
 	</form>

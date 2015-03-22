@@ -58,6 +58,10 @@ public class Dispatcher extends HttpServlet {
         case "tema/aniadirTema":
         	view = action.split("/")[1];
             break;
+            
+        case "tema/autorizacion":
+        	view = action.split("/")[1];
+            break;
         default:
             view = "home";
         }
@@ -92,7 +96,7 @@ public class Dispatcher extends HttpServlet {
        	break;
        	
        }
-       case "tema/aniadirTema": { //esta peticion es lanzada por ajax de forma asincrona
+       case "tema/aniadirTema": { //esta peticion es lanzada por ajax de forma asincrona, por lo que no redireccionamos desde el servidor
     	     AniadirTemaView aniadirTemaView = new AniadirTemaView();	 
     	     String  jsonTema = request.getParameter("tema");
 	       	 TemaEntity tema = aniadirTemaView.jsonStringToObject(TemaEntity.class,jsonTema);
@@ -106,7 +110,15 @@ public class Dispatcher extends HttpServlet {
 	       
       	break;
       	
+      	
       }
+       case "tema/autorizacion": //esta peticion la lanzamos de forma sincrona desde el formulario de autorización, por lo que SI redireccionamos
+       	   AutorizacionView autorizacionView = new AutorizacionView();
+       	   autorizacionView.setCodAutorizacion(request.getParameter("codAutorizacion"));
+       	   view = autorizacionView.process();
+       	   request.setAttribute("autorizacion", autorizacionView);
+       	   redireccionar(request, response, view);
+           break;
         
         }
 
@@ -122,5 +134,9 @@ public class Dispatcher extends HttpServlet {
 		 out.close();
    }
 
+   private void redireccionar(HttpServletRequest request, HttpServletResponse response,String view) throws ServletException, IOException{
+	   this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp").
+       forward(request, response);
+   }
 
 }
