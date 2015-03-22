@@ -64,6 +64,7 @@ public class Dispatcher extends HttpServlet {
             break;
         case "tema/eliminarTema":
         	view = action.split("/")[1];
+        	break;
           
         default:
             view = "home";
@@ -119,13 +120,28 @@ public class Dispatcher extends HttpServlet {
        	   AutorizacionView autorizacionView = new AutorizacionView();
        	   autorizacionView.setCodAutorizacion(request.getParameter("codAutorizacion"));
        	   view = autorizacionView.process();
-       	   request.setAttribute("autorizacion", autorizacionView);
+       	   if(view.equals(AutorizacionView.getEliminarTemaView())) {
+       		  request.setAttribute(AutorizacionView.getEliminarTemaView(), new EliminarTemaView());
+       	   }else {
+       		 request.setAttribute(AutorizacionView.getAutorizacionView(), autorizacionView);
+       	   }
        	   redireccionar(request, response, view);
            break;
         
+        
+         case "tema/eliminarTema": {
+        	 EliminarTemaView eliminarTemaView = new EliminarTemaView();	 
+    	     eliminarTemaView.setIdTema(Integer.parseInt(request.getParameter("idTema")));
+    	     eliminarTemaView.process();
+		     JsonObject jsonObjet = new JsonObject();
+		     jsonObjet.addProperty("msg", eliminarTemaView.getMsg());
+		     jsonObjet.addProperty("exito", eliminarTemaView.isTemaEliminado());
+		     mandarRespuestaJSON(response, jsonObjet.toString());	
+        	
+            	break;
+          }
+              
         }
-
-      
     }
 
 

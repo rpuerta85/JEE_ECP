@@ -16,40 +16,16 @@
 <title>VotarView</title>
 <script type="text/javascript">
 $(function() {
-	/*onLoadEliminarTema();
-	$("#temas").on("change", function(){
-		var json = ${votar.toJsonString()}; 
-		var obj = JSON.parse(JSON.stringify(json));
-	    var arrayPreguntas = obj.listaTemas;
-	   
-	    var value = $(this).val();
-		switch (value) {
-			case '0': {				
-				ocultarSelect($("#filaNivelEstudios"));
-				ocultarSelect($("#puntuacion"));
-				ocultarSelect($("#filaPregunta"));
-				break;
-			}
-			default : {
-				mostrarSelect($("#filaNivelEstudios"));
-				var index =  buscarIndiceTemaPorId(value,arrayPreguntas);
-				actualizarLabelPregunta(index,arrayPreguntas);
-				break;
-			}
-		}
-		
-		
-	});*/
-
-
 });//ready jquery
 
 </script>
 </head>
 <body>
+	${eliminarTema.update()}
 	<h2>
 		Vista de <b>Eliminar Tema</b>
 	</h2>
+	
 	 <div id="trCargando" class="divCarga2" align="center">
           <span  id="mensajeCarga" class="fuente1" style="margin-top: 10%;display: block;">
 	      </span>
@@ -61,23 +37,31 @@ $(function() {
 		<table class="fac_contenidoTabla">
 			<thead>
 					<tr>
-						<td class="filaSeccion" colspan="4" rowspan="1">ELIMINAR TEMA</td>
+						<td class="filaSeccion" colspan="7" rowspan="1">ELIMINAR TEMA</td>
 					</tr>
 				    <tr>
 						<td class="filaSeccion" colspan="2" >Tema</td>
-						<td class="filaSeccion" colspan="2" >Pregunta</td>
+						<td class="filaSeccion" colspan="3" >Pregunta</td>
+						<td class="filaSeccion" colspan="1" >Número de Votos</td>
+						<td class="filaSeccion" colspan="1" >Acción</td>
 				   </tr>
 					
 			</thead>
 			<!-- Recorremos el conjunto de temas -->
 			<tbody>
 				<c:set var="pView" scope="request" value="${eliminarTema}" />
-				<c:forEach var="mapVotosPorEstudio" items="${pView.listaTemas}">
-	   				 <tr>
-						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> ${mapVotosPorEstudio.key}</td>
-						  <td colspan="2" class="celdaInteractuableFormFacturacion" style="text-align: center;">
-							   	    <LABEL> ${mapVotosPorEstudio.value.votacionMediaActual} </LABEL>			   								   		
+				<c:forEach var="tema" items="${pView.listaTemas}">
+	   				 <tr id="filaTema${tema.id}">
+						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion" style="text-align: center;"> ${tema.tema}</td>
+						  <td colspan="3" class="celdaInteractuableFormFacturacion" style="text-align: left: ;">
+							   	    <LABEL> ${tema.pregunta} </LABEL>			   								   		
 						  </td>
+						    <td colspan="1" class="celdaInteractuableFormFacturacion" style="text-align: center;">
+							   	    <LABEL> ${tema.votos.size()} </LABEL>			   								   		
+						  </td>
+						  <td style="text-align: center;">
+						      <input id="btnEliminarTema${tema.id}"  type="button" value="Eliminar" onclick="eliminarTemaAjax('${tema.id}')">
+					      </td>
 					</tr>
 				</c:forEach>			
 		  </tbody>
@@ -85,110 +69,9 @@ $(function() {
 		<br>
 		<br>
 		<br>
-		<table class="fac_contenidoTabla">
-			<thead>
-					<tr>
-						<td class="filaSeccion" colspan="4" rowspan="1">NÚMERO DE VOTOS POR TEMA</td>
-					</tr>
-				    <tr>
-						<td class="filaSeccion" colspan="2" >Tema</td>
-						<td class="filaSeccion" colspan="2" >Número de Votos</td>
-				   </tr>
-			</thead>
-			<tbody>
-				<c:forEach var="listaTemas" items="${pView.listaTemas}">
-	   				 <tr>
-						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> ${listaTemas.tema}</td>
-						  <td colspan="2" class="celdaInteractuableFormFacturacion" style="text-align: center;">
-							   	    <LABEL>${listaTemas.votos.size()} </LABEL>			   								   		
-						  </td>
-					</tr>
-				</c:forEach>			
-		  </tbody>
-		</table>		
-	
-</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
- <div style="width: 50%;padding-left: 20%;">
-	<form action="/votar/v1/persona" method="post">
-			<table class="fac_contenidoTabla">
-					<thead>
-							<tr>
-								<td class="filaSeccion" colspan="4" rowspan="1">ELIMINAR TEMA</td>
-							</tr>
-					</thead>
-					<tbody id="cntLineasDetalles">		
-						
-					</tbody>
-							<tr>
-							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Tema a eliminar</td>
-							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			<c:set var="pView" scope="request" value="${votar}" />
-											 <select id="temas" name="temas" class="InputForm">
-												<option value="0">Seleccione</option>
-												<c:forEach var="tema" items="${pView.listaTemas}">
-													<option value="${tema.id}">${tema.tema}</option>
-												</c:forEach>
-											</select>
-								</td>
-						</tr>
-						<tr id="filaNivelEstudios">
-							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Nivel de Estudios:</td>
-							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			<select id="estudios" name="estudios" class="InputForm">
-																	<option value="0">Seleccione</option>
-																	<c:forEach var="estudio" items="${pView.listaNivelEstudios}">
-																		<option value="${estudio}">${estudio}</option>
-																	</c:forEach>
-																</select>
-							   		
-							   		
-							   </td>
-						</tr>
-						<tr id="filaPregunta">
-							  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Nivel de Estudios:</td>
-							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   	    <LABEL id="labelPregunta">pppp</LABEL>			   								   		
-							   </td>
-						</tr>
-						<tr id="puntuacion">
-							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Asigne puntuación </td>
-							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			
-											 <select id="notas" name="notas" class="InputForm">
-												<option value="0">Seleccione</option>
-												<c:forEach var="nota" items="${pView.listaNotas}">
-													<option value="${nota}">${nota}</option>
-												</c:forEach>
-											</select>
-							   	<p>
-									<!-- <input type="submit" value="E" /> -->
-									<input id="btnEnviarVoto"  type="button" value="Enviar voto">
-								</p>
-							   		
-							   </td>
-						</tr>
-						<tr id="trError" class="trError">
-						
-						</tr>
-						
-		</table>
 		
-	</form>
 </div>
+
 	<p>
 		<a href="${pageContext.request.contextPath}/jsp/home">Volver al Home</a>
 	</p>

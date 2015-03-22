@@ -17,7 +17,49 @@ function votoEntity(id,ip,nota,estudios) {
 	this.nota = nota;
 	this.estudios = estudios;
 }
+function eliminarTemaAjax(idTema){
+	var ajaxParam = {
+	 		url: '/EE_ECP/jsp/tema/eliminarTema',
+	 		global: false,
+	 		type: "POST",
+	 		//dataType:'json',//tipo de dato devuelto
+	 		data: "idTema="+idTema,
+	 		scriptCharset: "UTF-8",
+	 		async: true,
+			contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+	 		//contentType:'application/json',
+	 	    //contentType : 'application/x-www-form-urlencoded; charset=UTF-8'
+	 		//mineType:'application/json'
+			beforeSend:function(xhr) {
+				mostrarPantallaDeCarga($("#trCargando"),"Cargando...");
+	    	},
+			complete:function() {
+				ocultarPantallaDeCarga($("#trCargando"));
+			}    
 
+	        };
+
+		$.ajax(ajaxParam)
+		.success(function(data) { 
+			var json = JSON.parse(data);
+			alert(json.msg);
+			if(json.exito==true) {
+				borrarTemaTabla(idTema);
+				
+			} 
+			
+			
+		})
+		
+		    
+		.fail(function(){
+		    alert("fail");
+		    ocultarPantallaDeCarga($("#trCargando"));
+		});
+
+
+
+	}
 function aniadirTemaAjax(){
 	var tema = new temaEntity(null, $("#nombreTema").val(), $("#pregunta").val());
 

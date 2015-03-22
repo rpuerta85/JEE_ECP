@@ -7,7 +7,10 @@ public class AutorizacionView extends ViewBean {
 
   private String codAutorizacion;
   private boolean autorizado = false;
-
+  
+  
+  private static final String AUTORIZACION_VIEW = "autorizacion";
+  private static final String ELIMINAR_TEMA_VIEW = "eliminarTema";
   
    public AutorizacionView() {
 	   super();
@@ -25,10 +28,10 @@ public class AutorizacionView extends ViewBean {
     public String process() {
     	String ret = "";
     	if (this.codAutorizacion.equals("666")) {
-    		ret = "eliminarTema";
+    		ret = ELIMINAR_TEMA_VIEW;
     		this.autorizado = true;
     	}else {
-    		ret = "autorizacion";
+    		ret = AUTORIZACION_VIEW;
     		this.msg = "Código de autorización incorrecto. No tiene permisos.";
     	}
     	
@@ -64,6 +67,16 @@ public class AutorizacionView extends ViewBean {
 
 	public void setAutorizado(boolean autorizado) {
 		this.autorizado = autorizado;
+	}
+
+
+	public static String getAutorizacionView() {
+		return AUTORIZACION_VIEW;
+	}
+
+
+	public static String getEliminarTemaView() {
+		return ELIMINAR_TEMA_VIEW;
 	}
 
 
