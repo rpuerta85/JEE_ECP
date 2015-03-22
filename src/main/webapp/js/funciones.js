@@ -60,6 +60,9 @@ function eliminarTemaAjax(idTema){
 
 
 	}
+function borrarTemaTabla(idTema){
+	$("#filaTema"+idTema).remove();
+}
 function aniadirTemaAjax(){
 	var tema = new temaEntity(null, $("#nombreTema").val(), $("#pregunta").val());
 

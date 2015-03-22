@@ -10,7 +10,6 @@
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/eventos.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/funciones.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/funciones.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/estilos.css">
 <title>VotarView</title>
 <script type="text/javascript">

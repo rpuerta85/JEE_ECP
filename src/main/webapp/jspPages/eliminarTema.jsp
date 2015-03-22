@@ -11,7 +11,6 @@
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/eventos.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/funciones.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/funciones.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/estilos.css">
 <title>VotarView</title>
 <script type="text/javascript">
@@ -60,7 +59,7 @@ $(function() {
 							   	    <LABEL> ${tema.votos.size()} </LABEL>			   								   		
 						  </td>
 						  <td style="text-align: center;">
-						      <input id="btnEliminarTema${tema.id}"  type="button" value="Eliminar" onclick="eliminarTemaAjax('${tema.id}')">
+						      <input id="btnEliminarTema${tema.id}"  type="button" value="Eliminar" onclick="eliminarTemaAjax('${tema.id}');">
 					      </td>
 					</tr>
 				</c:forEach>			
