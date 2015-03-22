@@ -62,6 +62,9 @@ public class Dispatcher extends HttpServlet {
         case "tema/autorizacion":
         	view = action.split("/")[1];
             break;
+        case "tema/eliminarTema":
+        	view = action.split("/")[1];
+          
         default:
             view = "home";
         }
@@ -122,8 +125,7 @@ public class Dispatcher extends HttpServlet {
         
         }
 
-       /* this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
-                .forward(request, response);*/
+      
     }
 
 
