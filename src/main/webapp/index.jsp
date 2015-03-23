@@ -12,7 +12,7 @@
 		<a href="jsp/home">Dispatcher utilizando JSP</a>
 	</p>
 	<p>
-		<a href="jsf/homeJSF">Dispatcher utilizando JSF</a>
+		<a href="jsf/homeJSF.jsf">Dispatcher utilizando JSF</a>
 		
 		
 	</p>

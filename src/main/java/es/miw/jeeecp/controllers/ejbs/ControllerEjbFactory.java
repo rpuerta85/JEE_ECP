@@ -22,7 +22,7 @@ public class ControllerEjbFactory extends ControllerFactory {
     
     private static ControllerEjbFactory singleton;
 
-  private ControllerEjbFactory() {
+  public ControllerEjbFactory() {
 	  super();
   }
   

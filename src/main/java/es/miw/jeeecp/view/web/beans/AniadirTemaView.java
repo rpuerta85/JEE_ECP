@@ -1,5 +1,6 @@
 package es.miw.jeeecp.view.web.beans;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import es.miw.jeeecp.controllers.AniadirTemaController;
@@ -20,6 +21,10 @@ public class AniadirTemaView extends ViewBean {
     	
     }
 
+   @PostConstruct
+   public void init() {
+       this.temaRecibidoFormulario = new TemaEntity();
+   }
 	public void update() {
     	
     }

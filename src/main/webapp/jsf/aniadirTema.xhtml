@@ -10,7 +10,7 @@
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/eventos.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/funciones.js"></script>
-<link rel="stylesheet" href="EE_ECP/css/estilos.css"/>
+<link rel="stylesheet" href="/EE_ECP/css/estilos.css"/>
 </h:head>
 <h:body>
     <h1>#{msgs.viewAniadirTemaTitle}</h1>
@@ -19,8 +19,9 @@
           <span  id="mensajeCarga" class="fuente1" style="margin-top: 10%;display: block;">
 	      </span>
    </div>  
-	
- <div style="width: 50%;padding-left: 20%;">
+
+    
+<div style="width: 50%;padding-left: 20%;">
 	<h:form id="f1" >
 			<table class="fac_contenidoTabla">
 					<thead>
@@ -37,21 +38,18 @@
 						<tr>
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewAniadirTemaFormCampoTema}: </td>
 							  <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   	<p>#{msgs.viewAniadirTemaFormCampoTema}: <h:inputText id="tema" value="" required="true"/></p>
-							   		
+							 		 <h:inputText id="tema"  class="inputForm Input" value="#{aniadirTemaView.temaRecibidoFormulario.tema}" required="true"/>
 							  </td>
 						</tr>
 						<tr>
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewAniadirTemaFormCampoPregunta}:</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   	 <p>#{msgs.viewAniadirTemaFormCampoPregunta}: <h:inputText id="pregunta" value="" required="true" /></p>
+							   		<h:inputText  class="inputForm Input" id="pregunta" value="#{aniadirTemaView.temaRecibidoFormulario.pregunta}" required="true" />
 							   </td>
 						</tr>
 						<tr>
 							<td colspan="4" style="text-align: center;">
-							     <h:commandButton value="submit" type="submit" action="#{AniadirTemaView.process}" />
-								
-							
+								<h:commandButton value="submit" type="submit" action="#{aniadirTemaView.process}" />
 							</td>
 						</tr>
 					</tbody>
@@ -60,8 +58,6 @@
 		
 	</h:form>
 </div>
-    
-
 
     
 </h:body>
