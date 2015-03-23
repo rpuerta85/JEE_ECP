@@ -10,17 +10,16 @@
 <h:body>
     <h1>#{msgs.viewHomeTitleBody}</h1>
 	<p>
-		<h:link value="#{msgs.viewHomeVotarAction}" outcome="#{msgs.viewHomweEnlaceVotar}"/>
+		<h:link value="#{msgs.viewHomeVotarAction}" outcome="votar"/>
 	</p>
 	<p>
-		<a href="${pageContext.request.contextPath}/jsf/votar/verVotaciones">#{msgs.viewHomeVerVotacionesAction}</a>
+		<h:link value="#{msgs.viewHomeVerVotacionesAction}" outcome="verVotaciones"/>
 	</p>
 	<p>
-		<a href="${pageContext.request.contextPath}/jsf/tema/aniadirTema">#{msgs.viewHomeAniadirTemaAction}</a>
-	
+	    <h:link value="#{msgs.viewHomeAniadirTemaAction}" outcome="aniadirTema"/>
 	</p>
 	<p>
-		<a href="${pageContext.request.contextPath}/jsf/tema/autorizacion">#{msgs.viewHomeEliminarTemaAction}</a>
+	    <h:link value="#{msgs.viewHomeEliminarTemaAction}" outcome="eliminarTema"/>
 	</p>
  
 </h:body>
