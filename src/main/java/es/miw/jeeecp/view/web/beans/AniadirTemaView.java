@@ -36,7 +36,7 @@ public class AniadirTemaView extends ViewBean {
     	if(exitoInserccionTema)  ret = "Tema insertado correctamente";
     	else ret = "Ya existe un tema en base de datos con ese mismo nombre. El tema no se ha insertado";
     	this.msg = ret;
-        return ""; // no devolvemos nada ya que es peticion ASINCRONA CON AJAX y no redireccionamos al DISPATCHE A ningun lugar
+        return msg; // no devolvemos nada ya que es peticion ASINCRONA CON AJAX y no redireccionamos al DISPATCHE A ningun lugar
     }
 
 	public String getMsg() {

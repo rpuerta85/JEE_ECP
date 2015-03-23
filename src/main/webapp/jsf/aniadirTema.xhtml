@@ -6,15 +6,10 @@
     xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <title>#{msgs.viewAniadirTemaTitle}</title>
-   
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/eventos.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/funciones.js"></script>
 <link rel="stylesheet" href="/EE_ECP/css/estilos.css"/>
 </h:head>
 <h:body>
     <h1>#{msgs.viewAniadirTemaTitle}</h1>
-    <p>#{helloJSFBean.name}</p>
      <div id="trCargando" class="divCarga2" align="center">
           <span  id="mensajeCarga" class="fuente1" style="margin-top: 10%;display: block;">
 	      </span>
@@ -26,7 +21,7 @@
 			<table class="fac_contenidoTabla">
 					<thead>
 							<tr>
-								<td class="filaSeccion" colspan="4" rowspan="1">AÑADIR TEMA</td>
+								<td class="filaSeccion" colspan="4" rowspan="1">#{msgs.viewAniadirTemaTitle}</td>
 							</tr>
 					</thead>
 					<tfoot>
@@ -50,6 +45,10 @@
 						<tr>
 							<td colspan="4" style="text-align: center;">
 								<h:commandButton value="submit" type="submit" action="#{aniadirTemaView.process}" />
+							    <h:commandButton value="Por ajax">
+    		 <f:ajax execute="@form" render="output" />
+    	   </h:commandButton>
+							    <h:outputText id="output" value="#{aniadirTemaView.process()}" />
 							</td>
 						</tr>
 					</tbody>
