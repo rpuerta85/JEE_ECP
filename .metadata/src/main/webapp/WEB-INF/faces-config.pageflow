@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14270615473820" configfile="/JEE_ECP/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="jsf/navigator.xhtml" x="122" y="562" id="pf14270615652841" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14271384609242 pf14271385001836 pf14271403824857 pf14271403824858 pf14271403824859" path="/jsf/homeJSF.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="jsf/votar.xhtml" x="338" y="178" id="pf14271384609245" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf14271384609242 pf14271385001836" path="/jsf/votar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="jsf/verVotaciones.xhtml" x="338" y="562" id="pf142714038248510" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf14271403824857" path="/jsf/verVotaciones.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="jsf/aniadirTema.xhtml" x="338" y="946" id="pf142714038248511" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf14271403824858" path="/jsf/aniadirTema.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="jsf/eliminarTema.xhtml" x="338" y="1330" id="pf142714038248512" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf14271403824859" path="/jsf/eliminarTema.xhtml"/>
+  <links id="pf14271384609242" target="pf14271384609245" source="pf14270615652841" outcome="votar"/>
+  <links id="pf14271385001836" target="pf14271384609245" source="pf14270615652841"/>
+  <links id="pf14271403824857" target="pf142714038248510" source="pf14270615652841" outcome="verVotaciones"/>
+  <links id="pf14271403824858" target="pf142714038248511" source="pf14270615652841" outcome="aniadirTema"/>
+  <links id="pf14271403824859" target="pf142714038248512" source="pf14270615652841" outcome="eliminarTema"/>
+</pageflow:Pageflow>

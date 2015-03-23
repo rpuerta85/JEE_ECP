@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+//import org.apache.logging.log4j.LogManager;
+
+
 import org.apache.logging.log4j.LogManager;
 
 import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;

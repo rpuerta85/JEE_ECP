@@ -5,10 +5,64 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <title>JSF 2: Hola JSF</title>
+    <title>#{msgs.viewAniadirTemaTitle}</title>
+   
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/eventos.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/funciones.js"></script>
+<link rel="stylesheet" href="EE_ECP/css/estilos.css"/>
 </h:head>
 <h:body>
-    <h1>JSF 2: Hola JSF</h1>
+    <h1>#{msgs.viewAniadirTemaTitle}</h1>
     <p>#{helloJSFBean.name}</p>
+     <div id="trCargando" class="divCarga2" align="center">
+          <span  id="mensajeCarga" class="fuente1" style="margin-top: 10%;display: block;">
+	      </span>
+   </div>  
+	
+ <div style="width: 50%;padding-left: 20%;">
+	<h:form id="f1" >
+			<table class="fac_contenidoTabla">
+					<thead>
+							<tr>
+								<td class="filaSeccion" colspan="4" rowspan="1">AÑADIR TEMA</td>
+							</tr>
+					</thead>
+					<tfoot>
+						<tr id="trError" class="trError">
+							
+						</tr>
+					</tfoot>
+					<tbody id="cntLineasDetalles">		
+						<tr>
+							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewAniadirTemaFormCampoTema}: </td>
+							  <td colspan="2" class="celdaInteractuableFormFacturacion" >
+							   	<p>#{msgs.viewAniadirTemaFormCampoTema}: <h:inputText id="tema" value="" required="true"/></p>
+							   		
+							  </td>
+						</tr>
+						<tr>
+							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewAniadirTemaFormCampoPregunta}:</td>
+							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
+							   	 <p>#{msgs.viewAniadirTemaFormCampoPregunta}: <h:inputText id="pregunta" value="" required="true" /></p>
+							   </td>
+						</tr>
+						<tr>
+							<td colspan="4" style="text-align: center;">
+							     <h:commandButton value="submit" type="submit" action="#{AniadirTemaView.process}" />
+								
+							
+							</td>
+						</tr>
+					</tbody>
+						
+		</table>
+		
+	</h:form>
+</div>
+    
+
+
+    
 </h:body>
 </html>
