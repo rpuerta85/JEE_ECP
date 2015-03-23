@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"        
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>JSF 2: Hola JSF</title>
+</h:head>
+<h:body>
+    <h1>#{msgs.viewHomeTitleBody}</h1>
+	<p>
+		<h:link value="#{msgs.viewHomeVotarAction}" outcome="#{msgs.viewHomweEnlaceVotar}"/>
+	</p>
+	<p>
+		<a href="${pageContext.request.contextPath}/jsf/votar/verVotaciones">#{msgs.viewHomeVerVotacionesAction}</a>
+	</p>
+	<p>
+		<a href="${pageContext.request.contextPath}/jsf/tema/aniadirTema">#{msgs.viewHomeAniadirTemaAction}</a>
+	
+	</p>
+	<p>
+		<a href="${pageContext.request.contextPath}/jsf/tema/autorizacion">#{msgs.viewHomeEliminarTemaAction}</a>
+	</p>
+ 
+</h:body>
+</html>
+
+

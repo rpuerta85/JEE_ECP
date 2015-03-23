@@ -12,7 +12,8 @@
 		<a href="/jsp/votar">Dispatcher utilizando JSP</a>
 	</p>
 	<p>
-		<a href="/jsf/votar">Dispatcher utilizando JSF</a>
+		<a href="/jsf/homeJSF.jsf">Dispatcher utilizando JSF</a>
+		
 	</p>
 </body>
 </html>

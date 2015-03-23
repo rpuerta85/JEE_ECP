@@ -12,7 +12,9 @@
 		<a href="jsp/home">Dispatcher utilizando JSP</a>
 	</p>
 	<p>
-		<a href="EE_ECP/jsf/votar">Dispatcher utilizando JSF</a>
+		<a href="jsf/homeJSF">Dispatcher utilizando JSF</a>
+		
+		
 	</p>
 </body>
 </html>
