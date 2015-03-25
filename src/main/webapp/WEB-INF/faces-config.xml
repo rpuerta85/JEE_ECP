@@ -21,6 +21,11 @@
 			<from-outcome>eliminarTema</from-outcome>
 			<to-view-id>/jsf/eliminarTema.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>volverAlHome</from-outcome>
+			<to-view-id>index.jsp</to-view-id>
+		</navigation-case>
+		
 		<!-- Por defecto -->
 		<navigation-case>
 			<if>#{!votar.value}</if>

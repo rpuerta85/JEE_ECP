@@ -7,6 +7,24 @@
 <h:head>
     <title>#{msgs.viewAniadirTemaTitle}</title>
 <link rel="stylesheet" href="/EE_ECP/css/estilos.css"/>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/EE_ECP/js/funciones.js"></script>
+
+	<script type="text/javascript">
+	function indicador(data) {
+		
+		if (data.status == "begin") {
+			     mostrarPantallaDeCarga($("#trCargando"),"Cargando...");
+			}else if (data.status == "success") {
+				 ocultarPantallaDeCarga($("#trCargando"));
+				// location.href ="/EE_ECP/jsf/homeJSF.jsf";
+		   }else if (data.status == "error") {
+		   ocultarPantallaDeCarga($("#trCargando"));
+		   alert("fail");
+		   }
+	
+}
+	</script>
 </h:head>
 <h:body>
     <h1>#{msgs.viewAniadirTemaTitle}</h1>
@@ -15,7 +33,7 @@
 	      </span>
    </div>  
 
-    
+   
 <div style="width: 50%;padding-left: 20%;">
 	<h:form id="f1" >
 			<table class="fac_contenidoTabla">
@@ -46,8 +64,8 @@
 							<td colspan="4" style="text-align: center;">
 								<h:commandButton value="submit" type="submit" action="#{aniadirTemaView.process}" />
 							    <h:commandButton value="Por ajax">
-    		 <f:ajax execute="@form" render="output" />
-    	   </h:commandButton>
+    									 <f:ajax execute="@form" render="output" event="click" onevent="indicador" />
+    	   						</h:commandButton>
 							    <h:outputText id="output" value="#{aniadirTemaView.process()}" />
 							</td>
 						</tr>
@@ -58,6 +76,8 @@
 	</h:form>
 </div>
 
-    
+    <p>
+		<a href="/EE_ECP/jsf/homeJSF.jsf"> #{msgs.enlaceVolverAlHome}</a>
+	</p>
 </h:body>
 </html>

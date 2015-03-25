@@ -2,6 +2,7 @@ package es.miw.jeeecp.view.web.beans;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import es.miw.jeeecp.controllers.AniadirTemaController;
 import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;
@@ -9,6 +10,7 @@ import es.miw.jeeecp.models.entities.TemaEntity;
 
 
 @ManagedBean
+//@SessionScoped
 public class AniadirTemaView extends ViewBean {
     private String msg;  
    
@@ -31,11 +33,17 @@ public class AniadirTemaView extends ViewBean {
 
     public String process() {
     	String ret = "";
+    	this.msg="";
+    	//System.out.println(temaRecibidoFormulario.getPregunta().equals("null"));
+     //	System.out.println(temaRecibidoFormulario.getPregunta()==null);
+    	if(temaRecibidoFormulario!=null && temaRecibidoFormulario.getPregunta()!=null ){
     	AniadirTemaController aniadirTemaController = ControllerEjbFactory.getInstance().getAniadirTemaController();
     	this.exitoInserccionTema = aniadirTemaController.aniadirTema(temaRecibidoFormulario);
     	if(exitoInserccionTema)  ret = "Tema insertado correctamente";
     	else ret = "Ya existe un tema en base de datos con ese mismo nombre. El tema no se ha insertado";
+    	}
     	this.msg = ret;
+    	
         return msg; // no devolvemos nada ya que es peticion ASINCRONA CON AJAX y no redireccionamos al DISPATCHE A ningun lugar
     }
 
