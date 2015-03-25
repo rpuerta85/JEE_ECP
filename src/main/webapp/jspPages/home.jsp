@@ -20,5 +20,8 @@
 	<p>
 		<a href="${pageContext.request.contextPath}/jsp/tema/autorizacion">Eliminar tema</a>
 	</p>
+	<p>
+		<a href="${pageContext.request.contextPath}/index.jsp">Volver al Home</a>
+	</p>
 </body>
 </html>

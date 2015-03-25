@@ -287,3 +287,16 @@ function onLoadAniadirTema(){
 	activarEventosAniadirTemaView();
 	
 }
+function indicador(data) {
+	
+	if (data.status == "begin") {
+		     mostrarPantallaDeCarga($("#trCargando"),"Cargando...");
+		}else if (data.status == "success") {
+			 ocultarPantallaDeCarga($("#trCargando"));
+			// location.href ="/EE_ECP/jsf/homeJSF.jsf";
+	   }else if (data.status == "error") {
+	   ocultarPantallaDeCarga($("#trCargando"));
+	   alert("fail");
+	   }
+
+}

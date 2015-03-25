@@ -56,7 +56,7 @@ $(function() {
 						</tr>
 						<tr>
 							<td colspan="4" style="text-align: center;">
-							     <input id="btnAniadirTema"  type="button" value="Enviar voto">
+							     <input id="btnAniadirTema"  type="button" value="Insertar Tema">
 							</td>
 						</tr>
 					</tbody>

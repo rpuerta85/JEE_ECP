@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"        
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <title>JSF 2: Hola JSF</title>
+    <title>#{msgs.viewAniadirTemaTitle}</title>
+<link rel="stylesheet" href="/EE_ECP/css/estilos.css"/>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/EE_ECP/js/funciones.js"></script>
+
+	<script type="text/javascript">
+	
+	
+
+	</script>
 </h:head>
 <h:body>
-    <h1>JSF 2: Hola JSF</h1>
-    <p>#{helloJSFBean.name}</p>
+    <h1>#{msgs.viewEliminarTemaTitle}</h1>
+     <div id="trCargando" class="divCarga2" align="center">
+          <span  id="mensajeCarga" class="fuente1" style="margin-top: 10%;display: block;">
+	      </span>
+   </div>  
+
+   <h:form id="form2">
+	 <div style="width: 50%;padding-left: 20%;">
+	
+		<table class="fac_contenidoTabla">
+			<thead>
+					<tr>
+						<td class="filaSeccion" colspan="7" rowspan="1">ELIMINAR TEMA</td>
+					</tr>
+				    <tr>
+						<td class="filaSeccion" colspan="2" >Tema</td>
+						<td class="filaSeccion" colspan="3" >Pregunta</td>
+						<td class="filaSeccion" colspan="1" >Número de Votos</td>
+						<td class="filaSeccion" colspan="1" >Acción</td>
+				   </tr>
+					
+			</thead>
+			<!-- Recorremos el conjunto de temas -->
+			<tbody>
+			    <ui:repeat var="tema" value="#{eliminarTemaView.listaTemas}">
+					
+				
+				
+
+	   				 <tr id="filaTema${tema.id}">
+						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion" style="text-align: center;"> ${tema.tema}</td>
+						  <td colspan="3" class="celdaInteractuableFormFacturacion" style="text-align: left: ;">
+							   	    <LABEL> ${tema.pregunta} </LABEL>			   								   		
+						  </td>
+						    <td colspan="1" class="celdaInteractuableFormFacturacion" style="text-align: center;">
+							   	    <LABEL> ${tema.votos.size()} </LABEL>			   								   		
+						  </td>
+						  <td style="text-align: center;">
+						      <input id="btnEliminarTema${tema.id}"  type="button" value="Eliminar" onclick="eliminarTemaAjax('${tema.id}');">
+					      </td>
+					</tr>
+				
+				</ui:repeat>			
+		  </tbody>
+		</table>
+		<br>
+		<br>
+		<br>
+		
+  </div>
+</h:form>
+    <p>
+		<a href="/EE_ECP/jsf/homeJSF.jsf"> #{msgs.enlaceVolverAlHome}</a>
+	</p>
 </h:body>
 </html>
