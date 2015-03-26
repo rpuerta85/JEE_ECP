@@ -21,11 +21,14 @@ public class AniadirTemaView extends ViewBean {
    public AniadirTemaView() {
     	super();
     	
+    	
     }
 
    @PostConstruct
    public void init() {
-       this.temaRecibidoFormulario = new TemaEntity();
+       // lo ponemos en el POSTCONTRUCT para que esta inicialización solo tenga efecto despues de las inyecciones
+	   // y utilizando el framework JSF
+	   this.temaRecibidoFormulario = new TemaEntity();
    }
 	public void update() {
     	

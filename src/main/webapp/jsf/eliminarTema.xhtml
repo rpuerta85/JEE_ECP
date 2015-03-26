@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <title>#{msgs.viewAniadirTemaTitle}</title>
@@ -47,25 +48,28 @@
 				
 		
 
-	   				 <tr id="filaTema${tema.id}">
-						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion" style="text-align: center;"> ${tema.tema}</td>
+	   				 <tr id="filaTema#{tema.id}">
+						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion" style="text-align: center;"> #{tema.tema}</td>
 						  <td colspan="3" class="celdaInteractuableFormFacturacion" style="text-align: left: ;">
-							   	    <LABEL> ${tema.pregunta} </LABEL>			   								   		
+							   	    <LABEL> #{tema.pregunta} </LABEL>			   								   		
 						  </td>
 						    <td colspan="1" class="celdaInteractuableFormFacturacion" style="text-align: center;">
-							   	    <LABEL> ${tema.votos.size()} </LABEL>			   								   		
+							   	    <LABEL> #{tema.votos.size()} </LABEL>			   								   		
 						  </td>
 						  <td style="text-align: center;">
-						      <input id="btnEliminarTema${tema.id}"  type="button" value="Eliminar" onclick="eliminarTemaAjax('${tema.id}');">
+					      	   <h:inputHidden id="idTema" name="idTema" value="#{tema.id}" />
+					      	   <h:commandButton value="Eliminar">
+    									 <f:ajax execute="@form" render="output" onerror="Error al eliminar tema" event="click" onevent="indicador" />
+    	   						</h:commandButton>
+							    
 					      </td>
 					</tr>
 				
-				</ui:repeat>			
+				</ui:repeat>	
+				<h:outputText id="output" value="#{eliminarTemaView.process()}" />		
 		  </tbody>
 		</table>
-		<br>
-		<br>
-		<br>
+		
 		
   </div>
 </h:form>

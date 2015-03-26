@@ -1,8 +1,14 @@
 package es.miw.jeeecp.view.web.beans;
 
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+
 import org.apache.logging.log4j.LogManager;
+
 import es.miw.jeeecp.controllers.EliminarTemaController;
 import es.miw.jeeecp.controllers.ejbs.ControllerEjbFactory;
 import es.miw.jeeecp.models.entities.TemaEntity;
@@ -10,11 +16,11 @@ import es.miw.jeeecp.models.entities.TemaEntity;
 
 @ManagedBean
 public class EliminarTemaView extends ViewBean {
-    private String msg;
+	private String msg;
 
    private List<TemaEntity> listaTemas;
-   
-   private int idTema;
+  @ManagedProperty(value = "#{idTema}")
+   private Integer idTema;
 
    boolean temaEliminado;
     
@@ -22,20 +28,33 @@ public class EliminarTemaView extends ViewBean {
 	   super();
     	
     }
+   @PostConstruct
+   public void init(){
+	//RECOPGEMOS EL VALRO DEL HIDDEN
+	  String idTema = FacesContext.getCurrentInstance().
+				getExternalContext().getRequestParameterMap().get("idTema");
+	  if(idTema!=null) { 
+	  this.idTema = Integer.parseInt(idTema);
+	  }
+   }
+  
+   @PostConstruct
     public void update() {
     	LogManager.getLogger(EliminarTemaView.class).debug(
                 "Se accede a la capa de negocio para recuperar los temas");
-        if(this.listaTemas== null) {
+    	if(this.listaTemas== null) {
         	this.listaTemas =ControllerEjbFactory.getInstance().getVotarController().mostrarTemas();
         }
-        }
+      }
 
     public String process() {
     	String ret = "";
     	EliminarTemaController eliminarTemaController = ControllerEjbFactory.getInstance().getEliminarTemaController(); 
+    	if(this.idTema!=null){
     	this.temaEliminado = eliminarTemaController.eliminarTema(this.idTema);
     	if(temaEliminado)  ret = "Tema borrado correctamente";
     	else ret = "Error: El tema no se ha eliminado- Contacte con el administrador.";
+    	}
     	this.msg = ret;
    
     return "";
