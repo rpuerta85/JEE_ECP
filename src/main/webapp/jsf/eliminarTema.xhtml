@@ -31,13 +31,13 @@
 		<table class="fac_contenidoTabla">
 			<thead>
 					<tr>
-						<td class="filaSeccion" colspan="7" rowspan="1">ELIMINAR TEMA</td>
+						<td class="filaSeccion" colspan="7" rowspan="1">#{msgs.viewHomeEliminarTemaAction}</td>
 					</tr>
 				    <tr>
-						<td class="filaSeccion" colspan="2" >Tema</td>
-						<td class="filaSeccion" colspan="3" >Pregunta</td>
-						<td class="filaSeccion" colspan="1" >Número de Votos</td>
-						<td class="filaSeccion" colspan="1" >Acción</td>
+						<td class="filaSeccion" colspan="2" >#{msgs.viewAniadirTemaFormCampoTema}</td>
+						<td class="filaSeccion" colspan="3" >#{msgs.viewAniadirTemaFormCampoPregunta}</td>
+						<td class="filaSeccion" colspan="1" >#{msgs.viewEliminarTemaFormCampoNumeroVotos}</td>
+						<td class="filaSeccion" colspan="1" >#{msgs.viewEliminarTemaFormCampoAccion}</td>
 				   </tr>
 					
 			</thead>
@@ -59,7 +59,7 @@
 						  <td style="text-align: center;">
 					      	   <h:inputHidden id="idTema" name="idTema" value="#{tema.id}" />
 					      	   <h:commandButton value="Eliminar">
-    									 <f:ajax execute="@form" render="output" onerror="Error al eliminar tema" event="click" onevent="indicador" />
+    									 <f:ajax execute="@form" render="output" onerror="#{msgs.viewEliminarTemaFormOnErrorMsg}" event="click" onevent="indicador" />
     	   						</h:commandButton>
 							    
 					      </td>

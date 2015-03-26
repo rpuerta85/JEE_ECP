@@ -3,6 +3,7 @@ package es.miw.jeeecp.view.web.beans;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
@@ -19,7 +20,6 @@ public class EliminarTemaView extends ViewBean {
 	private String msg;
 
    private List<TemaEntity> listaTemas;
-  @ManagedProperty(value = "#{idTema}")
    private Integer idTema;
 
    boolean temaEliminado;
@@ -32,13 +32,16 @@ public class EliminarTemaView extends ViewBean {
    public void init(){
 	//RECOPGEMOS EL VALRO DEL HIDDEN
 	  String idTema = FacesContext.getCurrentInstance().
-				getExternalContext().getRequestParameterMap().get("idTema");
+				getExternalContext().getRequestParameterMap().get("form2:idTema");
 	  if(idTema!=null) { 
-	  this.idTema = Integer.parseInt(idTema);
+	   this.idTema = Integer.parseInt(idTema);
 	  }
+	  if(this.listaTemas== null) {
+      	this.listaTemas =ControllerEjbFactory.getInstance().getVotarController().mostrarTemas();
+      }
    }
   
-   @PostConstruct
+   
     public void update() {
     	LogManager.getLogger(EliminarTemaView.class).debug(
                 "Se accede a la capa de negocio para recuperar los temas");
