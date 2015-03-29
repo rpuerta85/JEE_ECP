@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"        
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>#{msgs.viewAutorizacionTemaTitle}</title>
+<link rel="stylesheet" href="/EE_ECP/css/estilos.css"/>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/EE_ECP/js/funciones.js"></script>
+
+	<script type="text/javascript">
+	
+	/**function indicador2(data) {
+		
+		if (data.status == "begin") {
+			     mostrarPantallaDeCarga($("#trCargando"),"Cargando...");
+			}else if (data.status == "success") {
+				 ocultarPantallaDeCarga($("#trCargando"));
+				 location.reload();
+				 //location.href ="/EE_ECP/jsf/homeJSF.jsf";
+		   }else if (data.status == "error") {
+		   ocultarPantallaDeCarga($("#trCargando"));
+		   alert("fail");
+		   }
+
+	}*/
+	
+
+	</script>
+</h:head>
+<h:body>
+    <h1>#{msgs.viewAutorizacionTemaTitle}</h1>
+     <div id="trCargando" class="divCarga2" align="center">
+          <span  id="mensajeCarga" class="fuente1" style="margin-top: 10%;display: block;">
+	      </span>
+   </div>  
+
+  
+	 <div style="width: 50%;padding-left: 20%;">
+	<h:form id="f1" >
+			<table class="fac_contenidoTabla">
+					<thead>
+							<tr>
+								<td class="filaSeccion" colspan="4" rowspan="1">#{msgs.viewAutorizacionTemaTitle}</td>
+							</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<td colspan="4" style="text-align: center;">
+							     <h:commandButton value="#{msgs.enviar}" type="submit" action="#{autorizacionView.process()}" />
+							</td>	
+						</tr>
+						<tr id="trError" class="trError" style="background-color: transparent;">
+							<td>#{autorizacionView.msg}</td>
+						</tr>
+						
+					</tfoot>
+					<tbody id="cntLineasDetalles">		
+						<tr>
+							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewAutorizacionFormCampoCodAutorizacion}: </td>
+							  <td colspan="2" class="celdaInteractuableFormFacturacion" >
+							 	    <h:inputText  class="inputForm Input" id="codAutorizacion" value="#{autorizacionView.codAutorizacion}" required="true" />
+							  </td>
+						</tr>
+					</tbody>
+		</table>
+		</h:form>
+</div>
+	
+    <p>
+		<a href="/EE_ECP/jsf/homeJSF.jsf"> #{msgs.enlaceVolverAlHome}</a>
+	</p>
+</h:body>
+</html>
