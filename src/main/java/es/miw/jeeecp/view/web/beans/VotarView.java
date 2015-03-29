@@ -3,6 +3,7 @@ package es.miw.jeeecp.view.web.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import org.apache.logging.log4j.LogManager;
@@ -34,7 +35,7 @@ public class VotarView extends ViewBean {
     	
     }
 
-
+   @PostConstruct
     public void update() {
     	LogManager.getLogger(VotarView.class).debug(
                 "Se accede a la capa de negocio para recuperar los temas");

@@ -5,75 +5,37 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <title>JSF 2: Hola JSF</title>
+    <title>#{msgs.viewVotarTemaTitle}</title>
 </h:head>
 <h:body>
     <div style="width: 50%;padding-left: 20%;">
-	<form action="/votar/v1/persona" method="post">
+	<h:form id="form" >
 			<table class="fac_contenidoTabla">
 					<thead>
 							<tr>
-								<td class="filaSeccion" colspan="4" rowspan="1">VOTAR</td>
+								<td class="filaSeccion" colspan="4" rowspan="1">#{msgs.viewVotarTemaTitle}</td>
 							</tr>
 					</thead>
 					<tbody id="cntLineasDetalles">		
 						
 					</tbody>
 							<tr>
-							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Tema </td>
+							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion">#{msgs.viewVotarTablaTituloTema}</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			<c:set var="pView" scope="request" value="${votar}" />
-											 <select id="temas" name="temas" class="InputForm">
-												<option value="0">Seleccione</option>
-												<c:forEach var="tema" items="${pView.listaTemas}">
-													<option value="${tema.id}">${tema.tema}</option>
-												</c:forEach>
-											</select>
+							   			<h:selectOneMenu value="#{votarView.temaRecibidoFormulario}">
+											<f:selectItems value="#{votarView.listaTemas}" />
+										</h:selectOneMenu>
+							   			
+							   			
+							   			
 								</td>
 						</tr>
-						<tr id="filaNivelEstudios">
-							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Nivel de Estudios:</td>
-							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			<select id="estudios" name="estudios" class="InputForm">
-																	<option value="0">Seleccione</option>
-																	<c:forEach var="estudio" items="${pView.listaNivelEstudios}">
-																		<option value="${estudio}">${estudio}</option>
-																	</c:forEach>
-																</select>
-							   		
-							   		
-							   </td>
-						</tr>
-						<tr id="filaPregunta">
-							  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Nivel de Estudios:</td>
-							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   	    <LABEL id="labelPregunta">pppp</LABEL>			   								   		
-							   </td>
-						</tr>
-						<tr id="puntuacion">
-							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Asigne puntuación </td>
-							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			
-											 <select id="notas" name="notas" class="InputForm">
-												<option value="0">Seleccione</option>
-												<c:forEach var="nota" items="${pView.listaNotas}">
-													<option value="${nota}">${nota}</option>
-												</c:forEach>
-											</select>
-							   	<p>
-									<!-- <input type="submit" value="E" /> -->
-									<input id="btnEnviarVoto"  type="button" value="Enviar voto">
-								</p>
-							   		
-							   </td>
-						</tr>
-						<tr id="trError" class="trError">
 						
-						</tr>
 						
 		</table>
 		
-	</form>
+
+	</h:form>
 </div>
    <p>
 		<a href="/EE_ECP/jsf/homeJSF.jsf"> #{msgs.enlaceVolverAlHome}</a>

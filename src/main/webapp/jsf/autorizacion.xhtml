@@ -13,23 +13,6 @@
 <script type="text/javascript" src="/EE_ECP/js/funciones.js"></script>
 
 	<script type="text/javascript">
-	
-	/**function indicador2(data) {
-		
-		if (data.status == "begin") {
-			     mostrarPantallaDeCarga($("#trCargando"),"Cargando...");
-			}else if (data.status == "success") {
-				 ocultarPantallaDeCarga($("#trCargando"));
-				 location.reload();
-				 //location.href ="/EE_ECP/jsf/homeJSF.jsf";
-		   }else if (data.status == "error") {
-		   ocultarPantallaDeCarga($("#trCargando"));
-		   alert("fail");
-		   }
-
-	}*/
-	
-
 	</script>
 </h:head>
 <h:body>
@@ -51,7 +34,8 @@
 					<tfoot>
 						<tr>
 							<td colspan="4" style="text-align: center;">
-							     <h:commandButton value="#{msgs.enviar}" type="submit" action="#{autorizacionView.process()}" />
+							     <h:commandButton value="#{msgs.enviar} por formulario" type="submit" action="#{autorizacionView.process()}" />
+							  
 							</td>	
 						</tr>
 						<tr id="trError" class="trError" style="background-color: transparent;">
