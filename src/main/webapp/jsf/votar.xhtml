@@ -22,13 +22,39 @@
 							<tr>
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion">#{msgs.viewVotarTablaTituloTema}</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			<h:selectOneMenu value="#{votarView.temaRecibidoFormulario}">
-											<f:selectItems value="#{votarView.listaTemas}" />
+							   			<h:selectOneMenu value="#{votarView.temaRecibidoFormulario} ">
+											<f:selectItems value="#{votarView.listaTemas}" var="tema" itemValue="#{tema.tema}" itemLabel="#{tema.tema}" />
 										</h:selectOneMenu>
 							   			
-							   			
-							   			
 								</td>
+						</tr>
+						<tr id="filaNivelEstudios">
+							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewVotarTablaTituloNivelDeEstudios}:</td>
+							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
+							   			<h:selectOneMenu value="#{votarView.votoRecibidoFormulario.estudios} ">
+											<f:selectItems value="#{votarView.listaNivelEstudios}" var="estudio" itemValue="#{estudio}" itemLabel="#{estudio}" />
+										</h:selectOneMenu>
+							   </td>
+						</tr>
+						<tr id="filaPregunta">
+							  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewVotarTablaTituloPregunta}:</td>
+							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
+							   	    <LABEL id="labelPregunta"></LABEL>			   								   		
+							   </td>
+						</tr>
+						<tr id="puntuacion">
+							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewVotarTablaTituloPuntuacion} </td>
+							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
+							   			<h:selectOneMenu value="#{votarView.votoRecibidoFormulario.nota} ">
+											<f:selectItems value="#{votarView.listaNotas}" var="nota" itemValue="#{nota}" itemLabel="#{nota}" />
+										</h:selectOneMenu>
+											
+							   	<p>
+									<!-- <input type="submit" value="E" /> -->
+									<!-- <input id="btnEnviarVoto"  type="button" value="Enviar voto"> -->
+								</p>
+							   		
+							   </td>
 						</tr>
 						
 						

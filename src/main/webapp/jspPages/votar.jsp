@@ -91,9 +91,9 @@ $(function() {
 							   </td>
 						</tr>
 						<tr id="filaPregunta">
-							  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Seleccione Nivel de Estudios:</td>
+							  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> Pregunta:</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   	    <LABEL id="labelPregunta">pppp</LABEL>			   								   		
+							   	    <LABEL id="labelPregunta"></LABEL>			   								   		
 							   </td>
 						</tr>
 						<tr id="puntuacion">
