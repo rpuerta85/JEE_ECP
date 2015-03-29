@@ -18,16 +18,17 @@
 		
 		if (data.status == "begin") {
 			     mostrarPantallaDeCarga($("#trCargando"),"Cargando...");
-			     
 			}else if (data.status == "success") {
 				 ocultarPantallaDeCarga($("#trCargando"));
-				// location.href ="/EE_ECP/jsf/homeJSF.jsf";
+				 location.reload();
+				 //location.href ="/EE_ECP/jsf/homeJSF.jsf";
 		   }else if (data.status == "error") {
 		   ocultarPantallaDeCarga($("#trCargando"));
 		   alert("fail");
 		   }
 
 	}
+	
 
 	</script>
 </h:head>
@@ -54,13 +55,18 @@
 				   </tr>
 					
 			</thead>
+			<tfoot>
+				<tr>	
+					<td>
+						 <h:outputText id="output" value="#{eliminarTemaView.process()}" />
+						  <input type="hidden" name="idTemaSelec" id="idTemaSelec" value=""/>
+					</td>
+				</tr>
+			</tfoot>
 			<!-- Recorremos el conjunto de temas -->
 			<tbody>
 			    <ui:repeat var="tema" value="#{eliminarTemaView.listaTemas}">
-					
-				
-		
- 				<h:form id="form2#{tema.id}">
+ 				<h:form id="form2#{tema.id}" >
 	   				 <tr id="filaTema#{tema.id}">
 						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion" style="text-align: center;"> #{tema.tema}</td>
 						  <td colspan="3" class="celdaInteractuableFormFacturacion" style="text-align: left: ;">
@@ -72,14 +78,13 @@
 						  <td style="text-align: center;">
 					      	  <input type="hidden" name="idTema2" id="idTema2" value="#{tema.id}"/>
 					      	   <h:commandButton value="Eliminar">
-    									 <f:ajax execute="@form" render="output" onerror="#{msgs.viewEliminarTemaFormOnErrorMsg}" event="click" onevent="indicador2" />
+    									 <f:ajax execute="@form" render="output"  event="click" onevent="indicador2" />
     	   						</h:commandButton>
 							    
 					      </td>
 					</tr>
 				</h:form>
 				</ui:repeat>	
-				<h:outputText id="output" value="#{eliminarTemaView.process()}" />		
 		  </tbody>
 		</table>
 		

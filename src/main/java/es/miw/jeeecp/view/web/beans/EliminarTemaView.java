@@ -16,6 +16,7 @@ import es.miw.jeeecp.models.entities.TemaEntity;
 
 
 @ManagedBean
+//@javax.faces.bean.SessionScoped
 public class EliminarTemaView extends ViewBean {
 	private String msg;
 
@@ -26,19 +27,21 @@ public class EliminarTemaView extends ViewBean {
     
    public EliminarTemaView() {
 	   super();
+	   
     	
     }
    @PostConstruct
    public void init(){
 	//RECOPGEMOS EL VALRO DEL HIDDEN
 	  String idTema = FacesContext.getCurrentInstance().
-				getExternalContext().getRequestParameterMap().get("form2:idTema");
+				getExternalContext().getRequestParameterMap().get("idTema2");
 	  if(idTema!=null) { 
 	   this.idTema = Integer.parseInt(idTema);
 	  }
 	  if(this.listaTemas== null) {
-      	this.listaTemas =ControllerEjbFactory.getInstance().getVotarController().mostrarTemas();
-      }
+	      	this.listaTemas =ControllerEjbFactory.getInstance().getVotarController().mostrarTemas();
+	      }
+	 
    }
   
    
@@ -60,8 +63,7 @@ public class EliminarTemaView extends ViewBean {
     	}
     	this.msg = ret;
    
-    return "";
-    //no devolvemos nada ya que es peticion ASINCRONA CON AJAX y no redireccionamos al DISPATCHE A ningun lugar desde servidor, lo hacemos desde cliente
+    return msg;//devolvemos el mensaje en vez la redireccione a una pagina ya que los estamos haciendo por ajax
     }
 
 

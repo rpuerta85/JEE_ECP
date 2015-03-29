@@ -47,7 +47,7 @@ public class AniadirTemaView extends ViewBean {
     	}
     	this.msg = ret;
     	
-        return msg; // no devolvemos nada ya que es peticion ASINCRONA CON AJAX y no redireccionamos al DISPATCHE A ningun lugar
+        return msg;//devolvemos el mensaje en vez la redireccione a una pagina ya que los estamos haciendo por ajax
     }
 
 	public String getMsg() {
