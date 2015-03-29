@@ -3,9 +3,11 @@ package es.miw.jeeecp.view.web.beans;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 //import org.apache.logging.log4j.LogManager;
+
 
 
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +29,7 @@ public class VerVotosView extends ViewBean {
     	super();
     }
 
-
+    @PostConstruct
     public void update() {
     	LogManager.getLogger(VerVotosView.class).debug(
                 "Se accede a la capa de negocio para recuperar la votacion por cada estudio");

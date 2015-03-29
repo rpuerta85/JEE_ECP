@@ -3,12 +3,55 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <title>JSF 2: Hola JSF</title>
+    <title>#{msgs.viewHomeVerVotacionesAction}</title>
+    <link rel="stylesheet" href="/EE_ECP/css/estilos.css"/>
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="/EE_ECP/js/funciones.js"></script>
 </h:head>
 <h:body>
-    <h1>JSF 2: Hola JSF</h1>
-    <p>#{helloJSFBean.name}</p>
+    <h1>#{msgs.viewHomeVerVotacionesAction}</h1>
+     <div id="trCargando" class="divCarga2" align="center">
+          <span  id="mensajeCarga" class="fuente1" style="margin-top: 10%;display: block;">
+	      </span>
+   </div>  
+   
+   <div style="width: 50%;padding-left: 20%;">
+	VerVotos
+	#{verVotosView.msg}
+		<table class="fac_contenidoTabla">
+			<thead>
+					<tr>
+						<td class="filaSeccion" colspan="4" rowspan="1">#{msgs.viewVerVotacionesTablaTitulo}</td>
+					</tr>
+				    <tr>
+						<td class="filaSeccion" colspan="2" >#{msgs.viewVerVotacionesTablaSubtituloNivelEstudios}</td>
+						<td class="filaSeccion" colspan="2" >#{msgs.viewVerVotacionesTablaSubtituloVotacionMedia}</td>
+				   </tr>
+			</thead>
+			<tfoot>
+			</tfoot>
+			<!-- Recorremos el conjunto de votos -->
+		<tbody>
+				<ui:repeat value="#{verVotosView.mapVotacionMediaSegunNivelEstudios.entrySet().toArray()}" var="mapVotosPorEstudio">
+       				
+       			 	 <tr>
+						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> ${mapVotosPorEstudio.key}</td>
+						  <td colspan="2" class="celdaInteractuableFormFacturacion" style="text-align: center;">
+							   	    <LABEL> ${mapVotosPorEstudio.value.votacionMediaActual} </LABEL>			   								   		
+						  </td>
+					</tr>
+				</ui:repeat>
+		  </tbody>
+		</table>
+		
+		
+  </div>
+
+    <p>
+		<a href="/EE_ECP/jsf/homeJSF.jsf"> #{msgs.enlaceVolverAlHome}</a>
+	</p>
 </h:body>
 </html>
