@@ -41,8 +41,37 @@
 						  </td>
 					</tr>
 				</ui:repeat>
+				
 		  </tbody>
 		</table>
+		
+		<br>
+		</br>
+		<br>
+		</br>
+	
+		<table class="fac_contenidoTabla">
+			<thead>
+					<tr>
+						<td class="filaSeccion" colspan="4" rowspan="1">#{msgs.viewVerVotacionesTablaTituloNumeroDeVotosPorTema}</td>
+					</tr>
+				    <tr>
+						<td class="filaSeccion" colspan="2" >#{msgs.viewAniadirTemaFormCampoTema}</td>
+						<td class="filaSeccion" colspan="2" >#{msgs.viewEliminarTemaFormCampoNumeroVotos}</td>
+				   </tr>
+			</thead>
+			<tbody>
+	   			<ui:repeat value="#{verVotosView.listaTemas}" var="listaTemas">
+	   			
+	   				 <tr>
+						  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion">#{listaTemas.tema}</td>
+						  <td colspan="2" class="celdaInteractuableFormFacturacion" style="text-align: center;">
+							   	    <LABEL>#{listaTemas.votos.size()} </LABEL>			   								   		
+						  </td>
+					</tr>
+				</ui:repeat>			
+		  </tbody>
+		</table>		
 		
 		
   </div>
