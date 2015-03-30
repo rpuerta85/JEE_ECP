@@ -6,6 +6,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
 
@@ -17,7 +19,7 @@ import es.miw.jeeecp.models.entities.TemaEntity;
 import es.miw.jeeecp.models.entities.VotoEntity;
 
 @ManagedBean
-@SessionScoped
+//@SessionScoped
 public class VotarView extends ViewBean {
     private String msg;
 
@@ -27,46 +29,49 @@ public class VotarView extends ViewBean {
    
    private String pregunta;
    
-   private TemaEntity temaRecibidoFormulario;
-   private VotoEntity votoRecibidoFormulario;   
+   private TemaEntity temaRecibidoFormulario = new TemaEntity();
+   private VotoEntity votoRecibidoFormulario = new VotoEntity();   
    
-  boolean votoInsertado;
+  boolean votoInsertado,jsf=false;
   
-  private String temaEscogidoConAjaxJSF;
+ //private String temaEscogidoConAjaxJSF;
     
    public VotarView() {
 	   super();
     	
     }
-
    @PostConstruct
+   public void initJsf(){
+	   HttpServletRequest req = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+	   votoRecibidoFormulario.setIp(req.getRemoteAddr());
+	   String pregunta = FacesContext.getCurrentInstance().
+				getExternalContext().getRequestParameterMap().get("pregunta");
+	   jsf=true;
+	   update();
+   }
+   
+   //@PostConstruct
     public void update() {
-    	LogManager.getLogger(VotarView.class).debug(
+	   
+	   LogManager.getLogger(VotarView.class).debug(
                 "Se accede a la capa de negocio para recuperar los temas");
         this.listaTemas =ControllerEjbFactory.getInstance().getVotarController().mostrarTemas();
         inicializarListaEstudios();        	
         inicializarListaNotas();
+        if(listaTemas.size()!=0)temaRecibidoFormulario.setPregunta(listaTemas.get(0).getPregunta());
         
     }
 
     public String process() {
     	String ret = "";
+    	if(temaRecibidoFormulario.getPregunta()!=null && votoRecibidoFormulario.getNota()!=null ){
     	VotarController votarController = ControllerEjbFactory.getInstance().getVotarController(); 
     	this.votoInsertado = votarController.votar(this.temaRecibidoFormulario ,this.votoRecibidoFormulario);
     	if(votoInsertado)  ret = "Voto insertado correctamente";
     	else ret = "El voto no se ha insertado- Usted ya ha votado ha este tema con anterioridad.";
     	this.msg = ret;
-    	
-//        if (this.persona.getId() == 666 && !this.persona.getNombre().equals("Demonio")) {
-//            this.errorMsg = "Sólo se acepta el nombre 'Demonio'";
-//            return "persona";
-//        } else {
-//            LogManager.getLogger(VotarView.class).debug(
-//                    "Se accede a la capa de negocio para registrar persona: " + persona);
-//            return "home";
-//        }
-  return "";
-//no devolvemos nada ya que es peticion ASINCRONA CON AJAX y no redireccionamos al DISPATCHE A ningun lugar
+    	}
+  return ret;
     }
 
 
@@ -161,13 +166,13 @@ private void inicializarListaNotas(){
 	}
 }
 
-public String getTemaEscogidoConAjaxJSF() {
-	
-	return temaEscogidoConAjaxJSF;
-}
-
-public void setTemaEscogidoConAjaxJSF(String temaEscogidoConAjaxJSF) {
-	this.temaEscogidoConAjaxJSF = temaEscogidoConAjaxJSF;
-}
+//public String getTemaEscogidoConAjaxJSF() {
+//	
+//	return temaEscogidoConAjaxJSF;
+//}
+//
+//public void setTemaEscogidoConAjaxJSF(String temaEscogidoConAjaxJSF) {
+//	this.temaEscogidoConAjaxJSF = temaEscogidoConAjaxJSF;
+//}
 	
 }

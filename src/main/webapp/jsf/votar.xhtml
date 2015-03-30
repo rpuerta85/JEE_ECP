@@ -46,9 +46,9 @@
 							<tr>
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion">#{msgs.viewVotarTablaTituloTema}</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-										<h:selectOneMenu value="#{votarView.temaEscogidoConAjaxJSF}" >
-											<f:selectItems value="#{votarView.listaTemas}" var="tema" itemValue="#{tema.pregunta}" itemLabel="#{tema.tema}" />
-											<f:ajax execute="@this" render="labelPregunta id4 id5" onevent="indicador" />
+										<h:selectOneMenu value="#{votarView.temaRecibidoFormulario.tema}" style="width:100%;">
+											<f:selectItems value="#{votarView.listaTemas}" var="tema" itemValue="#{tema.pregunta}" itemLabel="#{tema.tema}"  />
+											<f:ajax execute="@this" render="labelPregunta id4 id5 pregunta" onevent="indicador"  />
 										</h:selectOneMenu>
 							   			
 								</td>
@@ -56,7 +56,7 @@
 						<tr id="filaNivelEstudios">
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewVotarTablaTituloNivelDeEstudios}:</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			<h:selectOneMenu value="#{votarView.votoRecibidoFormulario.estudios} ">
+							   			<h:selectOneMenu value="#{votarView.votoRecibidoFormulario.estudios}" style="width:100%;">
 											<f:selectItems value="#{votarView.listaNivelEstudios}" var="estudio" itemValue="#{estudio}" itemLabel="#{estudio}" />
 										</h:selectOneMenu>
 							   </td>
@@ -64,19 +64,24 @@
 						<tr id="filaPregunta">
 							  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewVotarTablaTituloPregunta}:</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   	    <h:outputLabel value="#{votarView.temaEscogidoConAjaxJSF}" id="labelPregunta" />
-							   	    			   								   		
+							   	    <h:outputLabel value="#{votarView.temaRecibidoFormulario.tema}" id="labelPregunta" />
+							   	    
 							   </td>
 						</tr>
 						<tr id="puntuacion">
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewVotarTablaTituloPuntuacion} </td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			<h:selectOneMenu value="#{votarView.votoRecibidoFormulario.nota}">
+							   			<h:selectOneMenu value="#{votarView.votoRecibidoFormulario.nota}" style="width:100%;">
 											<f:selectItems value="#{votarView.listaNotas}" var="nota" itemValue="#{nota}" itemLabel="#{nota}" />
 										</h:selectOneMenu>
 							   	<p>
 									<!-- <input type="submit" value="E" /> -->
 									<!-- <input id="btnEnviarVoto"  type="button" value="Enviar voto"> -->
+								  <h:commandButton value="55">
+    									 <f:ajax execute="@form" render="output" event="click" onevent="indicador" />
+    	   						<h:outputText id="output" value="#{votarView.process()}" />
+    	   						</h:commandButton>
+							    
 								</p>
 							   		
 							   </td>
