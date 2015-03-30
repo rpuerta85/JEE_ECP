@@ -6,8 +6,32 @@
     xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <title>#{msgs.viewVotarTemaTitle}</title>
+<link rel="stylesheet" href="/EE_ECP/css/estilos.css"/>   
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/EE_ECP/js/funciones.js"></script>
+	<script type="text/javascript">
+	
+	function indicador(data) {
+		
+		if (data.status == "begin") {
+			     mostrarPantallaDeCarga($("#trCargando"),"Cargando...");
+			}else if (data.status == "success") {
+				 ocultarPantallaDeCarga($("#trCargando"));
+		   }else if (data.status == "error") {
+		   ocultarPantallaDeCarga($("#trCargando"));
+		   alert("fail");
+		   }
+
+	}
+	
+
+	</script>
 </h:head>
 <h:body>
+     <div id="trCargando" class="divCarga2" align="center">
+          <span  id="mensajeCarga" class="fuente1" style="margin-top: 10%;display: block;">
+	      </span>
+   </div>  
     <div style="width: 50%;padding-left: 20%;">
 	<h:form id="form" >
 			<table class="fac_contenidoTabla">
@@ -22,8 +46,9 @@
 							<tr>
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion">#{msgs.viewVotarTablaTituloTema}</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			<h:selectOneMenu value="#{votarView.temaRecibidoFormulario} ">
-											<f:selectItems value="#{votarView.listaTemas}" var="tema" itemValue="#{tema.tema}" itemLabel="#{tema.tema}" />
+										<h:selectOneMenu value="#{votarView.temaEscogidoConAjaxJSF}" >
+											<f:selectItems value="#{votarView.listaTemas}" var="tema" itemValue="#{tema.pregunta}" itemLabel="#{tema.tema}" />
+											<f:ajax execute="@this" render="labelPregunta id4 id5" onevent="indicador" />
 										</h:selectOneMenu>
 							   			
 								</td>
@@ -39,13 +64,14 @@
 						<tr id="filaPregunta">
 							  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewVotarTablaTituloPregunta}:</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   	    <LABEL id="labelPregunta"></LABEL>			   								   		
+							   	    <h:outputLabel value="#{votarView.temaEscogidoConAjaxJSF}" id="labelPregunta" />
+							   	    			   								   		
 							   </td>
 						</tr>
 						<tr id="puntuacion">
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewVotarTablaTituloPuntuacion} </td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   			<h:selectOneMenu value="#{votarView.votoRecibidoFormulario.nota} ">
+							   			<h:selectOneMenu value="#{votarView.votoRecibidoFormulario.nota}">
 											<f:selectItems value="#{votarView.listaNotas}" var="nota" itemValue="#{nota}" itemLabel="#{nota}" />
 										</h:selectOneMenu>
 							   	<p>

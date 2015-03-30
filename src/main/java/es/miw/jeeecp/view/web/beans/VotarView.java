@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import org.apache.logging.log4j.LogManager;
 
@@ -16,6 +17,7 @@ import es.miw.jeeecp.models.entities.TemaEntity;
 import es.miw.jeeecp.models.entities.VotoEntity;
 
 @ManagedBean
+@SessionScoped
 public class VotarView extends ViewBean {
     private String msg;
 
@@ -29,6 +31,8 @@ public class VotarView extends ViewBean {
    private VotoEntity votoRecibidoFormulario;   
    
   boolean votoInsertado;
+  
+  private String temaEscogidoConAjaxJSF;
     
    public VotarView() {
 	   super();
@@ -155,6 +159,15 @@ private void inicializarListaNotas(){
 	for(int i = 0;i<11;i++){
 		listaNotas.add(i+"");
 	}
+}
+
+public String getTemaEscogidoConAjaxJSF() {
+	
+	return temaEscogidoConAjaxJSF;
+}
+
+public void setTemaEscogidoConAjaxJSF(String temaEscogidoConAjaxJSF) {
+	this.temaEscogidoConAjaxJSF = temaEscogidoConAjaxJSF;
 }
 	
 }
