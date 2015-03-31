@@ -17,6 +17,8 @@
 			     mostrarPantallaDeCarga($("#trCargando"),"Cargando...");
 			}else if (data.status == "success") {
 				 ocultarPantallaDeCarga($("#trCargando"));
+				 //alert( $("#form\\:output").val(););
+				 //location.href ="/EE_ECP/jsf/homeJSF.jsf";
 		   }else if (data.status == "error") {
 		   ocultarPantallaDeCarga($("#trCargando"));
 		   alert("fail");
@@ -48,7 +50,7 @@
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
 										<h:selectOneMenu value="#{votarView.idTemaAjax}" style="width:100%;">
 											<f:selectItems value="#{votarView.listaTemas}" var="tema" itemValue="#{tema.id}" itemLabel="#{tema.tema}"  />
-											<f:ajax execute="@this" render="labelPregunta labelPregunta2 id4 id5 pregunta pregunta4 kk kk2 kk3" onevent="indicador"  />
+											<f:ajax execute="@this" render="pregunta" onevent="indicador"  />
 										
 										</h:selectOneMenu>
 							   			
@@ -68,7 +70,7 @@
 							   	   <!--  <h:outputLabel value="#{votarView.idTemaAjax}" id="pregunta4"  /> -->
 							   	   
 							   	    <h:outputLabel value="#{votarView.temaRecibidoFormulario.pregunta}" id="pregunta"  />
-							   	    <input type="hidden" name="idTema2" id="idTema2" value="#{tema.id}"/>
+							   	   <!--  <input type="hidden" name="idTema2" id="idTema2" value="#{tema.id}"/> -->
 							   	    
 							   	    <!--  <h:outputLabel value="#{votarView.temaRecibidoFormulario.tema}" id="labelPregunta2"  />
 							   	    
@@ -84,17 +86,20 @@
 							   			<h:selectOneMenu value="#{votarView.votoRecibidoFormulario.nota}" style="width:100%;">
 											<f:selectItems value="#{votarView.listaNotas}" var="nota" itemValue="#{nota}" itemLabel="#{nota}" />
 										</h:selectOneMenu>
-							   	<p>
-									<!-- <input type="submit" value="E" /> -->
-									<!-- <input id="btnEnviarVoto"  type="button" value="Enviar voto"> -->
-								  <h:commandButton value="55">
-    									 <f:ajax execute="@form" render="output" event="click" onevent="indicador" />
-    	   						<h:outputText id="output" value="#{votarView.process()}" />
-    	   						</h:commandButton>
-							    
-								</p>
+							  
 							   		
 							   </td>
+						</tr>
+						<tr>
+							 	<td colspan="4" style="text-align: center;">
+										<!-- <input type="submit" value="E" /> -->
+										<!-- <input id="btnEnviarVoto"  type="button" value="Enviar voto"> -->
+									  <h:commandButton value="#{msgs.enviar}">
+	    									 <f:ajax execute="@form" render="output" event="click" onevent="indicador" />
+	    	   						<h:outputText id="output" value="#{votarView.process()}" />
+	    	   						</h:commandButton>
+							    
+								</td>
 						</tr>
 						
 						

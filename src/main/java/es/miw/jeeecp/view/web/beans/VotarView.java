@@ -27,15 +27,15 @@ public class VotarView extends ViewBean {
    private List<String> listaNivelEstudios;
    private List<String> listaNotas;
    
-   private String pregunta;
+  // private String pregunta;
    
    private TemaEntity temaRecibidoFormulario = new TemaEntity();
    private VotoEntity votoRecibidoFormulario = new VotoEntity();   
    
   boolean votoInsertado,jsf=false;
   
- private String preguntaEscogidaConAjaxJSF;
- private TemaEntity temaRecibidoFormularioConJSF = new TemaEntity(); 
+ //private String preguntaEscogidaConAjaxJSF;
+ //private TemaEntity temaRecibidoFormularioConJSF = new TemaEntity(); 
  private int idTemaAjax;
  
    public VotarView() {
