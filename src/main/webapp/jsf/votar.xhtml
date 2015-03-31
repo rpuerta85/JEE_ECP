@@ -46,9 +46,10 @@
 							<tr>
 							   <td colspan="2" class="fuente3 celdaInformativoFormFacturacion">#{msgs.viewVotarTablaTituloTema}</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-										<h:selectOneMenu value="#{votarView.temaRecibidoFormulario.tema}" style="width:100%;">
-											<f:selectItems value="#{votarView.listaTemas}" var="tema" itemValue="#{tema.pregunta}" itemLabel="#{tema.tema}"  />
-											<f:ajax execute="@this" render="labelPregunta id4 id5 pregunta" onevent="indicador"  />
+										<h:selectOneMenu value="#{votarView.idTemaAjax}" style="width:100%;">
+											<f:selectItems value="#{votarView.listaTemas}" var="tema" itemValue="#{tema.id}" itemLabel="#{tema.tema}"  />
+											<f:ajax execute="@this" render="labelPregunta labelPregunta2 id4 id5 pregunta pregunta4 kk kk2 kk3" onevent="indicador"  />
+										
 										</h:selectOneMenu>
 							   			
 								</td>
@@ -64,7 +65,16 @@
 						<tr id="filaPregunta">
 							  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewVotarTablaTituloPregunta}:</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   	    <h:outputLabel value="#{votarView.temaRecibidoFormulario.tema}" id="labelPregunta" />
+							   	   <!--  <h:outputLabel value="#{votarView.idTemaAjax}" id="pregunta4"  /> -->
+							   	   
+							   	    <h:outputLabel value="#{votarView.temaRecibidoFormulario.pregunta}" id="pregunta"  />
+							   	    <input type="hidden" name="idTema2" id="idTema2" value="#{tema.id}"/>
+							   	    
+							   	    <!--  <h:outputLabel value="#{votarView.temaRecibidoFormulario.tema}" id="labelPregunta2"  />
+							   	    
+							   	    <h:outputText id="kk" value="#{votarView.temaRecibidoFormulario.pregunta}" />
+							   	   -->
+							   	   
 							   	    
 							   </td>
 						</tr>

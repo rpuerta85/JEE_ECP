@@ -19,7 +19,7 @@ import es.miw.jeeecp.models.entities.TemaEntity;
 import es.miw.jeeecp.models.entities.VotoEntity;
 
 @ManagedBean
-//@SessionScoped
+@SessionScoped
 public class VotarView extends ViewBean {
     private String msg;
 
@@ -34,13 +34,15 @@ public class VotarView extends ViewBean {
    
   boolean votoInsertado,jsf=false;
   
- //private String temaEscogidoConAjaxJSF;
-    
+ private String preguntaEscogidaConAjaxJSF;
+ private TemaEntity temaRecibidoFormularioConJSF = new TemaEntity(); 
+ private int idTemaAjax;
+ 
    public VotarView() {
 	   super();
     	
     }
-   @PostConstruct
+  @PostConstruct
    public void initJsf(){
 	   HttpServletRequest req = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 	   votoRecibidoFormulario.setIp(req.getRemoteAddr());
@@ -50,7 +52,7 @@ public class VotarView extends ViewBean {
 	   update();
    }
    
-   //@PostConstruct
+  // @PostConstruct
     public void update() {
 	   
 	   LogManager.getLogger(VotarView.class).debug(
@@ -58,7 +60,9 @@ public class VotarView extends ViewBean {
         this.listaTemas =ControllerEjbFactory.getInstance().getVotarController().mostrarTemas();
         inicializarListaEstudios();        	
         inicializarListaNotas();
-        if(listaTemas.size()!=0)temaRecibidoFormulario.setPregunta(listaTemas.get(0).getPregunta());
+        if(listaTemas.size()!=0 && temaRecibidoFormulario.getTema()==null)temaRecibidoFormulario.setPregunta(listaTemas.get(0).getPregunta());
+       //if(listaTemas.size()!=0)this.temaEscogidoConAjaxJSF=listaTemas.get(0).getPregunta();
+
         
     }
 
@@ -74,6 +78,7 @@ public class VotarView extends ViewBean {
   return ret;
     }
 
+   
 
 	
 
@@ -165,14 +170,24 @@ private void inicializarListaNotas(){
 		listaNotas.add(i+"");
 	}
 }
+public int getIdTemaAjax() {
+	return idTemaAjax;
+}
+public void setIdTemaAjax(int idTemaAjax) {
+	this.idTemaAjax = idTemaAjax;
+	boolean encontrado=false;
+	for(int i = 0;i<listaTemas.size() && !encontrado;i++){
+		if(listaTemas.get(i).getId().intValue()==idTemaAjax) {
+			encontrado=true;
+			this.temaRecibidoFormulario=listaTemas.get(i);
+			
+		}
+			
+	}
+	
+	
+}
 
-//public String getTemaEscogidoConAjaxJSF() {
-//	
-//	return temaEscogidoConAjaxJSF;
-//}
-//
-//public void setTemaEscogidoConAjaxJSF(String temaEscogidoConAjaxJSF) {
-//	this.temaEscogidoConAjaxJSF = temaEscogidoConAjaxJSF;
-//}
+
 	
 }
