@@ -8,12 +8,14 @@
     xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <title>#{msgs.viewAutorizacionTemaTitle}</title>
+<f:view locale="#{localManager.locale}"></f:view>
 <link rel="stylesheet" href="/EE_ECP/css/estilos.css"/>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="/EE_ECP/js/funciones.js"></script>
 
 	<script type="text/javascript">
 	</script>
+	
 </h:head>
 <h:body>
     <h1>#{msgs.viewAutorizacionTemaTitle}</h1>
@@ -34,7 +36,7 @@
 					<tfoot>
 						<tr>
 							<td colspan="4" style="text-align: center;">
-							     <h:commandButton value="#{msgs.enviar} por formulario" type="submit" action="#{autorizacionView.process()}" />
+							     <h:commandButton value="#{msgs.enviar}" type="submit" action="#{autorizacionView.process()}" />
 							  
 							</td>	
 						</tr>

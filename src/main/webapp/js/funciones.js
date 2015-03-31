@@ -296,7 +296,7 @@ function indicador(data) {
 			 ocultarPantallaDeCarga($("#trCargando"));
 			 $("#f1\\:tema").val("");
 			 $("#f1\\:pregunta").val("");
-			 alert("Tema insertado correctamente");
+			 alert("Tema insertado correctamente");			 
 			 location.href ="/EE_ECP/jsf/homeJSF.jsf";
 	   }else if (data.status == "error") {
 	   ocultarPantallaDeCarga($("#trCargando"));
