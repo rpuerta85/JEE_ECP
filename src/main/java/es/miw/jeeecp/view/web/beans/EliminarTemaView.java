@@ -16,7 +16,6 @@ import es.miw.jeeecp.models.entities.TemaEntity;
 
 
 @ManagedBean
-//@javax.faces.bean.SessionScoped
 public class EliminarTemaView extends ViewBean {
 	private String msg;
 

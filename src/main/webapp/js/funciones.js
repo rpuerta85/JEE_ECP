@@ -256,7 +256,6 @@ function ocultarTextoError($select){
 }
 
 function activarEventos() {
-	cargarEventoMostrarFilaEstudios();
 	cargarEventoMostrarFilaNotas();
 	carcarEventoEnviarVoto();
 }

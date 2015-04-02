@@ -26,16 +26,12 @@ public class VotarView extends ViewBean {
    private List<TemaEntity> listaTemas;
    private List<String> listaNivelEstudios;
    private List<String> listaNotas;
-   
-  // private String pregunta;
-   
+      
    private TemaEntity temaRecibidoFormulario = new TemaEntity();
    private VotoEntity votoRecibidoFormulario = new VotoEntity();   
    
   boolean votoInsertado,jsf=false;
   
- //private String preguntaEscogidaConAjaxJSF;
- //private TemaEntity temaRecibidoFormularioConJSF = new TemaEntity(); 
  private int idTemaAjax;
  
    public VotarView() {
@@ -52,7 +48,6 @@ public class VotarView extends ViewBean {
 	   update();
    }
    
-  // @PostConstruct
     public void update() {
 	   
 	   LogManager.getLogger(VotarView.class).debug(
@@ -61,7 +56,6 @@ public class VotarView extends ViewBean {
         inicializarListaEstudios();        	
         inicializarListaNotas();
         if(listaTemas.size()!=0 && temaRecibidoFormulario.getTema()==null)temaRecibidoFormulario.setPregunta(listaTemas.get(0).getPregunta());
-       //if(listaTemas.size()!=0)this.temaEscogidoConAjaxJSF=listaTemas.get(0).getPregunta();
 
         
     }

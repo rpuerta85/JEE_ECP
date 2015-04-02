@@ -10,7 +10,6 @@ import es.miw.jeeecp.models.entities.TemaEntity;
 
 
 @ManagedBean
-//@SessionScoped
 public class AniadirTemaView extends ViewBean {
     private String msg;  
    
@@ -37,8 +36,6 @@ public class AniadirTemaView extends ViewBean {
     public String process() {
     	String ret = "";
     	this.msg="";
-    	//System.out.println(temaRecibidoFormulario.getPregunta().equals("null"));
-     //	System.out.println(temaRecibidoFormulario.getPregunta()==null);
     	if(temaRecibidoFormulario!=null && temaRecibidoFormulario.getPregunta()!=null ){
     	AniadirTemaController aniadirTemaController = ControllerEjbFactory.getInstance().getAniadirTemaController();
     	this.exitoInserccionTema = aniadirTemaController.aniadirTema(temaRecibidoFormulario);

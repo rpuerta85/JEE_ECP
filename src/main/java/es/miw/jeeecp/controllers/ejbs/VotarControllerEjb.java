@@ -10,9 +10,6 @@ import es.miw.jeeecp.models.entities.VotoEntity;
 
 public class VotarControllerEjb extends ControllerEjb implements VotarController {
 
-//	VotarControllerEjb(Session session) {
-//        super(session);
-//    }
 	public VotarControllerEjb() {
         super();
     }

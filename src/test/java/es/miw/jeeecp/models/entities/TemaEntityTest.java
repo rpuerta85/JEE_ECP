@@ -13,7 +13,6 @@ import org.junit.Test;
 public class TemaEntityTest {
 
     private static  TemaEntityDataTest temaEntityDataTest;
-   // private static final ClosedInterval[] CLOSED_INTERVALS = new ClosedInterval[ENDPOINTS.length];
     
     @BeforeClass
      static public void initialized() {

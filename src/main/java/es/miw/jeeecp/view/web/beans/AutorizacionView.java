@@ -19,9 +19,7 @@ public class AutorizacionView extends ViewBean {
 
 
     public void update() {
-    	/*LogManager.getLogger(AutorizacionView.class).debug(
-                "Se accede a la capa de negocio para comprobar el código de autorización");*/
-       
+    	
         
     }
 

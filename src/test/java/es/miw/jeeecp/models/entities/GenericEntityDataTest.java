@@ -30,14 +30,11 @@ public abstract class GenericEntityDataTest {
 	}
 	protected void rellenarWorkbook(){
 		try {
-		    //workbook = abrirExcel("src/test/resources/TemaEntityTestData.xlsx");
 		    workbook = abrirExcel(this.pathExcelFile);
 			recorrerExcel();
 		} catch (InvalidFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -55,7 +52,6 @@ public abstract class GenericEntityDataTest {
 			if(hssfRow.getRowNum()>1){
 				while (iterator.hasNext()){//recorremos las columnas
 					Cell hssfCell = (Cell) iterator.next(); //cogemos la columnaa
-					//System.out.println(hssfRow.getRowNum()+":"+hssfCell.getColumnIndex());
 					procesarColumna(hssfCell, hssfRow.getRowNum(), hssfCell.getColumnIndex(),sheet,workbook);			    	  
 	
 				}
@@ -78,7 +74,6 @@ public abstract class GenericEntityDataTest {
                 break;
             case Cell.CELL_TYPE_STRING:
             	 valor = columna.getRichStringCellValue()+"";
-            	//System.out.println("Last evaluated as \"" + columna.getRichStringCellValue() + "\"");
                 break;
         }
 			
@@ -87,7 +82,6 @@ public abstract class GenericEntityDataTest {
 			valor = "";
 		}
 	
-		// System.out.println("VALOR:"+valor);
 		return valor;
 	}
 

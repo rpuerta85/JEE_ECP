@@ -30,7 +30,6 @@ public class TemaEntityDataTest extends GenericEntityDataTest{
 			
 		}else if(cellReference.formatAsString().contains("C")) {
 			String valor = obtenerValorColumnaSegunTipoDatoColumna(columna);
-			//TemaEntityDataTest.PREGUNTA_ENTRADA.add(Double.parseDouble(valor));
 			this.listaPreguntaEntrada.add(valor);
 		}
 		else if(cellReference.formatAsString().contains("D")) {

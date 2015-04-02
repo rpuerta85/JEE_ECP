@@ -51,18 +51,7 @@ public class VotoEntityTest {
             		  votoEntityDataTest.getListaVotoSalida() .get(i).getEstudios());
           }
     }
-  /*  @Test
-    public void testTema() {
-    	  for (int i = 0;i<votoEntityDataTest.getListaTemaEntrada().size();i++) {
-          	String tema = votoEntityDataTest.getListaTemaEntrada().get(i);
-            String pregunta = votoEntityDataTest.getListaPreguntaEntrada().get(i);
-          	TemaEntity temaEntity = new TemaEntity(tema, pregunta);
-          	 VotoEntity votoEntity = new VotoEntity(null, null, null, temaEntity);
-             TemaEntity aux =  votoEntityDataTest.getListaVotoSalida().get(i).getTema();
-             assertEquals(temaEntity.getTema(), 
-          			aux.getTema());
-          }
-    }*/
+
 
 
     

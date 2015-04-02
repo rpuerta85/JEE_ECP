@@ -18,8 +18,6 @@
 			     mostrarPantallaDeCarga($("#trCargando"),"Cargando...");
 			}else if (data.status == "success") {
 				 ocultarPantallaDeCarga($("#trCargando"));
-				 //alert( $("#form\\:output").val(););
-				 //location.href ="/EE_ECP/jsf/homeJSF.jsf";
 		   }else if (data.status == "error") {
 		   ocultarPantallaDeCarga($("#trCargando"));
 		   alert("fail");
@@ -68,16 +66,8 @@
 						<tr id="filaPregunta">
 							  <td colspan="2" class="fuente3 celdaInformativoFormFacturacion"> #{msgs.viewVotarTablaTituloPregunta}:</td>
 							   <td colspan="2" class="celdaInteractuableFormFacturacion" >
-							   	   <!--  <h:outputLabel value="#{votarView.idTemaAjax}" id="pregunta4"  /> -->
 							   	   
 							   	    <h:outputLabel value="#{votarView.temaRecibidoFormulario.pregunta}" id="pregunta"  />
-							   	   <!--  <input type="hidden" name="idTema2" id="idTema2" value="#{tema.id}"/> -->
-							   	    
-							   	    <!--  <h:outputLabel value="#{votarView.temaRecibidoFormulario.tema}" id="labelPregunta2"  />
-							   	    
-							   	    <h:outputText id="kk" value="#{votarView.temaRecibidoFormulario.pregunta}" />
-							   	   -->
-							   	   
 							   	    
 							   </td>
 						</tr>
@@ -93,8 +83,6 @@
 						</tr>
 						<tr>
 							 	<td colspan="4" style="text-align: center;">
-										<!-- <input type="submit" value="E" /> -->
-										<!-- <input id="btnEnviarVoto"  type="button" value="Enviar voto"> -->
 									  <h:commandButton value="#{msgs.enviar}">
 	    									 <f:ajax execute="@form" render="output" event="click" onevent="indicador" />
 	    	   						<h:outputText id="output" value="#{votarView.process()}" />
